@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LeavittSoftware/LeavittLink.Typescript.git"
+    "url": "https://github.com/LeavittSoftware/LeavittLink.Typescript.git"
   },
   "author": "LeavittSoftware",
   "license": "ISC",
