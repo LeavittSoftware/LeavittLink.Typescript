@@ -1,5 +1,5 @@
 {
-  "name": "@leavitttsoftware/leavittlink.typescript",
+  "name": "@leavittsoftware/leavittlink.typescript",
   "version": "1.0.0",
   "description": "Auto generated typescript for api.leavittlink",
   "main": "ll.datamodel.tyescript.ts",
