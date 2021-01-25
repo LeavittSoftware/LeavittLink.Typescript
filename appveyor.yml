@@ -50,7 +50,7 @@ version: 2.0.{build}
 after_test:
   - npm version %APPVEYOR_BUILD_VERSION% -m 'v%APPVEYOR_BUILD_VERSION%'
   - ps: >-
-      if($env:APPVEYOR_REPO_BRANCH -eq 'master' –AND $env:APPVEYOR_PULL_REQUEST_NUMBER -lt 1) {
+      if($env:APPVEYOR_REPO_BRANCH -eq 'main' –AND $env:APPVEYOR_PULL_REQUEST_NUMBER -lt 1) {
         npm whoami  
         npm publish
       }
