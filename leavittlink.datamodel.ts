@@ -539,10 +539,10 @@ export interface LifeAnswerDto {
 }
 
 export interface AutoGettingStartedAnswerDto {
+    AgencyName: string | null;
     AllowTextMessaging: boolean;
     AutoQuoteRequestId: number | null;
     Campaign: string | null;
-    CampaignId: number;
     City: string | null;
     DateOfBirth: string;
     EmailAddress: string | null;
