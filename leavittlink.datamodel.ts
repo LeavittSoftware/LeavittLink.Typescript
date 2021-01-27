@@ -603,6 +603,25 @@ export interface LifeQuoteRequestSummaryDto {
     Uninsurable: number;
 }
 
+export interface VehicleDataDto {
+    ABS: string | null;
+    BodyType: string | null;
+    Carburetor: string | null;
+    FourWheelDrive: boolean;
+    FuelType: string | null;
+    Maker: string | null;
+    Model: string | null;
+    MSRP: number;
+    NumCylinders: number;
+    VIN: string | null;
+    Year: number;
+}
+
+export interface VertaforeLiabilityCslbiLimitDto {
+    Label: string | null;
+    Value: string | null;
+}
+
 export interface User {
     AutoQuoteRequest: Array<Partial<AutoQuoteRequest>> | null;
     CellPhoneNumber: string | null;
