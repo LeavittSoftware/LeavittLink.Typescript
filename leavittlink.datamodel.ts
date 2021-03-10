@@ -514,6 +514,18 @@ export interface AutoDiscountsDto {
     PaperLess: boolean;
 }
 
+export interface HomeOwnersStep1Dto {
+    Campaign: string | null;
+    CampaignId: number;
+    DateOfBirth: string;
+    FirstName: string | null;
+    HomeOwnersQuoteRequestId: number | null;
+    LastName: string | null;
+    LeadType: string | null;
+    RecaptchaUserResponse: string | null;
+    UserGuid: string | null;
+}
+
 export interface AutoPreviousPoliciesDto {
     EffectiveDate: string | null;
     InjuryCoverageLimit: number | null;
