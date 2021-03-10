@@ -467,6 +467,7 @@ export interface HomeOwnersQuoteRequest extends QuoteRequest {
     NumberOfHouseholdMembers: number | null;
     NumberOfRoofLayers: number | null;
     NumberOfStories: number | null;
+    OccupantType: 'OWNER'|'TENANT' | null;
     PrimaryHeatType: 'Electric'|'Gas'|'Wood'|'Oil'|'Other' | null;
     RequestPayload: string | null;
     ResidenceType: 'SingleFamilyDwelling'|'Condo'|'Apartment'|'MobileHome'|'CoOp'|'Townhouse'|'Rowhouse'|'Other' | null;
