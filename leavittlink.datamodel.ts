@@ -515,6 +515,12 @@ export interface AutoDiscountsDto {
     PaperLess: boolean;
 }
 
+export interface HomeOwnersStep3Dto {
+    AcquisitionDate: string;
+    ResidenceType: 'SingleFamilyDwelling'|'Condo'|'Apartment'|'MobileHome'|'CoOp'|'Townhouse'|'Rowhouse'|'Other';
+    YearBuilt: number | null;
+}
+
 export interface HomeOwnersStep1Dto {
     Campaign: string | null;
     CampaignId: number;
