@@ -525,6 +525,16 @@ export interface HomeOwnersStepThreeDto {
     YearBuilt: number | null;
 }
 
+export interface HomeOwnersStepTwoDto {
+    City: string | null;
+    EmailAddress: string | null;
+    PhoneNumber: string | null;
+    State: string | null;
+    Street1: string | null;
+    Street2: string | null;
+    Zip: string | null;
+}
+
 export interface HomeOwnersStepOneDto {
     Campaign: string | null;
     CampaignId: number;
