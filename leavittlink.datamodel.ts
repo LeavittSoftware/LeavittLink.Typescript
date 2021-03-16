@@ -476,7 +476,7 @@ export interface HomeOwnersQuoteRequest extends QuoteRequest {
     RoofType: 'ALUMINUM_SHINGLES'|'ARCHITECTURAL_SHINGLES'|'ASBESTOS'|'ASPHALT_SHINGLE'|'CEDAR_SHAKES'|'CEDAR_SHINGLES'|'CLAY_TILE_OR_SLATE'|'COMPOSITION_FIBERGLASS_ASPHALT_ETC'|'CONCRETE_TILE'|'CONCRETE_NOT_TILE'|'COPPER'|'FIBERGLASS'|'FOAM'|'GRAVEL'|'METAL'|'MINERAL_FIBER'|'MISSION_TILE'|'OTHER'|'PLASTIC'|'POURED'|'RECYCLED_ROOFING_PRODUCTS'|'ROCK'|'ROLLED_ROOFING'|'RUBBER_ROOF'|'SLATE'|'SPANISH_TILE'|'CORRUGATED_STEEL'|'STEEL_PORCELAIN_SHINGLES'|'TAR_AND_GRAVEL'|'TILE'|'TIN'|'WOOD_FIBER_SHINGLES'|'WOOD_SHAKES'|'WOOD_SHINGLES'|'WOOD_SHAKE_SHINGLE' | null;
     SquareFootage: number | null;
     State: string | null;
-    Status: 'Step1'|'Step2'|'Step3'|'Step4'|'Step5';
+    Status: 'Step1'|'Step2'|'Step3'|'Step4'|'Step5'|'Step6';
     Street1: string | null;
     Street2: string | null;
     YearBuilt: number | null;
@@ -515,14 +515,27 @@ export interface AutoDiscountsDto {
     PaperLess: boolean;
 }
 
+export interface HomeOwnersStepFiveDto {
+    Baths: Partial<number> | null;
+    ConstructionType: 'FRAME'|'JOISTED_MASONRY'|'MASONRY'|'MASONRY_VENEER'|'MODIFIED_FIRE_RESISTIVE'|'FIRE_RESISTIVE_SUPERIOR'|'SUPERIOR_NON_COMBUSTIBLE'|'STUCCO'|'METAL_ALUMINUM_SIDING'|'CONCRETE'|'STEEL'|'MOBILE_HOME'|'LOG_HOME' | null;
+    FoundationType: 'SLAB'|'CRAWL_SPACE'|'BASEMENT'|'PIER'|'HILLSIDE'|'OTHER' | null;
+    NumberOfBedrooms: number | null;
+    NumberOfFullBaths: number | null;
+    NumberOfStories: number | null;
+    PrimaryHeatType: 'Electric'|'Gas'|'Wood'|'Oil'|'Other' | null;
+    RoofType: 'ALUMINUM_SHINGLES'|'ARCHITECTURAL_SHINGLES'|'ASBESTOS'|'ASPHALT_SHINGLE'|'CEDAR_SHAKES'|'CEDAR_SHINGLES'|'CLAY_TILE_OR_SLATE'|'COMPOSITION_FIBERGLASS_ASPHALT_ETC'|'CONCRETE_TILE'|'CONCRETE_NOT_TILE'|'COPPER'|'FIBERGLASS'|'FOAM'|'GRAVEL'|'METAL'|'MINERAL_FIBER'|'MISSION_TILE'|'OTHER'|'PLASTIC'|'POURED'|'RECYCLED_ROOFING_PRODUCTS'|'ROCK'|'ROLLED_ROOFING'|'RUBBER_ROOF'|'SLATE'|'SPANISH_TILE'|'CORRUGATED_STEEL'|'STEEL_PORCELAIN_SHINGLES'|'TAR_AND_GRAVEL'|'TILE'|'TIN'|'WOOD_FIBER_SHINGLES'|'WOOD_SHAKES'|'WOOD_SHINGLES'|'WOOD_SHAKE_SHINGLE' | null;
+    SquareFootage: number | null;
+    YearBuilt: number | null;
+}
+
 export interface HomeOwnersStepFourDto {
     OccupantType: 'OWNER'|'TENANT' | null;
 }
 
 export interface HomeOwnersStepThreeDto {
     AcquisitionDate: string;
+    HomeStyle: 'Unknown'|'Ranch'|'CapeCod'|'Colonial'|'BiLevel'|'SplitLevel'|'BackSplit'|'Bungalow'|'CondoCoOp'|'Contemporary'|'Cottage'|'FederalColonial'|'Mediterranean'|'OrnateVictorian'|'QueenAnne'|'RaisedRanch'|'Rambler'|'SouthwestAdobe'|'SplitFoyer'|'RowHouseCenter'|'RowHouseEnd'|'TriLevel'|'Victorian'|'BiLevelRowEnd'|'BiLevelRowCenter'|'TriLevelRowEnd'|'TriLevelRowCenter';
     ResidenceType: 'SingleFamilyDwelling'|'Condo'|'Apartment'|'MobileHome'|'CoOp'|'Townhouse'|'Rowhouse'|'Other';
-    YearBuilt: number | null;
 }
 
 export interface HomeOwnersStepTwoDto {
