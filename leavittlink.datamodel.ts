@@ -442,47 +442,6 @@ export interface LifeQuote {
     ProductCode: string | null;
 }
 
-export interface HomeOwnersQuoteRequest extends QuoteRequest {
-    AcquisitionDate: string | null;
-    City: string | null;
-    ClaimsLast5Years: number | null;
-    ConstructionType: 'FRAME'|'JOISTED_MASONRY'|'MASONRY'|'MASONRY_VENEER'|'MODIFIED_FIRE_RESISTIVE'|'FIRE_RESISTIVE_SUPERIOR'|'SUPERIOR_NON_COMBUSTIBLE'|'STUCCO'|'METAL_ALUMINUM_SIDING'|'CONCRETE'|'STEEL'|'MOBILE_HOME'|'LOG_HOME' | null;
-    DistanceToFireDepartmentMiles: number | null;
-    FoundationType: 'SLAB'|'CRAWL_SPACE'|'BASEMENT'|'PIER'|'HILLSIDE'|'OTHER' | null;
-    HailResistantRoofType: 'NONE'|'CLASS_1'|'CLASS_2'|'CLASS_3'|'CLASS_4' | null;
-    HasAutomaticSprinklers: boolean | null;
-    HasBurglarAlarm: boolean | null;
-    HasDeadBolts: boolean | null;
-    HasFireAlarm: boolean | null;
-    HasFireExtinguisher: boolean | null;
-    HasFulfillBeenRequested: boolean;
-    HasSmokeDetector: boolean | null;
-    HasSwimmingPool: boolean | null;
-    HomeStyle: 'Unknown'|'Ranch'|'CapeCod'|'Colonial'|'BiLevel'|'SplitLevel'|'BackSplit'|'Bungalow'|'CondoCoOp'|'Contemporary'|'Cottage'|'FederalColonial'|'Mediterranean'|'OrnateVictorian'|'QueenAnne'|'RaisedRanch'|'Rambler'|'SouthwestAdobe'|'SplitFoyer'|'RowHouseCenter'|'RowHouseEnd'|'TriLevel'|'Victorian'|'BiLevelRowEnd'|'BiLevelRowCenter'|'TriLevelRowEnd'|'TriLevelRowCenter' | null;
-    Id: number;
-    IsWithin1000FeetOfRecognizedWaterSource: boolean | null;
-    NumberOfBedrooms: number | null;
-    NumberOfFullBaths: number | null;
-    NumberOfHalfBaths: number | null;
-    NumberOfHouseholdMembers: number | null;
-    NumberOfRoofLayers: number | null;
-    NumberOfStories: number | null;
-    OccupantType: 'OWNER'|'TENANT' | null;
-    PrimaryHeatType: 'Electric'|'Gas'|'Wood'|'Oil'|'Other' | null;
-    RequestPayload: string | null;
-    ResidenceType: 'SingleFamilyDwelling'|'Condo'|'Apartment'|'MobileHome'|'CoOp'|'Townhouse'|'Rowhouse'|'Other' | null;
-    ResponsePayload: string | null;
-    RoofStyle: 'Flat'|'Gable'|'Gambrel'|'Hip'|'Mansard'|'Shed'|'Turret' | null;
-    RoofType: 'ALUMINUM_SHINGLES'|'ARCHITECTURAL_SHINGLES'|'ASBESTOS'|'ASPHALT_SHINGLE'|'CEDAR_SHAKES'|'CEDAR_SHINGLES'|'CLAY_TILE_OR_SLATE'|'COMPOSITION_FIBERGLASS_ASPHALT_ETC'|'CONCRETE_TILE'|'CONCRETE_NOT_TILE'|'COPPER'|'FIBERGLASS'|'FOAM'|'GRAVEL'|'METAL'|'MINERAL_FIBER'|'MISSION_TILE'|'OTHER'|'PLASTIC'|'POURED'|'RECYCLED_ROOFING_PRODUCTS'|'ROCK'|'ROLLED_ROOFING'|'RUBBER_ROOF'|'SLATE'|'SPANISH_TILE'|'CORRUGATED_STEEL'|'STEEL_PORCELAIN_SHINGLES'|'TAR_AND_GRAVEL'|'TILE'|'TIN'|'WOOD_FIBER_SHINGLES'|'WOOD_SHAKES'|'WOOD_SHINGLES'|'WOOD_SHAKE_SHINGLE' | null;
-    SquareFootage: number | null;
-    State: string | null;
-    Status: 'Step1'|'Step2'|'Step3'|'Step4'|'Step5'|'Step6'|'Step7';
-    Street1: string | null;
-    Street2: string | null;
-    YearBuilt: number | null;
-    Zip: string | null;
-}
-
 export interface AutoAccidentDto {
     Date: string;
     DriverId: number;
@@ -737,57 +696,12 @@ export interface User {
     WorkPhoneNumber: string | null;
 }
 
-export interface Agency {
-    CampaignId: number;
-    CarrierLogins: Array<Partial<CarrierLogin>> | null;
-    Id: number;
-    Name: string | null;
-}
-
-export interface CarrierError {
-    AutoQuoteRequest: Partial<AutoQuoteRequest> | null;
-    AutoQuoteRequestId: number;
-    Carrier: Partial<Carrier> | null;
-    CarrierId: number;
-    Id: number;
-    Message: string | null;
-}
-
-export interface CarrierLogin {
-    Agency: Partial<Agency> | null;
-    AgencyCode: string | null;
-    AgencyId: number;
-    Carrier: Partial<Carrier> | null;
-    CarrierId: number;
-    CompanyUnits: Array<Partial<CompanyUnit>> | null;
-    Id: number;
-    ImageUrl: string | null;
-    Password: string | null;
-    Username: string | null;
-}
-
 export interface DriverToVehicle {
     Driver: Partial<Driver> | null;
     DriverId: number;
     Id: number;
     Vehicle: Partial<Vehicle> | null;
     VehicleId: number;
-}
-
-export interface CompanyUnit {
-    CarrierLogin: Partial<CarrierLogin> | null;
-    CarrierLoginId: number;
-    CompanyUnitId: number;
-    Id: number;
-    IsActive: boolean;
-    State: string | null;
-}
-
-export interface Carrier {
-    CarrierErrors: Array<Partial<CarrierError>> | null;
-    CarrierLogins: Array<Partial<CarrierLogin>> | null;
-    Id: number;
-    Name: string | null;
 }
 
 export interface Accident {
@@ -988,5 +902,133 @@ export interface Vehicle extends IVehicle {
     TowingCoverageLimit: number | null;
     TransportationExpense: string | null;
     VehicleUsage: string | null;
+}
+
+export interface Agency {
+    CampaignId: number;
+    CarrierLogins: Array<Partial<CarrierLogin>> | null;
+    Id: number;
+    LineOfBusiness: 'HOMEOWNERS'|'PERSONAL_AUTO'|'PERSONAL_PACKAGE';
+    Name: string | null;
+}
+
+export interface CarrierError {
+    AutoQuoteRequest: Partial<AutoQuoteRequest> | null;
+    AutoQuoteRequestId: number | null;
+    Carrier: Partial<Carrier> | null;
+    CarrierId: number;
+    CarrierName: string | null;
+    HomeOwnersQuoteRequest: Partial<HomeOwnersQuoteRequest> | null;
+    HomeOwnersQuoteRequestId: number | null;
+    Id: number;
+    Message: string | null;
+}
+
+export interface CarrierLogin {
+    Agency: Partial<Agency> | null;
+    AgencyCode: string | null;
+    AgencyId: number;
+    Carrier: Partial<Carrier> | null;
+    CarrierId: number;
+    CompanyUnits: Array<Partial<CompanyUnit>> | null;
+    Id: number;
+    ImageUrl: string | null;
+    Password: string | null;
+    Username: string | null;
+}
+
+export interface CompanyUnit {
+    CarrierLogin: Partial<CarrierLogin> | null;
+    CarrierLoginId: number;
+    CompanyUnitId: number;
+    Id: number;
+    IsActive: boolean;
+    LineOfBusiness: 'HOMEOWNERS'|'PERSONAL_AUTO'|'PERSONAL_PACKAGE';
+    State: string | null;
+}
+
+export interface Carrier {
+    CarrierErrors: Array<Partial<CarrierError>> | null;
+    CarrierLogins: Array<Partial<CarrierLogin>> | null;
+    Id: number;
+    Name: string | null;
+}
+
+export interface HomeOwnersCoverage {
+    Description: string | null;
+    Id: number;
+    Premium: Partial<number>;
+    Type: string | null;
+    Waived: boolean;
+}
+
+export interface HomeOwnersQuote {
+    CarrierName: string | null;
+    CompanyUnitId: number;
+    Coverages: Array<Partial<HomeOwnersCoverage>> | null;
+    CreatedDate: string;
+    EffectiveDate: string | null;
+    ExpirationDate: string | null;
+    HomeOwnersQuoteRequest: Partial<HomeOwnersQuoteRequest> | null;
+    HomeOwnersQuoteRequestId: number;
+    Id: number;
+    PolicyKey: string | null;
+    Premium: Partial<number> | null;
+    RatedTermMonths: number;
+}
+
+export interface HomeOwnersQuoteRequest extends QuoteRequest {
+    AcquisitionDate: string | null;
+    Baths: Partial<number> | null;
+    CarrierErrors: Array<Partial<CarrierError>> | null;
+    City: string | null;
+    ClaimsLast5Years: number | null;
+    CoApplicantDateOfBirth: string | null;
+    CoApplicantFirstName: string | null;
+    CoApplicantLastName: string | null;
+    CoApplicantRelationshipToInsured: 'SPOUSE'|'PARTNER'|'CHILD'|'OTHER_RELATIVE'|'OTHER_NON_RELATIVE'|'PARENT' | null;
+    ConstructionType: 'FRAME'|'JOISTED_MASONRY'|'MASONRY'|'MASONRY_VENEER'|'MODIFIED_FIRE_RESISTIVE'|'FIRE_RESISTIVE_SUPERIOR'|'SUPERIOR_NON_COMBUSTIBLE'|'STUCCO'|'METAL_ALUMINUM_SIDING'|'CONCRETE'|'STEEL'|'MOBILE_HOME'|'LOG_HOME' | null;
+    DistanceToFireDepartmentMiles: number | null;
+    EffectiveDate: string | null;
+    FoundationType: 'SLAB'|'CRAWL_SPACE'|'BASEMENT'|'PIER'|'HILLSIDE'|'OTHER' | null;
+    FulfillErrorMessage: string | null;
+    HailResistantRoofType: 'NONE'|'CLASS_1'|'CLASS_2'|'CLASS_3'|'CLASS_4' | null;
+    HasAutomaticSprinklers: boolean | null;
+    HasBurglarAlarm: boolean | null;
+    HasCats: boolean | null;
+    HasDeadBolts: boolean | null;
+    HasDogs: boolean | null;
+    HasFireAlarm: boolean | null;
+    HasFireExtinguisher: boolean | null;
+    HasFulfillBeenRequested: boolean;
+    HasSmokeDetector: boolean | null;
+    HasSwimmingPool: boolean | null;
+    HasTrampoline: boolean | null;
+    HomeOwnersQuotes: Array<Partial<HomeOwnersQuote>> | null;
+    HomeStyle: 'Unknown'|'Ranch'|'CapeCod'|'Colonial'|'BiLevel'|'SplitLevel'|'BackSplit'|'Bungalow'|'CondoCoOp'|'Contemporary'|'Cottage'|'FederalColonial'|'Mediterranean'|'OrnateVictorian'|'QueenAnne'|'RaisedRanch'|'Rambler'|'SouthwestAdobe'|'SplitFoyer'|'RowHouseCenter'|'RowHouseEnd'|'TriLevel'|'Victorian'|'BiLevelRowEnd'|'BiLevelRowCenter'|'TriLevelRowEnd'|'TriLevelRowCenter' | null;
+    Id: number;
+    IsWithin1000FeetOfRecognizedWaterSource: boolean | null;
+    LastMajorRenovationYear: number | null;
+    NumberOfBedrooms: number | null;
+    NumberOfFullBaths: number | null;
+    NumberOfHalfBaths: number | null;
+    NumberOfHouseholdMembers: number | null;
+    NumberOfRoofLayers: number | null;
+    NumberOfStories: number | null;
+    OccupantType: 'OWNER'|'TENANT' | null;
+    OverallQuality: 'Standard'|'High'|'Premium' | null;
+    PrimaryHeatType: 'Electric'|'Gas'|'Wood'|'Oil'|'Other' | null;
+    RequestPayload: string | null;
+    ResidenceType: 'SingleFamilyDwelling'|'Condo'|'Apartment'|'MobileHome'|'CoOp'|'Townhouse'|'Rowhouse'|'Other' | null;
+    ResponsePayload: string | null;
+    RoofStyle: 'Flat'|'Gable'|'Gambrel'|'Hip'|'Mansard'|'Shed'|'Turret' | null;
+    RoofType: 'ALUMINUM_SHINGLES'|'ARCHITECTURAL_SHINGLES'|'ASBESTOS'|'ASPHALT_SHINGLE'|'CEDAR_SHAKES'|'CEDAR_SHINGLES'|'CLAY_TILE_OR_SLATE'|'COMPOSITION_FIBERGLASS_ASPHALT_ETC'|'CONCRETE_TILE'|'CONCRETE_NOT_TILE'|'COPPER'|'FIBERGLASS'|'FOAM'|'GRAVEL'|'METAL'|'MINERAL_FIBER'|'MISSION_TILE'|'OTHER'|'PLASTIC'|'POURED'|'RECYCLED_ROOFING_PRODUCTS'|'ROCK'|'ROLLED_ROOFING'|'RUBBER_ROOF'|'SLATE'|'SPANISH_TILE'|'CORRUGATED_STEEL'|'STEEL_PORCELAIN_SHINGLES'|'TAR_AND_GRAVEL'|'TILE'|'TIN'|'WOOD_FIBER_SHINGLES'|'WOOD_SHAKES'|'WOOD_SHINGLES'|'WOOD_SHAKE_SHINGLE' | null;
+    SquareFootage: number | null;
+    State: string | null;
+    Status: 'Step1'|'Step2'|'Step3'|'Step4'|'Step5'|'Step6'|'Step7';
+    Street1: string | null;
+    Street2: string | null;
+    YearBuilt: number | null;
+    Zip: string | null;
 }
 
