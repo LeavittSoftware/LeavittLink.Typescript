@@ -497,7 +497,6 @@ export interface HomeOwnersStepFiveDto {
 }
 
 export interface HomeOwnersStepFourDto {
-    OccupantType: 'OWNER'|'TENANT' | null;
     OverallQuality: 'Standard'|'High'|'Premium' | null;
 }
 
