@@ -790,7 +790,7 @@ export interface HomeOwnersQuoteRequest extends QuoteRequest {
     RoofType: 'ALUMINUM_SHINGLES'|'ARCHITECTURAL_SHINGLES'|'ASBESTOS'|'ASPHALT_SHINGLE'|'CEDAR_SHAKES'|'CEDAR_SHINGLES'|'CLAY_TILE_OR_SLATE'|'COMPOSITION_FIBERGLASS_ASPHALT_ETC'|'CONCRETE_TILE'|'CONCRETE_NOT_TILE'|'COPPER'|'FIBERGLASS'|'FOAM'|'GRAVEL'|'METAL'|'MINERAL_FIBER'|'MISSION_TILE'|'OTHER'|'PLASTIC'|'POURED'|'RECYCLED_ROOFING_PRODUCTS'|'ROCK'|'ROLLED_ROOFING'|'RUBBER_ROOF'|'SLATE'|'SPANISH_TILE'|'CORRUGATED_STEEL'|'STEEL_PORCELAIN_SHINGLES'|'TAR_AND_GRAVEL'|'TILE'|'TIN'|'WOOD_FIBER_SHINGLES'|'WOOD_SHAKES'|'WOOD_SHINGLES'|'WOOD_SHAKE_SHINGLE' | null;
     SquareFootage: number | null;
     State: string | null;
-    Status: 'Step1'|'Step2'|'Step3'|'Step4'|'Step5'|'Step6'|'Step7'|'Step8';
+    Status: 'Step1'|'Step2'|'Step3'|'Step4'|'Step5'|'Step6'|'Step7'|'Step8'|'Step9';
     Street1: string | null;
     Street2: string | null;
     YearBuilt: number | null;
@@ -801,6 +801,13 @@ export interface HomeOwnersStepSevenDto {
     ClaimsLast5Years: number | null;
     LastMajorRenovationYear: number | null;
     OccupantType: 'OWNER'|'TENANT' | null;
+}
+
+export interface HomeOwnersStepEightDto {
+    HasCats: boolean | null;
+    HasDogs: boolean | null;
+    HasSwimmingPool: boolean | null;
+    HasTrampoline: boolean | null;
 }
 
 export interface AutoAccidentDto {
