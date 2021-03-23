@@ -673,7 +673,7 @@ export interface Agency {
     CampaignId: number;
     CarrierLogins: Array<Partial<CarrierLogin>> | null;
     Id: number;
-    LineOfBusiness: 'HOMEOWNERS'|'PERSONAL_AUTO'|'PERSONAL_PACKAGE';
+    LineOfBusiness: 'PERSONAL_AUTO'|'HOMEOWNERS'|'PERSONAL_PACKAGE';
     Name: string | null;
 }
 
@@ -708,7 +708,7 @@ export interface CompanyUnit {
     CompanyUnitId: number;
     Id: number;
     IsActive: boolean;
-    LineOfBusiness: 'HOMEOWNERS'|'PERSONAL_AUTO'|'PERSONAL_PACKAGE';
+    LineOfBusiness: 'PERSONAL_AUTO'|'HOMEOWNERS'|'PERSONAL_PACKAGE';
     State: string | null;
 }
 
