@@ -797,6 +797,33 @@ export interface HomeOwnersQuoteRequest extends QuoteRequest {
     Zip: string | null;
 }
 
+export interface AgencySummaryDto {
+    AgencyId: number;
+    AgencyName: string | null;
+    Attempted: number;
+    CampaignId: number;
+    Completed: number;
+}
+
+export interface CarrierErrorReportItem {
+    CarrierId: number;
+    CarrierName: string | null;
+    ErrorCount: number;
+}
+
+export interface AutoQuoteRequestSummaryDto {
+    AgencySummaries: Array<Partial<AgencySummaryDto>> | null;
+    CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
+    Discounts: number;
+    Drivers: number;
+    Error: number;
+    GettingStarted: number;
+    Policy: number;
+    Quotes: number;
+    SelectedQuote: number;
+    Vehicles: number;
+}
+
 export interface HomeOwnersStepSevenDto {
     ClaimsLast5Years: number | null;
     LastMajorRenovationYear: number | null;
