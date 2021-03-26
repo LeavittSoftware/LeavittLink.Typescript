@@ -1587,27 +1587,43 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
     SelectedQuote: number;
 }
 
-export interface HomeOwnersStepSevenDto {
+export interface HomeOwnersStepFiveDto {
     ClaimsLast5Years: number | null;
     LastMajorRenovationYear: number | null;
     OccupantType: OccupantType | null;
 }
 
-export interface HomeOwnersStepEightDto {
+export interface HomeOwnersStepDixDto {
     HasCats: boolean | null;
     HasDogs: boolean | null;
     HasSwimmingPool: boolean | null;
     HasTrampoline: boolean | null;
 }
 
-export interface HomeOwnersStepNineDto {
+export interface HomeOwnersStepSevenDto {
     CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsured | null;
 }
 
-export interface HomeOwnersStepTenDto {
+export interface HomeOwnersStepEightDto {
     CoApplicantDateOfBirth: string | null;
     CoApplicantFirstName: string | null;
     CoApplicantLastName: string | null;
+}
+
+export interface QuestionnaireResultSummaryDto {
+    AdditionalInformation: number;
+    BusinessClass: number;
+    CoverageAmount: number;
+    Error: number;
+    GeneralInformation: number;
+    GettingStarted: number;
+    LLAttempt: number;
+    LLCompleted: number;
+    Location: number;
+    MacuAttempt: number;
+    MacuCompleted: number;
+    Quotes: number;
+    SelectedQuote: number;
 }
 
 export interface AutoAccidentDto {
@@ -1642,7 +1658,7 @@ export interface AutoDiscountsDto {
     PaperLess: boolean;
 }
 
-export interface HomeOwnersStepSixDto {
+export interface HomeOwnersStepFourDto {
     HasAutomaticSprinklers: boolean | null;
     HasBurglarAlarm: boolean | null;
     HasDeadBolts: boolean | null;
@@ -1651,7 +1667,7 @@ export interface HomeOwnersStepSixDto {
     HasSmokeDetector: boolean | null;
 }
 
-export interface HomeOwnersStepFiveDto {
+export interface HomeOwnersStepThreeDto {
     Baths: Partial<number> | null;
     ConstructionType: ConstructionType | null;
     FoundationType: FoundationType | null;
@@ -1664,19 +1680,20 @@ export interface HomeOwnersStepFiveDto {
     YearBuilt: number | null;
 }
 
-export interface HomeOwnersStepFourDto {
+export interface HomeOwnersStepTwoDto {
     OverallQuality: OverallQuality | null;
 }
 
-export interface HomeOwnersStepThreeDto {
+export interface HomeOwnersStepOneDto {
     AcquisitionDate: string;
     HomeStyle: HomeStyle;
     ResidenceType: ResidenceType;
 }
 
-export interface HomeOwnersStepTwoDto {
+export interface GettingStartedStepTwoDto {
     City: string | null;
     EmailAddress: string | null;
+    NextStep: Section;
     PhoneNumber: string | null;
     State: string | null;
     Street1: string | null;
@@ -1684,7 +1701,7 @@ export interface HomeOwnersStepTwoDto {
     Zip: string | null;
 }
 
-export interface HomeOwnersStepOneDto {
+export interface GettingStartedStepOneDto {
     Campaign: string | null;
     CampaignId: number;
     DateOfBirth: string;
