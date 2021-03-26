@@ -2,11 +2,11 @@
   "name": "@leavittsoftware/leavittlink.typescript",
   "version": "1.0.0",
   "description": "Auto generated typescript for api.leavittlink",
-  "main": "ll.datamodel.tyescript.js",
+  "main": "leavittlink.datamodel.js",
   "files": [
-    "ll.datamodel.tyescript.js.map",
-    "ll.datamodel.tyescript.js",
-    "ll.datamodel.tyescript.ts"
+    "leavittlink.datamodel.js.map",
+    "leavittlink.datamodel.jss",
+    "leavittlink.datamodel.ts"
   ],
   "scripts": {
     "build": "tsc && npm run lint",
