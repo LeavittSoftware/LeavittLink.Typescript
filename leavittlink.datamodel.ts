@@ -442,25 +442,6 @@ export interface LifeQuote {
     ProductCode: string | null;
 }
 
-export interface User {
-    AutoQuoteRequest: Array<Partial<AutoQuoteRequest>> | null;
-    CellPhoneNumber: string | null;
-    DateOfBirth: string;
-    EloquaContactId: number | null;
-    EmailAddress: string | null;
-    FirstName: string | null;
-    HomeOwnersQuoteRequests: Array<Partial<HomeOwnersQuoteRequest>> | null;
-    HomePhoneNumber: string | null;
-    Id: number;
-    LastName: string | null;
-    LegalEntityName: string | null;
-    LifeQuoteRequest: Array<Partial<LifeQuoteRequest>> | null;
-    QuestionnaireResults: Array<Partial<QuestionnaireResult>> | null;
-    UserGuid: string | null;
-    VelocifyLeadId: number | null;
-    WorkPhoneNumber: string | null;
-}
-
 export interface DriverToVehicle {
     Driver: Partial<Driver> | null;
     DriverId: number;
@@ -669,12 +650,16 @@ export interface Vehicle extends IVehicle {
     VehicleUsage: string | null;
 }
 
-export interface Agency {
+export interface Campaign {
     CampaignId: number;
     CarrierLogins: Array<Partial<CarrierLogin>> | null;
     Id: number;
-    LineOfBusiness: 'PERSONAL_AUTO'|'HOMEOWNERS'|'PERSONAL_PACKAGE';
     Name: string | null;
+}
+
+export interface CampaignImageAttachment extends Attachment {
+    Campaigns: Array<Partial<Campaign>> | null;
+    FolderName: string | null;
 }
 
 export interface CarrierError {
@@ -683,16 +668,17 @@ export interface CarrierError {
     Carrier: Partial<Carrier> | null;
     CarrierId: number;
     CarrierName: string | null;
-    HomeOwnersQuoteRequest: Partial<HomeOwnersQuoteRequest> | null;
-    HomeOwnersQuoteRequestId: number | null;
     Id: number;
+    LineOfBusiness: 'PERSONAL_AUTO'|'HOMEOWNERS'|'PERSONAL_PACKAGE';
     Message: string | null;
+    PersonalPropertyQuoteRequest: Partial<PersonalPropertyQuoteRequest> | null;
+    PersonalPropertyQuoteRequestId: number | null;
 }
 
 export interface CarrierLogin {
-    Agency: Partial<Agency> | null;
     AgencyCode: string | null;
-    AgencyId: number;
+    Campaign: Partial<Campaign> | null;
+    CampaignId: number;
     Carrier: Partial<Carrier> | null;
     CarrierId: number;
     CompanyUnits: Array<Partial<CompanyUnit>> | null;
@@ -734,15 +720,15 @@ export interface HomeOwnersQuote {
     CreatedDate: string;
     EffectiveDate: string | null;
     ExpirationDate: string | null;
-    HomeOwnersQuoteRequest: Partial<HomeOwnersQuoteRequest> | null;
     HomeOwnersQuoteRequestId: number;
     Id: number;
+    PersonalPropertyQuoteRequest: Partial<PersonalPropertyQuoteRequest> | null;
     PolicyKey: string | null;
     Premium: Partial<number> | null;
     RatedTermMonths: number;
 }
 
-export interface HomeOwnersQuoteRequest extends QuoteRequest {
+export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     AcquisitionDate: string | null;
     Baths: Partial<number> | null;
     CarrierErrors: Array<Partial<CarrierError>> | null;
@@ -774,6 +760,7 @@ export interface HomeOwnersQuoteRequest extends QuoteRequest {
     Id: number;
     IsWithin1000FeetOfRecognizedWaterSource: boolean | null;
     LastMajorRenovationYear: number | null;
+    LastPageVisited: 'GettingStarted1'|'GettingStarted2'|'HomeOwnersStep1'|'HomeOwnersStep2'|'HomeOwnersStep3'|'HomeOwnersStep4'|'HomeOwnersStep5'|'HomeOwnersStep6'|'HomeOwnersStep7'|'HomeOwnersStep8'|'HomeOwnersStep9'|'HomeOwnersStep10'|'AutoStep1'|'AutoStep2'|'AutoStep3'|'AutoStep4'|'AutoStep5'|'ChooseBundle'|'Quotes'|'SelectedQuote';
     NumberOfBedrooms: number | null;
     NumberOfFullBaths: number | null;
     NumberOfHalfBaths: number | null;
@@ -788,21 +775,22 @@ export interface HomeOwnersQuoteRequest extends QuoteRequest {
     ResponsePayload: string | null;
     RoofStyle: 'Flat'|'Gable'|'Gambrel'|'Hip'|'Mansard'|'Shed'|'Turret' | null;
     RoofType: 'ALUMINUM_SHINGLES'|'ARCHITECTURAL_SHINGLES'|'ASBESTOS'|'ASPHALT_SHINGLE'|'CEDAR_SHAKES'|'CEDAR_SHINGLES'|'CLAY_TILE_OR_SLATE'|'COMPOSITION_FIBERGLASS_ASPHALT_ETC'|'CONCRETE_TILE'|'CONCRETE_NOT_TILE'|'COPPER'|'FIBERGLASS'|'FOAM'|'GRAVEL'|'METAL'|'MINERAL_FIBER'|'MISSION_TILE'|'OTHER'|'PLASTIC'|'POURED'|'RECYCLED_ROOFING_PRODUCTS'|'ROCK'|'ROLLED_ROOFING'|'RUBBER_ROOF'|'SLATE'|'SPANISH_TILE'|'CORRUGATED_STEEL'|'STEEL_PORCELAIN_SHINGLES'|'TAR_AND_GRAVEL'|'TILE'|'TIN'|'WOOD_FIBER_SHINGLES'|'WOOD_SHAKES'|'WOOD_SHINGLES'|'WOOD_SHAKE_SHINGLE' | null;
+    SectionCompleted: 'None'|'Home'|'Auto';
+    SectionPartiallyCompleted: 'None'|'Home'|'Auto';
     SquareFootage: number | null;
     State: string | null;
-    Status: 'Step1'|'Step2'|'Step3'|'Step4'|'Step5'|'Step6'|'Step7'|'Step8'|'Step9'|'Step10'|'Fulfill'|'SelectedQuote';
     Street1: string | null;
     Street2: string | null;
     YearBuilt: number | null;
     Zip: string | null;
 }
 
-export interface AgencySummaryDto {
-    AgencyId: number;
-    AgencyName: string | null;
+export interface CampaignSummaryDto {
     Attempted: number;
     CampaignId: number;
     Completed: number;
+    Id: number;
+    Name: string | null;
 }
 
 export interface CarrierErrorReportItem {
@@ -812,7 +800,7 @@ export interface CarrierErrorReportItem {
 }
 
 export interface AutoQuoteRequestSummaryDto {
-    AgencySummaries: Array<Partial<AgencySummaryDto>> | null;
+    CampaignSummaries: Array<Partial<CampaignSummaryDto>> | null;
     CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
     Discounts: number;
     Drivers: number;
@@ -822,6 +810,24 @@ export interface AutoQuoteRequestSummaryDto {
     Quotes: number;
     SelectedQuote: number;
     Vehicles: number;
+}
+
+export interface PersonalPropertyQuoteRequestSummaryDto {
+    AgencySummaries: Array<Partial<CampaignSummaryDto>> | null;
+    CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
+    ChooseBundle: number;
+    Fulfill: number;
+    HomeOwnersStep1: number;
+    HomeOwnersStep10: number;
+    HomeOwnersStep2: number;
+    HomeOwnersStep3: number;
+    HomeOwnersStep4: number;
+    HomeOwnersStep5: number;
+    HomeOwnersStep6: number;
+    HomeOwnersStep7: number;
+    HomeOwnersStep8: number;
+    HomeOwnersStep9: number;
+    SelectedQuote: number;
 }
 
 export interface HomeOwnersStepSevenDto {
@@ -926,9 +932,9 @@ export interface HomeOwnersStepOneDto {
     CampaignId: number;
     DateOfBirth: string;
     FirstName: string | null;
-    HomeOwnersQuoteRequestId: number | null;
     LastName: string | null;
     LeadType: string | null;
+    PersonalPropertyQuoteRequestId: number | null;
     RecaptchaUserResponse: string | null;
     UserGuid: string | null;
 }
@@ -1079,5 +1085,43 @@ export interface VehicleDataDto {
 export interface VertaforeLiabilityCslbiLimitDto {
     Label: string | null;
     Value: string | null;
+}
+
+export interface Attachment extends ISynchronizable {
+    BaseUncFileStoragePath: string | null;
+    CdnFileName: string | null;
+    DeletedDate: string | null;
+    Description: string | null;
+    Extension: string | null;
+    Id: number;
+    IsDeleted: boolean;
+    Name: string | null;
+    PreviewExtension: string | null;
+    PreviewSizes: string | null;
+    Size: number;
+}
+
+export interface User {
+    AutoQuoteRequest: Array<Partial<AutoQuoteRequest>> | null;
+    CellPhoneNumber: string | null;
+    DateOfBirth: string;
+    EloquaContactId: number | null;
+    EmailAddress: string | null;
+    FirstName: string | null;
+    HomePhoneNumber: string | null;
+    Id: number;
+    LastName: string | null;
+    LegalEntityName: string | null;
+    LifeQuoteRequest: Array<Partial<LifeQuoteRequest>> | null;
+    PersonalPropertyQuoteRequests: Array<Partial<PersonalPropertyQuoteRequest>> | null;
+    QuestionnaireResults: Array<Partial<QuestionnaireResult>> | null;
+    UserGuid: string | null;
+    VelocifyLeadId: number | null;
+    WorkPhoneNumber: string | null;
+}
+
+export interface ISynchronizable {
+    CreatedDate: string;
+    LastModifiedDate: string;
 }
 
