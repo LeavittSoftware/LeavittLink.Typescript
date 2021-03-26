@@ -4,6 +4,32 @@
 // </auto-generated>
 // ----------------------
 
+export enum GenderType {
+    Unknown,
+    Male,
+    Female
+}
+
+export enum HealthRatingType {
+    Unknown,
+    PreferredPlus,
+    Preferred,
+    StandardPlus,
+    Standard
+}
+
+export enum ProductType {
+    Unknown,
+    YearTerm5,
+    YearTerm10,
+    YearTerm15,
+    YearTerm20,
+    YearTerm25,
+    YearTerm30,
+    YearTerm35,
+    YearTerm40
+}
+
 export interface QuoteRequest {
     Campaign: string | null;
     CampaignId: number;
@@ -14,6 +40,18 @@ export interface QuoteRequest {
     SelectedQuoteId: number | null;
     User: Partial<User> | null;
     UserId: number;
+}
+
+export enum TobaccoType {
+    Unknown,
+    Yes,
+    No
+}
+
+export enum PhoneNumberType {
+    Home,
+    Business,
+    Mobile
 }
 
 export interface IAddress {
@@ -144,15 +182,29 @@ export interface MsgStatus {
 }
 
 export interface OccupancyCode {
-    BuildingAge: 'None'|'LessThanThirty'|'EqualOrGreaterThanThirty';
+    BuildingAge: BuildingAge;
     BuildingOccupancyCode: string | null;
     ClassCode: string | null;
     Id: number;
-    NumberOfStories: 'None'|'OneToFour'|'GreaterThanFour'|'FiveToTwelve'|'GreaterThanTwelve';
+    NumberOfStories: NumberOfStories;
     OccupancyQuestionInputValueId: number;
     OccupancyTypeCode: string | null;
     OccupancyTypeQuestionInputValueId: number;
     SortOrder: number;
+}
+
+export enum NumberOfStories {
+    None,
+    OneToFour,
+    GreaterThanFour,
+    FiveToTwelve,
+    GreaterThanTwelve
+}
+
+export enum BuildingAge {
+    None,
+    LessThanThirty,
+    EqualOrGreaterThanThirty
 }
 
 export interface OtherIdentifier {
@@ -190,11 +242,50 @@ export interface SpectrumClass {
 export interface DocumentPath {
     Id: number;
     Path: string | null;
-    PathType: 'Xpath'|'Javascript';
+    PathType: PathType;
     Question: Partial<Question> | null;
     QuestionId: number | null;
     QuestionInputValue: Partial<QuestionInputValue> | null;
     QuestionInputValueId: number | null;
+}
+
+export enum PathType {
+    Xpath,
+    Javascript
+}
+
+export enum QuestionnaireResultStatus {
+    GettingStarted,
+    GeneralInformation,
+    BusinessClass,
+    Location,
+    CoverageAmount,
+    AdditionalInformation,
+    Error,
+    Quotes,
+    SelectedQuote
+}
+
+export enum QuestionGroupCovType {
+    LiabilityOnly,
+    OCP,
+    PropertyOnly,
+    PropertyandLiability
+}
+
+export enum QuestionGroupDriverType {
+    Class,
+    LOB,
+    OptionalCvg
+}
+
+export enum QuestionUiType {
+    CheckBox,
+    Radio,
+    Text,
+    TextArea,
+    SingleSelect,
+    MultiSelect
 }
 
 export interface ResponseValidatorActionToQuestionInputValue {
@@ -208,6 +299,14 @@ export interface ResponseValidatorActionToQuestionInputValue {
 export interface CollectionQuestion extends Question {
     MaxInstance: number;
     Questions: Array<Partial<Question>> | null;
+}
+
+export enum PredicateType {
+    XpathExpression,
+    Regex,
+    Numeric,
+    NonNegative,
+    Integer
 }
 
 export interface Question {
@@ -241,7 +340,7 @@ export interface FlowAugmentor {
     Id: number;
     IsExpired: boolean;
     Predicate: string | null;
-    PredicateType: 'XpathExpression'|'Regex'|'Numeric'|'NonNegative'|'Integer';
+    PredicateType: PredicateType;
     Question: Partial<StandardQuestion> | null;
     QuestionId: number;
     StartDate: string;
@@ -256,15 +355,30 @@ export interface QuestionGroup {
     IsRequired: boolean;
     Name: string | null;
     QuestionFlowAugmentorActions: Array<Partial<QuestionFlowAugmentorAction>> | null;
-    QuestionGroupCovType: 'LiabilityOnly'|'OCP'|'PropertyOnly'|'PropertyandLiability';
-    QuestionGroupDriverType: 'Class'|'LOB'|'OptionalCvg';
+    QuestionGroupCovType: QuestionGroupCovType;
+    QuestionGroupDriverType: QuestionGroupDriverType;
     QuestionGroupFlowAugmentorActions: Array<Partial<QuestionGroupFlowAugmentorAction>> | null;
-    QuestionGroupType: 'HartfordEligibility'|'HartfordLocation'|'HartfordPolicy'|'HartfordAccord';
+    QuestionGroupType: QuestionGroupType;
     QuestionnaireGroup: Partial<QuestionnaireGroup> | null;
     QuestionnaireGroupId: number | null;
     Questions: Array<Partial<Question>> | null;
     SourceIdentifier: string | null;
     StartDate: string;
+}
+
+export enum QuestionGroupType {
+    HartfordEligibility,
+    HartfordLocation,
+    HartfordPolicy,
+    HartfordAccord
+}
+
+export enum QuestionInputType {
+    String,
+    Date,
+    Integer,
+    Boolean,
+    Decimal
 }
 
 export interface QuestionInputValue {
@@ -312,7 +426,7 @@ export interface ResponseValidator {
     Id: number;
     IsExpired: boolean;
     Predicate: string | null;
-    PredicateType: 'XpathExpression'|'Regex'|'Numeric'|'NonNegative'|'Integer';
+    PredicateType: PredicateType;
     Question: Partial<Question> | null;
     QuestionId: number;
     StartDate: string;
@@ -321,9 +435,9 @@ export interface ResponseValidator {
 export interface StandardQuestion extends Question {
     DefaultAnswerValue: string | null;
     FlowAugmentors: Array<Partial<FlowAugmentor>> | null;
-    QuestionInputType: 'String'|'Date'|'Integer'|'Boolean'|'Decimal';
+    QuestionInputType: QuestionInputType;
     QuestionInputValues: Array<Partial<QuestionInputValue>> | null;
-    QuestionUiType: 'CheckBox'|'Radio'|'Text'|'TextArea'|'SingleSelect'|'MultiSelect';
+    QuestionUiType: QuestionUiType;
 }
 
 export interface QuestionnaireResult {
@@ -339,9 +453,16 @@ export interface QuestionnaireResult {
     Questionnaire: Partial<Questionnaire> | null;
     QuestionnaireId: number;
     ReferringUrl: string | null;
-    Status: 'GettingStarted'|'GeneralInformation'|'BusinessClass'|'Location'|'CoverageAmount'|'AdditionalInformation'|'Error'|'Quotes'|'SelectedQuote';
+    Status: QuestionnaireResultStatus;
     User: Partial<User> | null;
     UserId: number;
+}
+
+export enum ResponseValidatorActionType {
+    HardStop,
+    Alert,
+    Validation,
+    SelectFilter
 }
 
 export interface ResponseValidatorAction {
@@ -354,7 +475,7 @@ export interface ResponseValidatorAction {
     ResponseValidatorActionToQuestionInputValues: Array<Partial<ResponseValidatorActionToQuestionInputValue>> | null;
     ResponseValidatorId: number;
     StartDate: string;
-    Type: 'HardStop'|'Alert'|'Validation'|'SelectFilter';
+    Type: ResponseValidatorActionType;
 }
 
 export interface AddAnswerFlowAugmentorAction extends FlowAugmentorAction {
@@ -369,6 +490,19 @@ export interface QuestionGroupFlowAugmentorAction extends FlowAugmentorAction {
     QuestionnaireGroupId: number;
 }
 
+export enum FlowAugmentorActionType {
+    Add,
+    AddAnswer,
+    Remove,
+    Show
+}
+
+export enum FlowAugmentorActionPlacement {
+    Next,
+    Last,
+    AtIndex
+}
+
 export interface FlowAugmentorAction {
     EndDate: string | null;
     FlowAugmentor: Partial<FlowAugmentor> | null;
@@ -376,9 +510,9 @@ export interface FlowAugmentorAction {
     Id: number;
     Index: number | null;
     IsExpired: boolean;
-    Placement: 'Next'|'Last'|'AtIndex';
+    Placement: FlowAugmentorActionPlacement;
     StartDate: string;
-    Type: 'Add'|'AddAnswer'|'Remove'|'Show';
+    Type: FlowAugmentorActionType;
 }
 
 export interface QuestionFlowAugmentorAction extends FlowAugmentorAction {
@@ -403,25 +537,35 @@ export interface Answer {
     QuestionText: string | null;
 }
 
+export enum LifeQuoteRequestStatus {
+    GettingStarted,
+    AboutYou,
+    MillionDollarQuote,
+    Uninsurable,
+    Error,
+    Quotes,
+    SelectedQuote
+}
+
 export interface LifeQuoteRequest extends QuoteRequest {
     AllowTextMessaging: boolean;
     City: string | null;
     CoverageAmount: Partial<number>;
     ErrorMessage: string | null;
-    Gender: 'Unknown'|'Male'|'Female';
+    Gender: GenderType;
     HasFulfillBeenRequested: boolean;
-    HealthRating: 'Unknown'|'PreferredPlus'|'Preferred'|'StandardPlus'|'Standard';
+    HealthRating: HealthRatingType;
     Id: number;
     IsLargeQuoteRequest: boolean;
     LifeQuotes: Array<Partial<LifeQuote>> | null;
     PartnerId: string | null;
-    ProductType: 'Unknown'|'YearTerm5'|'YearTerm10'|'YearTerm15'|'YearTerm20'|'YearTerm25'|'YearTerm30'|'YearTerm35'|'YearTerm40';
+    ProductType: ProductType;
     RequestPayload: string | null;
     ResponsePayload: string | null;
     State: string | null;
-    Status: 'GettingStarted'|'AboutYou'|'MillionDollarQuote'|'Uninsurable'|'Error'|'Quotes'|'SelectedQuote';
+    Status: LifeQuoteRequestStatus;
     Street1: string | null;
-    Tobacco: 'Unknown'|'Yes'|'No';
+    Tobacco: TobaccoType;
     WasLargeQuoteEmailSent: boolean;
     ZipCode: string | null;
 }
@@ -442,6 +586,22 @@ export interface LifeQuote {
     ProductCode: string | null;
 }
 
+export enum AutoQuoteRequestStatus {
+    GettingStarted,
+    Policy,
+    Vehicles,
+    Drivers,
+    Discounts,
+    Error,
+    Quotes,
+    SelectedQuote
+}
+
+export enum CurrentPriorInsuranceType {
+    Standard,
+    None
+}
+
 export interface DriverToVehicle {
     Driver: Partial<Driver> | null;
     DriverId: number;
@@ -459,8 +619,419 @@ export interface Accident {
     DriverId: number;
     Id: number;
     InjuryAmount: number | null;
-    Type: 'vcConsumingAlcohol'|'vcFirstViolCode'|'vcDrvBusWhileIntox'|'MaxLienHolders'|'vcDUI'|'vcDWAI'|'vcDWI'|'vcEdProgRequired'|'vcIllegalTransport'|'vcImpliedConsent'|'vcOpenContainer'|'vcOperWhileIntox'|'vcLiquorViol'|'vcPedAcc'|'vcAccAtFault'|'vcHomocide'|'vcManslaughter'|'vcDUID'|'vcPossessionofSubst'|'vcHeadlightViol'|'vcMotorcycleEquipViol'|'vcDefectiveEquip'|'vcOverheight'|'vcOverlength'|'vcChangedLanesUnsafe'|'vcCrossingCenterMed'|'vcCrossingDividedHwy'|'vcCrossingYellowLine'|'vcDisregardNoPassZone'|'vcDrvOnLeftSide'|'vcDrvOnShoulder'|'vcDrvOnSidewalk'|'vcFailKeepRight'|'vcIllegalPass'|'vcImproperMerging'|'vcImproperPass'|'vcPassSchoolBus'|'vcImproperLaneUse'|'vcOperWhereProhib'|'vcAllowUnlicensed'|'vcAlteredDL'|'vcDisplayAnothersDL'|'vcLicSuspended'|'vcExpired'|'vcNoLicense'|'vcDuplicateDL'|'vcFailDisplayDL'|'vcFalseLicense'|'vcLoanedDL'|'vcNoChaufferLicense'|'vcNoDL'|'vcNoMotorcycleQualif'|'vcObtainByMisrep'|'vcOperDuringSusp'|'vcOperateOutOfClass'|'vcChargeableSuspension'|'vcViolateDLRestrict'|'vcPermitViol'|'vcNoLights'|'vcFailDimHeadLights'|'vcAccNotAtFault'|'vcDisobeyPolice'|'vcEludPolice'|'vcAvoidTrafficControl'|'vcFailToGiveSignal'|'vcFailToStopForTrain'|'vcFailObeyRailRoad'|'vcRunRedLight'|'vcRunStopSign'|'vcFailYieldPedestrian'|'vcFailRightOfWay'|'vcFailEmergencyVeh'|'vcImproperSignal'|'vcTooFast'|'vcTooSlowForConditions'|'vcDrvUnderMinimum'|'vcExcessAcceleration'|'vcFailControlSpeed'|'vcRacing'|'vcSpeeding'|'vcSpeedSchoolZone'|'vcUnsafeSpeed'|'vcImproperStart'|'vcSquealingTires'|'vcUnsafeStart'|'vcImproperTowing'|'vcTurnedAcrossDivided'|'vcTurnedWhenUnsafe'|'vcDriveLeftOfCenter'|'vcWrongSideOfRoad'|'vcWrongWayOnOneway'|'vcWrongWayIsland'|'vcWrongWayOnRoadway'|'vcAssaultWAuto'|'vcMiscMovingViol'|'vcMiscNonMovingViol'|'vcAlteredVIN'|'vcImproperBacking'|'vcCarPoolViol'|'vcCarelessDriving'|'vcChangeDriverMoving'|'vcCoasting'|'vcConvictionInsFraud'|'vcCriminalNegligence'|'vcDisregardSafety'|'vcDriversViewObstruct'|'vcDriveOnFireHose'|'vcDrvInSafetyZone'|'vcDrivingWOConsent'|'vcFailControlVehicle'|'vcFailToExchangeInfo'|'vcNoPayToll'|'vcFailToWearBelt'|'vcFailureOfDuty'|'vcFailSoundHorn'|'vcFelony'|'vcFollowingImproper'|'vcFollowingTooClose'|'vcImpedingTraffic'|'vcImproperDriving'|'vcBadTurnpikeStyle'|'vcIncreaseWhilePassed'|'vcUnattendedCar'|'vcLeavingScene'|'vcMVIViolation'|'vcNegligentCollision'|'vcNegligentDriving'|'vcNoLiabInsurance'|'vcParkingOnRoadway'|'vcProhibUTurn'|'vcProtectiveHeadGear'|'vcReckless'|'vcStealingAuto'|'vcUnrestrainedChild'|'vcUnsafeOperator'|'vcEmissionsViol'|'vcVehiclularInjury'|'vcViolSafetyZone'|'vcViolatePromiseAppear'|'vcCompClaim'|'vcAllowUnlawfulOperation'|'vcUMClaim'|'vcUIMClaim'|'MaxViolations'|'vcLastViolCode'|'vcMedPayClaim'|'vcCAFirstViolCode'|'vcAccidentWithPedestrian'|'vcAccidentAtFaultNoInjury'|'vcAccidentAtFaultInjury'|'vcFailureToReportAccident'|'vcAccidentNotAtFault'|'vcAggravatedAssaultWithAuto'|'vcAllOtherMovingViolations'|'vcAllOtherNonMovingViolations'|'vcAllowUnlawfulOperationOfVehicle'|'vcAllowUnlicensedDriver'|'vcAlteredForgedVIN'|'vcFailureToObeyTrafficDevice'|'vcUnsafeStartingBacking'|'vcDiamondLane'|'vcDiamondLaneCrossDoubleLine'|'vcCACarelessDriving'|'vcUnsafeLaneChange'|'vcChangingDriverMovingVehicle'|'vcCoastingGearsDisengaged'|'vcComprehensiveClaim'|'vcConsumingAlcoholWhileDriving'|'vcConvictionOfInsuranceFraud'|'vcCACriminalNegligence'|'vcCrossingCenterMedian'|'vcCrossingDividedHighway'|'vcCACrossingYellowLine'|'vcDisobeyPoliceOfficer'|'vcDisobeyTollHighwayOfficer'|'vcDisplayAlteredCounterfeitLicense'|'vcDisplayOtherPersonsLicense'|'vcDisregardNoPassingZone'|'vcDisregardOfSafety'|'vcDrivingLeftOfCenter'|'vcDriversViewObstructed'|'vcDrivingAtNightWithoutLights'|'vcDrivingOnLeftSideOfRoadway'|'vcDrivingOnShoulder'|'vcDrivingOnSidewalk'|'vcDrivingWrongSideOfRoad'|'vcDrivingOverFireHose'|'vcDrivingSchoolBusWhileIntoxicated'|'vcDrivingThroughSafetyZone'|'vcDrivingTooFastForConditions'|'vcDrivingTooSlowForConditions'|'vcDrivingWithoutOwnersConsent'|'vcDrivingWhileSuspendedRevoked'|'vcDrivingWithExpiredLicense'|'vcDrivingWithoutLicensePermit'|'vcDrivingWrongWayOneWay'|'vcDrivingWrongSideDividedHighway'|'vcDrivingUnderMinimum'|'vcDUIAlcoholDrugsNoInjury'|'vcDUIAlcoholDrugsInjuryOrDeath'|'vcMinorWithBACOverZeroFive'|'vcMinorWithBACOverZeroOne'|'vcDuplicateDriversLicense'|'vcEducationProgramRequired'|'vcEvadingPeaceOfficer'|'vcEvadingPeaceOfficerReckless'|'vcEvadingPeaceOfficerInjury'|'vcExcessiveAcceleration'|'vcFailToControlSpeed'|'vcFailToControlVehicle'|'vcFailToDisplayDriversLicense'|'vcFailToExchangeInformation'|'vcImproperTurnNoSignal'|'vcVehicleXingEvadingToll'|'vcFailToStopApproachingTrain'|'vcStopRequiredRailroadCrossing'|'vcFailToStopRedLight'|'vcFailToStopStopSign'|'vcFailToWearSeatBelt'|'vcYieldingRightOfWayPedestrian'|'vcFailureToYieldRightOfWay'|'vcFailureToYieldEmergencyVehicle'|'vcFailureOfDutyInjuryOrDeath'|'vcFailureToDimLights'|'vcFailureToKeepRight'|'vcFailureToSoundHorn'|'vcFalseEvidenceOfRegistration'|'vcFelonyInvolvingMotorVehicle'|'vcFollowingImproperly'|'vcFollowingTooClosely'|'vcDistanceBetweenVehicles'|'vcGivingImproperSignal'|'vcHomicideWithMotorVehicle'|'vcPassingOnRightOrShoulder'|'vcIllegalTransportationOfAlcohol'|'vcImpedingTrafficMovement'|'vcRefusalToSubmitToTest'|'vcCAImproperDriving'|'vcFreewayRampEnteringExiting'|'vcImproperMergingIntoTraffic'|'vcIllegalImproperUnsafePassing'|'vcStopForSchoolBus'|'vcCAImproperStart'|'vcImproperTowingRiding'|'vcCAImproperLaneUse'|'vcIncreaseSpeedWhileBeingPassed'|'vcLeaveEngineRunning'|'vcHitAndRunInjury'|'vcHitAndRunNoInjury'|'vcLightViolations'|'vcLoanLicenseToOther'|'vcClaimMedicalPayments'|'vcMotorVehicleInspection'|'vcMotorcyclePassengersEquipment'|'vcCANegligentCollision'|'vcCANegligentDriving'|'vcNoChauffeursLicense'|'vcNoDriversLicense'|'vcNoLiabilityInsurance'|'vcNoMotorcycleQualification'|'vcObtainLicenseByMisrepresentation'|'vcOpenContainerDriving'|'vcOpenContainerPossession'|'vcOperatingDuringLifeSuspension'|'vcOperatingOutOfClassification'|'vcOperatingWhereProhibited'|'vcUnsafeUnlawfullyEquippedVehicle'|'vcOverheightVehicle'|'vcOverlengthVehicle'|'vcCAParkingOnRoadway'|'vcPossessionControlledSubstance'|'vcIllegalTurnUTurn'|'vcIllegalTurnUTurnAtIntersection'|'vcCAProtectiveHeadGear'|'vcSpeedContestExhibitionOfSpeed'|'vcSpeedContestAidingAndAbetting'|'vcRecklessDrivingNoInjury'|'vcRecklessDrivingInjury'|'vcSpeeding65AndUnder'|'vcSpeedingOver65'|'vcSpeedingOver100'|'vcSpeedingTruckTractor'|'vcSpeedingConstructionZone'|'vcSpeedingWhileTowing'|'vcCommercialSpeedVehicle'|'vcSpeedingInSchoolZone'|'vcSquealingScreechingTires'|'vcCAStealingAuto'|'vcSuspensionChargeable'|'vcTurnAcrossDividedSection'|'vcUnsafeTurn'|'vcClaimUIM'|'vcClaimUM'|'vcChildPassengerRestraint'|'vcCAUnsafeOperator'|'vcRestrictedSpeedWeatherConditions'|'vcUnsafeStartParkStopStanding'|'vcVehicleEmissionsSuspension'|'vcVehicularInjury'|'vcVehicularManslaughterGrossNegligence'|'vcVehicularManslaughterNoGrossNegligence'|'vcViolationOfLicenseRestrictions'|'vcDrivingHoursEquipmentMaintenanceOperation'|'vcPermitDriverOutOfClassification'|'vcDrinkingInVehicle'|'vcPossessionOfAlcohol'|'vcViolationOfPromiseToAppear'|'vcWrongDirectionAroundTrafficIsland'|'vcWrongDirectionDividedStreet'|'vcClaimLiability'|'vcClaimCollision'|'vcClaimTowing'|'vcViolationOfSuspensionDUI'|'vcViolationOfRestrictionDUI'|'vcFalseStatement'|'vcFinancialResponsibility'|'vcBrakes'|'vcLicensePlate'|'vcExhaustModified'|'vcExplosivesTransportation'|'vcInterfereWithTrafficDevice'|'vcInterfereWithTrafficDeviceInjury'|'vcMaliciousMischiefTampering'|'vcMaliciousActsBodilyHarm'|'vcMaliciousActsRemoveMarker'|'vcThrowingSubstance'|'vcThrowingSubstanceInjury'|'vcThrowingLightedSubstance'|'vcThrowingMatterOnHighway'|'vcDisobeyConstructionSigns'|'vcPassingAnimals'|'vcPassCarStoppedForPedestrian'|'vcMaximumDesignatedSpeedVehicle'|'vcStopAtInoperativeSignal'|'vcTurnProhibitedBySign'|'vcTurnOnRedLight'|'vcUseOfTwoWayLeftTurnLane'|'vcTurnAcrossBicycleLane'|'vcYieldOnLeftTurn'|'vcYieldRightOfWayToBlindPedestrian'|'vcYieldWhenOvertaken'|'vcTranportingPersonInTruckLoadSpace'|'vcUnsafeOverweightLoad'|'vcUnsafeLoadNoPermit'|'vcEnterIntersectionWithoutSpace'|'vcTurnAtIntersectionWithoutSpace'|'vcAlteredLicensePlates'|'vcDoubleLinesOneBrokenLine'|'vcDrivingWithParkingLights'|'vcEnteringHighwayFromServiceRoad'|'vcOnRampExit'|'vcOpenDoor'|'vcRightOfOncomingVehicle'|'vcThreeLaneHighway'|'vcViolatingPromiseToCorrect'|'vcUsingWirelessPhone'|'vcUsingWirelessPhoneUnder18'|'vcTexting'|'vcTurnLaneUse'|'vcYieldToVehicleInIntersection'|'vcFailureToStop'|'vcDUIDrugsNoInjury'|'vcFailToYieldEnteringHighway'|'vcInsufficientSpaceAtRRCrossing'|'vcCommercialSpeed'|'vcDrivingUnregistered'|'vcLighting'|'vcOtherEquipment'|'vcTransportingExplosives'|'vcPassingSubjectToSection'|'vcOtherYield'|'vcSpillingLoad'|'vcCommercialChargeable'|'vcCommercialChargeableMoving'|'vcCommercialNonChargeable'|'vcCommercialNonChargeableMoving'|'vcDrivingOnLevee'|'vcProhibitedBikePath'|'vcCoastingProhibited'|'vcRidingInTrailer'|'vcOperatingGolfCartOnHighway'|'vcCALastViolCode'|'CAMaxViolations'|'AllOtherNonStandardCompID'|'AllOtherStandardCompID'|'AllOtherNonVoluntaryCompID' | null;
-    VertaforeType: 'Speeding'|'DWI'|'StopSign'|'NotAtFaultAccident'|'OtherMinorViolation'|'OtherMajorViolation'|'NotAtFaultOther'|'AllOtherMinorInfractions'|'FailuretoStop' | null;
+    Type: AccidentType | null;
+    VertaforeType: VertaforeAccidentTypes | null;
+}
+
+export enum EducationLevelType {
+    NoHighSchoolDiplomaOrGed,
+    HighSchoolDiplomaOrGed,
+    VocationalTradeSchoolMilitary,
+    CompletedSomeCollege,
+    CurrentlyInCollege,
+    CollegeDegree,
+    GraduateWorkOrGraduateDegree
+}
+
+export enum VertaforeAccidentTypes {
+    Speeding,
+    DWI,
+    StopSign,
+    NotAtFaultAccident,
+    OtherMinorViolation,
+    OtherMajorViolation,
+    NotAtFaultOther,
+    AllOtherMinorInfractions,
+    FailuretoStop
+}
+
+export enum AccidentType {
+    vcConsumingAlcohol,
+    vcFirstViolCode,
+    vcDrvBusWhileIntox,
+    MaxLienHolders,
+    vcDUI,
+    vcDWAI,
+    vcDWI,
+    vcEdProgRequired,
+    vcIllegalTransport,
+    vcImpliedConsent,
+    vcOpenContainer,
+    vcOperWhileIntox,
+    vcLiquorViol,
+    vcPedAcc,
+    vcAccAtFault,
+    vcHomocide,
+    vcManslaughter,
+    vcDUID,
+    vcPossessionofSubst,
+    vcHeadlightViol,
+    vcMotorcycleEquipViol,
+    vcDefectiveEquip,
+    vcOverheight,
+    vcOverlength,
+    vcChangedLanesUnsafe,
+    vcCrossingCenterMed,
+    vcCrossingDividedHwy,
+    vcCrossingYellowLine,
+    vcDisregardNoPassZone,
+    vcDrvOnLeftSide,
+    vcDrvOnShoulder,
+    vcDrvOnSidewalk,
+    vcFailKeepRight,
+    vcIllegalPass,
+    vcImproperMerging,
+    vcImproperPass,
+    vcPassSchoolBus,
+    vcImproperLaneUse,
+    vcOperWhereProhib,
+    vcAllowUnlicensed,
+    vcAlteredDL,
+    vcDisplayAnothersDL,
+    vcLicSuspended,
+    vcExpired,
+    vcNoLicense,
+    vcDuplicateDL,
+    vcFailDisplayDL,
+    vcFalseLicense,
+    vcLoanedDL,
+    vcNoChaufferLicense,
+    vcNoDL,
+    vcNoMotorcycleQualif,
+    vcObtainByMisrep,
+    vcOperDuringSusp,
+    vcOperateOutOfClass,
+    vcChargeableSuspension,
+    vcViolateDLRestrict,
+    vcPermitViol,
+    vcNoLights,
+    vcFailDimHeadLights,
+    vcAccNotAtFault,
+    vcDisobeyPolice,
+    vcEludPolice,
+    vcAvoidTrafficControl,
+    vcFailToGiveSignal,
+    vcFailToStopForTrain,
+    vcFailObeyRailRoad,
+    vcRunRedLight,
+    vcRunStopSign,
+    vcFailYieldPedestrian,
+    vcFailRightOfWay,
+    vcFailEmergencyVeh,
+    vcImproperSignal,
+    vcTooFast,
+    vcTooSlowForConditions,
+    vcDrvUnderMinimum,
+    vcExcessAcceleration,
+    vcFailControlSpeed,
+    vcRacing,
+    vcSpeeding,
+    vcSpeedSchoolZone,
+    vcUnsafeSpeed,
+    vcImproperStart,
+    vcSquealingTires,
+    vcUnsafeStart,
+    vcImproperTowing,
+    vcTurnedAcrossDivided,
+    vcTurnedWhenUnsafe,
+    vcDriveLeftOfCenter,
+    vcWrongSideOfRoad,
+    vcWrongWayOnOneway,
+    vcWrongWayIsland,
+    vcWrongWayOnRoadway,
+    vcAssaultWAuto,
+    vcMiscMovingViol,
+    vcMiscNonMovingViol,
+    vcAlteredVIN,
+    vcImproperBacking,
+    vcCarPoolViol,
+    vcCarelessDriving,
+    vcChangeDriverMoving,
+    vcCoasting,
+    vcConvictionInsFraud,
+    vcCriminalNegligence,
+    vcDisregardSafety,
+    vcDriversViewObstruct,
+    vcDriveOnFireHose,
+    vcDrvInSafetyZone,
+    vcDrivingWOConsent,
+    vcFailControlVehicle,
+    vcFailToExchangeInfo,
+    vcNoPayToll,
+    vcFailToWearBelt,
+    vcFailureOfDuty,
+    vcFailSoundHorn,
+    vcFelony,
+    vcFollowingImproper,
+    vcFollowingTooClose,
+    vcImpedingTraffic,
+    vcImproperDriving,
+    vcBadTurnpikeStyle,
+    vcIncreaseWhilePassed,
+    vcUnattendedCar,
+    vcLeavingScene,
+    vcMVIViolation,
+    vcNegligentCollision,
+    vcNegligentDriving,
+    vcNoLiabInsurance,
+    vcParkingOnRoadway,
+    vcProhibUTurn,
+    vcProtectiveHeadGear,
+    vcReckless,
+    vcStealingAuto,
+    vcUnrestrainedChild,
+    vcUnsafeOperator,
+    vcEmissionsViol,
+    vcVehiclularInjury,
+    vcViolSafetyZone,
+    vcViolatePromiseAppear,
+    vcCompClaim,
+    vcAllowUnlawfulOperation,
+    vcUMClaim,
+    vcUIMClaim,
+    MaxViolations,
+    vcLastViolCode,
+    vcMedPayClaim,
+    vcCAFirstViolCode,
+    vcAccidentWithPedestrian,
+    vcAccidentAtFaultNoInjury,
+    vcAccidentAtFaultInjury,
+    vcFailureToReportAccident,
+    vcAccidentNotAtFault,
+    vcAggravatedAssaultWithAuto,
+    vcAllOtherMovingViolations,
+    vcAllOtherNonMovingViolations,
+    vcAllowUnlawfulOperationOfVehicle,
+    vcAllowUnlicensedDriver,
+    vcAlteredForgedVIN,
+    vcFailureToObeyTrafficDevice,
+    vcUnsafeStartingBacking,
+    vcDiamondLane,
+    vcDiamondLaneCrossDoubleLine,
+    vcCACarelessDriving,
+    vcUnsafeLaneChange,
+    vcChangingDriverMovingVehicle,
+    vcCoastingGearsDisengaged,
+    vcComprehensiveClaim,
+    vcConsumingAlcoholWhileDriving,
+    vcConvictionOfInsuranceFraud,
+    vcCACriminalNegligence,
+    vcCrossingCenterMedian,
+    vcCrossingDividedHighway,
+    vcCACrossingYellowLine,
+    vcDisobeyPoliceOfficer,
+    vcDisobeyTollHighwayOfficer,
+    vcDisplayAlteredCounterfeitLicense,
+    vcDisplayOtherPersonsLicense,
+    vcDisregardNoPassingZone,
+    vcDisregardOfSafety,
+    vcDrivingLeftOfCenter,
+    vcDriversViewObstructed,
+    vcDrivingAtNightWithoutLights,
+    vcDrivingOnLeftSideOfRoadway,
+    vcDrivingOnShoulder,
+    vcDrivingOnSidewalk,
+    vcDrivingWrongSideOfRoad,
+    vcDrivingOverFireHose,
+    vcDrivingSchoolBusWhileIntoxicated,
+    vcDrivingThroughSafetyZone,
+    vcDrivingTooFastForConditions,
+    vcDrivingTooSlowForConditions,
+    vcDrivingWithoutOwnersConsent,
+    vcDrivingWhileSuspendedRevoked,
+    vcDrivingWithExpiredLicense,
+    vcDrivingWithoutLicensePermit,
+    vcDrivingWrongWayOneWay,
+    vcDrivingWrongSideDividedHighway,
+    vcDrivingUnderMinimum,
+    vcDUIAlcoholDrugsNoInjury,
+    vcDUIAlcoholDrugsInjuryOrDeath,
+    vcMinorWithBACOverZeroFive,
+    vcMinorWithBACOverZeroOne,
+    vcDuplicateDriversLicense,
+    vcEducationProgramRequired,
+    vcEvadingPeaceOfficer,
+    vcEvadingPeaceOfficerReckless,
+    vcEvadingPeaceOfficerInjury,
+    vcExcessiveAcceleration,
+    vcFailToControlSpeed,
+    vcFailToControlVehicle,
+    vcFailToDisplayDriversLicense,
+    vcFailToExchangeInformation,
+    vcImproperTurnNoSignal,
+    vcVehicleXingEvadingToll,
+    vcFailToStopApproachingTrain,
+    vcStopRequiredRailroadCrossing,
+    vcFailToStopRedLight,
+    vcFailToStopStopSign,
+    vcFailToWearSeatBelt,
+    vcYieldingRightOfWayPedestrian,
+    vcFailureToYieldRightOfWay,
+    vcFailureToYieldEmergencyVehicle,
+    vcFailureOfDutyInjuryOrDeath,
+    vcFailureToDimLights,
+    vcFailureToKeepRight,
+    vcFailureToSoundHorn,
+    vcFalseEvidenceOfRegistration,
+    vcFelonyInvolvingMotorVehicle,
+    vcFollowingImproperly,
+    vcFollowingTooClosely,
+    vcDistanceBetweenVehicles,
+    vcGivingImproperSignal,
+    vcHomicideWithMotorVehicle,
+    vcPassingOnRightOrShoulder,
+    vcIllegalTransportationOfAlcohol,
+    vcImpedingTrafficMovement,
+    vcRefusalToSubmitToTest,
+    vcCAImproperDriving,
+    vcFreewayRampEnteringExiting,
+    vcImproperMergingIntoTraffic,
+    vcIllegalImproperUnsafePassing,
+    vcStopForSchoolBus,
+    vcCAImproperStart,
+    vcImproperTowingRiding,
+    vcCAImproperLaneUse,
+    vcIncreaseSpeedWhileBeingPassed,
+    vcLeaveEngineRunning,
+    vcHitAndRunInjury,
+    vcHitAndRunNoInjury,
+    vcLightViolations,
+    vcLoanLicenseToOther,
+    vcClaimMedicalPayments,
+    vcMotorVehicleInspection,
+    vcMotorcyclePassengersEquipment,
+    vcCANegligentCollision,
+    vcCANegligentDriving,
+    vcNoChauffeursLicense,
+    vcNoDriversLicense,
+    vcNoLiabilityInsurance,
+    vcNoMotorcycleQualification,
+    vcObtainLicenseByMisrepresentation,
+    vcOpenContainerDriving,
+    vcOpenContainerPossession,
+    vcOperatingDuringLifeSuspension,
+    vcOperatingOutOfClassification,
+    vcOperatingWhereProhibited,
+    vcUnsafeUnlawfullyEquippedVehicle,
+    vcOverheightVehicle,
+    vcOverlengthVehicle,
+    vcCAParkingOnRoadway,
+    vcPossessionControlledSubstance,
+    vcIllegalTurnUTurn,
+    vcIllegalTurnUTurnAtIntersection,
+    vcCAProtectiveHeadGear,
+    vcSpeedContestExhibitionOfSpeed,
+    vcSpeedContestAidingAndAbetting,
+    vcRecklessDrivingNoInjury,
+    vcRecklessDrivingInjury,
+    vcSpeeding65AndUnder,
+    vcSpeedingOver65,
+    vcSpeedingOver100,
+    vcSpeedingTruckTractor,
+    vcSpeedingConstructionZone,
+    vcSpeedingWhileTowing,
+    vcCommercialSpeedVehicle,
+    vcSpeedingInSchoolZone,
+    vcSquealingScreechingTires,
+    vcCAStealingAuto,
+    vcSuspensionChargeable,
+    vcTurnAcrossDividedSection,
+    vcUnsafeTurn,
+    vcClaimUIM,
+    vcClaimUM,
+    vcChildPassengerRestraint,
+    vcCAUnsafeOperator,
+    vcRestrictedSpeedWeatherConditions,
+    vcUnsafeStartParkStopStanding,
+    vcVehicleEmissionsSuspension,
+    vcVehicularInjury,
+    vcVehicularManslaughterGrossNegligence,
+    vcVehicularManslaughterNoGrossNegligence,
+    vcViolationOfLicenseRestrictions,
+    vcDrivingHoursEquipmentMaintenanceOperation,
+    vcPermitDriverOutOfClassification,
+    vcDrinkingInVehicle,
+    vcPossessionOfAlcohol,
+    vcViolationOfPromiseToAppear,
+    vcWrongDirectionAroundTrafficIsland,
+    vcWrongDirectionDividedStreet,
+    vcClaimLiability,
+    vcClaimCollision,
+    vcClaimTowing,
+    vcViolationOfSuspensionDUI,
+    vcViolationOfRestrictionDUI,
+    vcFalseStatement,
+    vcFinancialResponsibility,
+    vcBrakes,
+    vcLicensePlate,
+    vcExhaustModified,
+    vcExplosivesTransportation,
+    vcInterfereWithTrafficDevice,
+    vcInterfereWithTrafficDeviceInjury,
+    vcMaliciousMischiefTampering,
+    vcMaliciousActsBodilyHarm,
+    vcMaliciousActsRemoveMarker,
+    vcThrowingSubstance,
+    vcThrowingSubstanceInjury,
+    vcThrowingLightedSubstance,
+    vcThrowingMatterOnHighway,
+    vcDisobeyConstructionSigns,
+    vcPassingAnimals,
+    vcPassCarStoppedForPedestrian,
+    vcMaximumDesignatedSpeedVehicle,
+    vcStopAtInoperativeSignal,
+    vcTurnProhibitedBySign,
+    vcTurnOnRedLight,
+    vcUseOfTwoWayLeftTurnLane,
+    vcTurnAcrossBicycleLane,
+    vcYieldOnLeftTurn,
+    vcYieldRightOfWayToBlindPedestrian,
+    vcYieldWhenOvertaken,
+    vcTranportingPersonInTruckLoadSpace,
+    vcUnsafeOverweightLoad,
+    vcUnsafeLoadNoPermit,
+    vcEnterIntersectionWithoutSpace,
+    vcTurnAtIntersectionWithoutSpace,
+    vcAlteredLicensePlates,
+    vcDoubleLinesOneBrokenLine,
+    vcDrivingWithParkingLights,
+    vcEnteringHighwayFromServiceRoad,
+    vcOnRampExit,
+    vcOpenDoor,
+    vcRightOfOncomingVehicle,
+    vcThreeLaneHighway,
+    vcViolatingPromiseToCorrect,
+    vcUsingWirelessPhone,
+    vcUsingWirelessPhoneUnder18,
+    vcTexting,
+    vcTurnLaneUse,
+    vcYieldToVehicleInIntersection,
+    vcFailureToStop,
+    vcDUIDrugsNoInjury,
+    vcFailToYieldEnteringHighway,
+    vcInsufficientSpaceAtRRCrossing,
+    vcCommercialSpeed,
+    vcDrivingUnregistered,
+    vcLighting,
+    vcOtherEquipment,
+    vcTransportingExplosives,
+    vcPassingSubjectToSection,
+    vcOtherYield,
+    vcSpillingLoad,
+    vcCommercialChargeable,
+    vcCommercialChargeableMoving,
+    vcCommercialNonChargeable,
+    vcCommercialNonChargeableMoving,
+    vcDrivingOnLevee,
+    vcProhibitedBikePath,
+    vcCoastingProhibited,
+    vcRidingInTrailer,
+    vcOperatingGolfCartOnHighway,
+    vcCALastViolCode,
+    CAMaxViolations,
+    AllOtherNonStandardCompID,
+    AllOtherStandardCompID,
+    AllOtherNonVoluntaryCompID
 }
 
 export interface ClientDetail extends IAddress {
@@ -544,9 +1115,9 @@ export interface VertaforeAutoLookup {
 
 export interface PreviousPolicy {
     AutoQuoteRequest: Partial<AutoQuoteRequest> | null;
-    CurrentPriorInsurance: 'Standard'|'None' | null;
+    CurrentPriorInsurance: CurrentPriorInsuranceType | null;
     DoesHouseholdConsumeAlcohol: boolean | null;
-    EducationLevel: 'NoHighSchoolDiplomaOrGed'|'HighSchoolDiplomaOrGed'|'VocationalTradeSchoolMilitary'|'CompletedSomeCollege'|'CurrentlyInCollege'|'CollegeDegree'|'GraduateWorkOrGraduateDegree';
+    EducationLevel: EducationLevelType;
     EffectiveDate: string | null;
     EnrollTelematicsProgram: boolean | null;
     Id: number;
@@ -628,7 +1199,7 @@ export interface AutoQuoteRequest extends QuoteRequest {
     RequestedPolicyStartDate: string | null;
     RequestPayload: string | null;
     ResponsePayload: string | null;
-    Status: 'GettingStarted'|'Policy'|'Vehicles'|'Drivers'|'Discounts'|'Error'|'Quotes'|'SelectedQuote';
+    Status: AutoQuoteRequestStatus;
     TransactionId: string | null;
     Vehicles: Array<Partial<Vehicle>> | null;
 }
@@ -669,7 +1240,7 @@ export interface CarrierError {
     CarrierId: number;
     CarrierName: string | null;
     Id: number;
-    LineOfBusiness: 'PERSONAL_AUTO'|'HOMEOWNERS'|'PERSONAL_PACKAGE';
+    LineOfBusiness: LineOfBusiness;
     Message: string | null;
     PersonalPropertyQuoteRequest: Partial<PersonalPropertyQuoteRequest> | null;
     PersonalPropertyQuoteRequestId: number | null;
@@ -694,7 +1265,7 @@ export interface CompanyUnit {
     CompanyUnitId: number;
     Id: number;
     IsActive: boolean;
-    LineOfBusiness: 'PERSONAL_AUTO'|'HOMEOWNERS'|'PERSONAL_PACKAGE';
+    LineOfBusiness: LineOfBusiness;
     State: string | null;
 }
 
@@ -703,6 +1274,12 @@ export interface Carrier {
     CarrierLogins: Array<Partial<CarrierLogin>> | null;
     Id: number;
     Name: string | null;
+}
+
+export enum LineOfBusiness {
+    PERSONAL_AUTO,
+    HOMEOWNERS,
+    PERSONAL_PACKAGE
 }
 
 export interface HomeOwnersCoverage {
@@ -728,6 +1305,117 @@ export interface HomeOwnersQuote {
     RatedTermMonths: number;
 }
 
+export enum CoApplicantRelationshipToInsured {
+    SPOUSE,
+    PARTNER,
+    CHILD,
+    OTHER_RELATIVE,
+    OTHER_NON_RELATIVE,
+    PARENT
+}
+
+export enum Section {
+    None,
+    Home,
+    Auto
+}
+
+export enum OverallQuality {
+    Standard,
+    High,
+    Premium
+}
+
+export enum OccupantType {
+    OWNER,
+    TENANT
+}
+
+export enum HailResistantRoofType {
+    NONE,
+    CLASS_1,
+    CLASS_2,
+    CLASS_3,
+    CLASS_4
+}
+
+export enum RoofType {
+    ALUMINUM_SHINGLES,
+    ARCHITECTURAL_SHINGLES,
+    ASBESTOS,
+    ASPHALT_SHINGLE,
+    CEDAR_SHAKES,
+    CEDAR_SHINGLES,
+    CLAY_TILE_OR_SLATE,
+    COMPOSITION_FIBERGLASS_ASPHALT_ETC,
+    CONCRETE_TILE,
+    CONCRETE_NOT_TILE,
+    COPPER,
+    FIBERGLASS,
+    FOAM,
+    GRAVEL,
+    METAL,
+    MINERAL_FIBER,
+    MISSION_TILE,
+    OTHER,
+    PLASTIC,
+    POURED,
+    RECYCLED_ROOFING_PRODUCTS,
+    ROCK,
+    ROLLED_ROOFING,
+    RUBBER_ROOF,
+    SLATE,
+    SPANISH_TILE,
+    CORRUGATED_STEEL,
+    STEEL_PORCELAIN_SHINGLES,
+    TAR_AND_GRAVEL,
+    TILE,
+    TIN,
+    WOOD_FIBER_SHINGLES,
+    WOOD_SHAKES,
+    WOOD_SHINGLES,
+    WOOD_SHAKE_SHINGLE
+}
+
+export enum ConstructionType {
+    FRAME,
+    JOISTED_MASONRY,
+    MASONRY,
+    MASONRY_VENEER,
+    MODIFIED_FIRE_RESISTIVE,
+    FIRE_RESISTIVE_SUPERIOR,
+    SUPERIOR_NON_COMBUSTIBLE,
+    STUCCO,
+    METAL_ALUMINUM_SIDING,
+    CONCRETE,
+    STEEL,
+    MOBILE_HOME,
+    LOG_HOME
+}
+
+export enum LastPageVisited {
+    GettingStarted1,
+    GettingStarted2,
+    HomeOwnersStep1,
+    HomeOwnersStep2,
+    HomeOwnersStep3,
+    HomeOwnersStep4,
+    HomeOwnersStep5,
+    HomeOwnersStep6,
+    HomeOwnersStep7,
+    HomeOwnersStep8,
+    HomeOwnersStep9,
+    HomeOwnersStep10,
+    AutoStep1,
+    AutoStep2,
+    AutoStep3,
+    AutoStep4,
+    AutoStep5,
+    ChooseBundle,
+    Quotes,
+    SelectedQuote
+}
+
 export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     AcquisitionDate: string | null;
     Baths: Partial<number> | null;
@@ -737,13 +1425,14 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     CoApplicantDateOfBirth: string | null;
     CoApplicantFirstName: string | null;
     CoApplicantLastName: string | null;
-    CoApplicantRelationshipToInsured: 'SPOUSE'|'PARTNER'|'CHILD'|'OTHER_RELATIVE'|'OTHER_NON_RELATIVE'|'PARENT' | null;
-    ConstructionType: 'FRAME'|'JOISTED_MASONRY'|'MASONRY'|'MASONRY_VENEER'|'MODIFIED_FIRE_RESISTIVE'|'FIRE_RESISTIVE_SUPERIOR'|'SUPERIOR_NON_COMBUSTIBLE'|'STUCCO'|'METAL_ALUMINUM_SIDING'|'CONCRETE'|'STEEL'|'MOBILE_HOME'|'LOG_HOME' | null;
+    CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsured | null;
+    ConstructionType: ConstructionType | null;
+    CorrelationId: string | null;
     DistanceToFireDepartmentMiles: number | null;
     EffectiveDate: string | null;
-    FoundationType: 'SLAB'|'CRAWL_SPACE'|'BASEMENT'|'PIER'|'HILLSIDE'|'OTHER' | null;
+    FoundationType: FoundationType | null;
     FulfillErrorMessage: string | null;
-    HailResistantRoofType: 'NONE'|'CLASS_1'|'CLASS_2'|'CLASS_3'|'CLASS_4' | null;
+    HailResistantRoofType: HailResistantRoofType | null;
     HasAutomaticSprinklers: boolean | null;
     HasBurglarAlarm: boolean | null;
     HasCats: boolean | null;
@@ -756,33 +1445,101 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HasSwimmingPool: boolean | null;
     HasTrampoline: boolean | null;
     HomeOwnersQuotes: Array<Partial<HomeOwnersQuote>> | null;
-    HomeStyle: 'Unknown'|'Ranch'|'CapeCod'|'Colonial'|'BiLevel'|'SplitLevel'|'BackSplit'|'Bungalow'|'CondoCoOp'|'Contemporary'|'Cottage'|'FederalColonial'|'Mediterranean'|'OrnateVictorian'|'QueenAnne'|'RaisedRanch'|'Rambler'|'SouthwestAdobe'|'SplitFoyer'|'RowHouseCenter'|'RowHouseEnd'|'TriLevel'|'Victorian'|'BiLevelRowEnd'|'BiLevelRowCenter'|'TriLevelRowEnd'|'TriLevelRowCenter' | null;
+    HomeStyle: HomeStyle | null;
     Id: number;
     IsWithin1000FeetOfRecognizedWaterSource: boolean | null;
     LastMajorRenovationYear: number | null;
-    LastPageVisited: 'GettingStarted1'|'GettingStarted2'|'HomeOwnersStep1'|'HomeOwnersStep2'|'HomeOwnersStep3'|'HomeOwnersStep4'|'HomeOwnersStep5'|'HomeOwnersStep6'|'HomeOwnersStep7'|'HomeOwnersStep8'|'HomeOwnersStep9'|'HomeOwnersStep10'|'AutoStep1'|'AutoStep2'|'AutoStep3'|'AutoStep4'|'AutoStep5'|'ChooseBundle'|'Quotes'|'SelectedQuote';
+    LastPageVisited: LastPageVisited;
     NumberOfBedrooms: number | null;
     NumberOfFullBaths: number | null;
     NumberOfHalfBaths: number | null;
     NumberOfHouseholdMembers: number | null;
     NumberOfRoofLayers: number | null;
     NumberOfStories: number | null;
-    OccupantType: 'OWNER'|'TENANT' | null;
-    OverallQuality: 'Standard'|'High'|'Premium' | null;
-    PrimaryHeatType: 'Electric'|'Gas'|'Wood'|'Oil'|'Other' | null;
+    OccupantType: OccupantType | null;
+    OverallQuality: OverallQuality | null;
+    PrimaryHeatType: HeatType | null;
     RequestPayload: string | null;
-    ResidenceType: 'SingleFamilyDwelling'|'Condo'|'Apartment'|'MobileHome'|'CoOp'|'Townhouse'|'Rowhouse'|'Other' | null;
+    ResidenceType: ResidenceType | null;
     ResponsePayload: string | null;
-    RoofStyle: 'Flat'|'Gable'|'Gambrel'|'Hip'|'Mansard'|'Shed'|'Turret' | null;
-    RoofType: 'ALUMINUM_SHINGLES'|'ARCHITECTURAL_SHINGLES'|'ASBESTOS'|'ASPHALT_SHINGLE'|'CEDAR_SHAKES'|'CEDAR_SHINGLES'|'CLAY_TILE_OR_SLATE'|'COMPOSITION_FIBERGLASS_ASPHALT_ETC'|'CONCRETE_TILE'|'CONCRETE_NOT_TILE'|'COPPER'|'FIBERGLASS'|'FOAM'|'GRAVEL'|'METAL'|'MINERAL_FIBER'|'MISSION_TILE'|'OTHER'|'PLASTIC'|'POURED'|'RECYCLED_ROOFING_PRODUCTS'|'ROCK'|'ROLLED_ROOFING'|'RUBBER_ROOF'|'SLATE'|'SPANISH_TILE'|'CORRUGATED_STEEL'|'STEEL_PORCELAIN_SHINGLES'|'TAR_AND_GRAVEL'|'TILE'|'TIN'|'WOOD_FIBER_SHINGLES'|'WOOD_SHAKES'|'WOOD_SHINGLES'|'WOOD_SHAKE_SHINGLE' | null;
-    SectionCompleted: 'None'|'Home'|'Auto';
-    SectionPartiallyCompleted: 'None'|'Home'|'Auto';
+    RoofStyle: RoofStyle | null;
+    RoofType: RoofType | null;
+    SectionCompleted: Section;
+    SectionPartiallyCompleted: Section;
     SquareFootage: number | null;
     State: string | null;
     Street1: string | null;
     Street2: string | null;
     YearBuilt: number | null;
     Zip: string | null;
+}
+
+export enum HomeStyle {
+    Unknown,
+    Ranch,
+    CapeCod,
+    Colonial,
+    BiLevel,
+    SplitLevel,
+    BackSplit,
+    Bungalow,
+    CondoCoOp,
+    Contemporary,
+    Cottage,
+    FederalColonial,
+    Mediterranean,
+    OrnateVictorian,
+    QueenAnne,
+    RaisedRanch,
+    Rambler,
+    SouthwestAdobe,
+    SplitFoyer,
+    RowHouseCenter,
+    RowHouseEnd,
+    TriLevel,
+    Victorian,
+    BiLevelRowEnd,
+    BiLevelRowCenter,
+    TriLevelRowEnd,
+    TriLevelRowCenter
+}
+
+export enum HeatType {
+    Electric,
+    Gas,
+    Wood,
+    Oil,
+    Other
+}
+
+export enum FoundationType {
+    SLAB,
+    CRAWL_SPACE,
+    BASEMENT,
+    PIER,
+    HILLSIDE,
+    OTHER
+}
+
+export enum RoofStyle {
+    Flat,
+    Gable,
+    Gambrel,
+    Hip,
+    Mansard,
+    Shed,
+    Turret
+}
+
+export enum ResidenceType {
+    SingleFamilyDwelling,
+    Condo,
+    Apartment,
+    MobileHome,
+    CoOp,
+    Townhouse,
+    Rowhouse,
+    Other
 }
 
 export interface CampaignSummaryDto {
@@ -833,7 +1590,7 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
 export interface HomeOwnersStepSevenDto {
     ClaimsLast5Years: number | null;
     LastMajorRenovationYear: number | null;
-    OccupantType: 'OWNER'|'TENANT' | null;
+    OccupantType: OccupantType | null;
 }
 
 export interface HomeOwnersStepEightDto {
@@ -844,7 +1601,7 @@ export interface HomeOwnersStepEightDto {
 }
 
 export interface HomeOwnersStepNineDto {
-    CoApplicantRelationshipToInsured: 'SPOUSE'|'PARTNER'|'CHILD'|'OTHER_RELATIVE'|'OTHER_NON_RELATIVE'|'PARENT' | null;
+    CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsured | null;
 }
 
 export interface HomeOwnersStepTenDto {
@@ -857,8 +1614,8 @@ export interface AutoAccidentDto {
     Date: string;
     DriverId: number;
     Id: number;
-    Type: 'vcConsumingAlcohol'|'vcFirstViolCode'|'vcDrvBusWhileIntox'|'MaxLienHolders'|'vcDUI'|'vcDWAI'|'vcDWI'|'vcEdProgRequired'|'vcIllegalTransport'|'vcImpliedConsent'|'vcOpenContainer'|'vcOperWhileIntox'|'vcLiquorViol'|'vcPedAcc'|'vcAccAtFault'|'vcHomocide'|'vcManslaughter'|'vcDUID'|'vcPossessionofSubst'|'vcHeadlightViol'|'vcMotorcycleEquipViol'|'vcDefectiveEquip'|'vcOverheight'|'vcOverlength'|'vcChangedLanesUnsafe'|'vcCrossingCenterMed'|'vcCrossingDividedHwy'|'vcCrossingYellowLine'|'vcDisregardNoPassZone'|'vcDrvOnLeftSide'|'vcDrvOnShoulder'|'vcDrvOnSidewalk'|'vcFailKeepRight'|'vcIllegalPass'|'vcImproperMerging'|'vcImproperPass'|'vcPassSchoolBus'|'vcImproperLaneUse'|'vcOperWhereProhib'|'vcAllowUnlicensed'|'vcAlteredDL'|'vcDisplayAnothersDL'|'vcLicSuspended'|'vcExpired'|'vcNoLicense'|'vcDuplicateDL'|'vcFailDisplayDL'|'vcFalseLicense'|'vcLoanedDL'|'vcNoChaufferLicense'|'vcNoDL'|'vcNoMotorcycleQualif'|'vcObtainByMisrep'|'vcOperDuringSusp'|'vcOperateOutOfClass'|'vcChargeableSuspension'|'vcViolateDLRestrict'|'vcPermitViol'|'vcNoLights'|'vcFailDimHeadLights'|'vcAccNotAtFault'|'vcDisobeyPolice'|'vcEludPolice'|'vcAvoidTrafficControl'|'vcFailToGiveSignal'|'vcFailToStopForTrain'|'vcFailObeyRailRoad'|'vcRunRedLight'|'vcRunStopSign'|'vcFailYieldPedestrian'|'vcFailRightOfWay'|'vcFailEmergencyVeh'|'vcImproperSignal'|'vcTooFast'|'vcTooSlowForConditions'|'vcDrvUnderMinimum'|'vcExcessAcceleration'|'vcFailControlSpeed'|'vcRacing'|'vcSpeeding'|'vcSpeedSchoolZone'|'vcUnsafeSpeed'|'vcImproperStart'|'vcSquealingTires'|'vcUnsafeStart'|'vcImproperTowing'|'vcTurnedAcrossDivided'|'vcTurnedWhenUnsafe'|'vcDriveLeftOfCenter'|'vcWrongSideOfRoad'|'vcWrongWayOnOneway'|'vcWrongWayIsland'|'vcWrongWayOnRoadway'|'vcAssaultWAuto'|'vcMiscMovingViol'|'vcMiscNonMovingViol'|'vcAlteredVIN'|'vcImproperBacking'|'vcCarPoolViol'|'vcCarelessDriving'|'vcChangeDriverMoving'|'vcCoasting'|'vcConvictionInsFraud'|'vcCriminalNegligence'|'vcDisregardSafety'|'vcDriversViewObstruct'|'vcDriveOnFireHose'|'vcDrvInSafetyZone'|'vcDrivingWOConsent'|'vcFailControlVehicle'|'vcFailToExchangeInfo'|'vcNoPayToll'|'vcFailToWearBelt'|'vcFailureOfDuty'|'vcFailSoundHorn'|'vcFelony'|'vcFollowingImproper'|'vcFollowingTooClose'|'vcImpedingTraffic'|'vcImproperDriving'|'vcBadTurnpikeStyle'|'vcIncreaseWhilePassed'|'vcUnattendedCar'|'vcLeavingScene'|'vcMVIViolation'|'vcNegligentCollision'|'vcNegligentDriving'|'vcNoLiabInsurance'|'vcParkingOnRoadway'|'vcProhibUTurn'|'vcProtectiveHeadGear'|'vcReckless'|'vcStealingAuto'|'vcUnrestrainedChild'|'vcUnsafeOperator'|'vcEmissionsViol'|'vcVehiclularInjury'|'vcViolSafetyZone'|'vcViolatePromiseAppear'|'vcCompClaim'|'vcAllowUnlawfulOperation'|'vcUMClaim'|'vcUIMClaim'|'MaxViolations'|'vcLastViolCode'|'vcMedPayClaim'|'vcCAFirstViolCode'|'vcAccidentWithPedestrian'|'vcAccidentAtFaultNoInjury'|'vcAccidentAtFaultInjury'|'vcFailureToReportAccident'|'vcAccidentNotAtFault'|'vcAggravatedAssaultWithAuto'|'vcAllOtherMovingViolations'|'vcAllOtherNonMovingViolations'|'vcAllowUnlawfulOperationOfVehicle'|'vcAllowUnlicensedDriver'|'vcAlteredForgedVIN'|'vcFailureToObeyTrafficDevice'|'vcUnsafeStartingBacking'|'vcDiamondLane'|'vcDiamondLaneCrossDoubleLine'|'vcCACarelessDriving'|'vcUnsafeLaneChange'|'vcChangingDriverMovingVehicle'|'vcCoastingGearsDisengaged'|'vcComprehensiveClaim'|'vcConsumingAlcoholWhileDriving'|'vcConvictionOfInsuranceFraud'|'vcCACriminalNegligence'|'vcCrossingCenterMedian'|'vcCrossingDividedHighway'|'vcCACrossingYellowLine'|'vcDisobeyPoliceOfficer'|'vcDisobeyTollHighwayOfficer'|'vcDisplayAlteredCounterfeitLicense'|'vcDisplayOtherPersonsLicense'|'vcDisregardNoPassingZone'|'vcDisregardOfSafety'|'vcDrivingLeftOfCenter'|'vcDriversViewObstructed'|'vcDrivingAtNightWithoutLights'|'vcDrivingOnLeftSideOfRoadway'|'vcDrivingOnShoulder'|'vcDrivingOnSidewalk'|'vcDrivingWrongSideOfRoad'|'vcDrivingOverFireHose'|'vcDrivingSchoolBusWhileIntoxicated'|'vcDrivingThroughSafetyZone'|'vcDrivingTooFastForConditions'|'vcDrivingTooSlowForConditions'|'vcDrivingWithoutOwnersConsent'|'vcDrivingWhileSuspendedRevoked'|'vcDrivingWithExpiredLicense'|'vcDrivingWithoutLicensePermit'|'vcDrivingWrongWayOneWay'|'vcDrivingWrongSideDividedHighway'|'vcDrivingUnderMinimum'|'vcDUIAlcoholDrugsNoInjury'|'vcDUIAlcoholDrugsInjuryOrDeath'|'vcMinorWithBACOverZeroFive'|'vcMinorWithBACOverZeroOne'|'vcDuplicateDriversLicense'|'vcEducationProgramRequired'|'vcEvadingPeaceOfficer'|'vcEvadingPeaceOfficerReckless'|'vcEvadingPeaceOfficerInjury'|'vcExcessiveAcceleration'|'vcFailToControlSpeed'|'vcFailToControlVehicle'|'vcFailToDisplayDriversLicense'|'vcFailToExchangeInformation'|'vcImproperTurnNoSignal'|'vcVehicleXingEvadingToll'|'vcFailToStopApproachingTrain'|'vcStopRequiredRailroadCrossing'|'vcFailToStopRedLight'|'vcFailToStopStopSign'|'vcFailToWearSeatBelt'|'vcYieldingRightOfWayPedestrian'|'vcFailureToYieldRightOfWay'|'vcFailureToYieldEmergencyVehicle'|'vcFailureOfDutyInjuryOrDeath'|'vcFailureToDimLights'|'vcFailureToKeepRight'|'vcFailureToSoundHorn'|'vcFalseEvidenceOfRegistration'|'vcFelonyInvolvingMotorVehicle'|'vcFollowingImproperly'|'vcFollowingTooClosely'|'vcDistanceBetweenVehicles'|'vcGivingImproperSignal'|'vcHomicideWithMotorVehicle'|'vcPassingOnRightOrShoulder'|'vcIllegalTransportationOfAlcohol'|'vcImpedingTrafficMovement'|'vcRefusalToSubmitToTest'|'vcCAImproperDriving'|'vcFreewayRampEnteringExiting'|'vcImproperMergingIntoTraffic'|'vcIllegalImproperUnsafePassing'|'vcStopForSchoolBus'|'vcCAImproperStart'|'vcImproperTowingRiding'|'vcCAImproperLaneUse'|'vcIncreaseSpeedWhileBeingPassed'|'vcLeaveEngineRunning'|'vcHitAndRunInjury'|'vcHitAndRunNoInjury'|'vcLightViolations'|'vcLoanLicenseToOther'|'vcClaimMedicalPayments'|'vcMotorVehicleInspection'|'vcMotorcyclePassengersEquipment'|'vcCANegligentCollision'|'vcCANegligentDriving'|'vcNoChauffeursLicense'|'vcNoDriversLicense'|'vcNoLiabilityInsurance'|'vcNoMotorcycleQualification'|'vcObtainLicenseByMisrepresentation'|'vcOpenContainerDriving'|'vcOpenContainerPossession'|'vcOperatingDuringLifeSuspension'|'vcOperatingOutOfClassification'|'vcOperatingWhereProhibited'|'vcUnsafeUnlawfullyEquippedVehicle'|'vcOverheightVehicle'|'vcOverlengthVehicle'|'vcCAParkingOnRoadway'|'vcPossessionControlledSubstance'|'vcIllegalTurnUTurn'|'vcIllegalTurnUTurnAtIntersection'|'vcCAProtectiveHeadGear'|'vcSpeedContestExhibitionOfSpeed'|'vcSpeedContestAidingAndAbetting'|'vcRecklessDrivingNoInjury'|'vcRecklessDrivingInjury'|'vcSpeeding65AndUnder'|'vcSpeedingOver65'|'vcSpeedingOver100'|'vcSpeedingTruckTractor'|'vcSpeedingConstructionZone'|'vcSpeedingWhileTowing'|'vcCommercialSpeedVehicle'|'vcSpeedingInSchoolZone'|'vcSquealingScreechingTires'|'vcCAStealingAuto'|'vcSuspensionChargeable'|'vcTurnAcrossDividedSection'|'vcUnsafeTurn'|'vcClaimUIM'|'vcClaimUM'|'vcChildPassengerRestraint'|'vcCAUnsafeOperator'|'vcRestrictedSpeedWeatherConditions'|'vcUnsafeStartParkStopStanding'|'vcVehicleEmissionsSuspension'|'vcVehicularInjury'|'vcVehicularManslaughterGrossNegligence'|'vcVehicularManslaughterNoGrossNegligence'|'vcViolationOfLicenseRestrictions'|'vcDrivingHoursEquipmentMaintenanceOperation'|'vcPermitDriverOutOfClassification'|'vcDrinkingInVehicle'|'vcPossessionOfAlcohol'|'vcViolationOfPromiseToAppear'|'vcWrongDirectionAroundTrafficIsland'|'vcWrongDirectionDividedStreet'|'vcClaimLiability'|'vcClaimCollision'|'vcClaimTowing'|'vcViolationOfSuspensionDUI'|'vcViolationOfRestrictionDUI'|'vcFalseStatement'|'vcFinancialResponsibility'|'vcBrakes'|'vcLicensePlate'|'vcExhaustModified'|'vcExplosivesTransportation'|'vcInterfereWithTrafficDevice'|'vcInterfereWithTrafficDeviceInjury'|'vcMaliciousMischiefTampering'|'vcMaliciousActsBodilyHarm'|'vcMaliciousActsRemoveMarker'|'vcThrowingSubstance'|'vcThrowingSubstanceInjury'|'vcThrowingLightedSubstance'|'vcThrowingMatterOnHighway'|'vcDisobeyConstructionSigns'|'vcPassingAnimals'|'vcPassCarStoppedForPedestrian'|'vcMaximumDesignatedSpeedVehicle'|'vcStopAtInoperativeSignal'|'vcTurnProhibitedBySign'|'vcTurnOnRedLight'|'vcUseOfTwoWayLeftTurnLane'|'vcTurnAcrossBicycleLane'|'vcYieldOnLeftTurn'|'vcYieldRightOfWayToBlindPedestrian'|'vcYieldWhenOvertaken'|'vcTranportingPersonInTruckLoadSpace'|'vcUnsafeOverweightLoad'|'vcUnsafeLoadNoPermit'|'vcEnterIntersectionWithoutSpace'|'vcTurnAtIntersectionWithoutSpace'|'vcAlteredLicensePlates'|'vcDoubleLinesOneBrokenLine'|'vcDrivingWithParkingLights'|'vcEnteringHighwayFromServiceRoad'|'vcOnRampExit'|'vcOpenDoor'|'vcRightOfOncomingVehicle'|'vcThreeLaneHighway'|'vcViolatingPromiseToCorrect'|'vcUsingWirelessPhone'|'vcUsingWirelessPhoneUnder18'|'vcTexting'|'vcTurnLaneUse'|'vcYieldToVehicleInIntersection'|'vcFailureToStop'|'vcDUIDrugsNoInjury'|'vcFailToYieldEnteringHighway'|'vcInsufficientSpaceAtRRCrossing'|'vcCommercialSpeed'|'vcDrivingUnregistered'|'vcLighting'|'vcOtherEquipment'|'vcTransportingExplosives'|'vcPassingSubjectToSection'|'vcOtherYield'|'vcSpillingLoad'|'vcCommercialChargeable'|'vcCommercialChargeableMoving'|'vcCommercialNonChargeable'|'vcCommercialNonChargeableMoving'|'vcDrivingOnLevee'|'vcProhibitedBikePath'|'vcCoastingProhibited'|'vcRidingInTrailer'|'vcOperatingGolfCartOnHighway'|'vcCALastViolCode'|'CAMaxViolations'|'AllOtherNonStandardCompID'|'AllOtherStandardCompID'|'AllOtherNonVoluntaryCompID' | null;
-    VertaforeType: 'Speeding'|'DWI'|'StopSign'|'NotAtFaultAccident'|'OtherMinorViolation'|'OtherMajorViolation'|'NotAtFaultOther'|'AllOtherMinorInfractions'|'FailuretoStop' | null;
+    Type: AccidentType | null;
+    VertaforeType: VertaforeAccidentTypes | null;
 }
 
 export interface AutoDriverDto {
@@ -880,7 +1637,7 @@ export interface AutoDriverDto {
 
 export interface AutoDiscountsDto {
     DoesHouseholdConsumeAlcohol: boolean | null;
-    EducationLevel: 'NoHighSchoolDiplomaOrGed'|'HighSchoolDiplomaOrGed'|'VocationalTradeSchoolMilitary'|'CompletedSomeCollege'|'CurrentlyInCollege'|'CollegeDegree'|'GraduateWorkOrGraduateDegree' | null;
+    EducationLevel: EducationLevelType | null;
     EnrollTelematicsProgram: boolean;
     PaperLess: boolean;
 }
@@ -896,25 +1653,25 @@ export interface HomeOwnersStepSixDto {
 
 export interface HomeOwnersStepFiveDto {
     Baths: Partial<number> | null;
-    ConstructionType: 'FRAME'|'JOISTED_MASONRY'|'MASONRY'|'MASONRY_VENEER'|'MODIFIED_FIRE_RESISTIVE'|'FIRE_RESISTIVE_SUPERIOR'|'SUPERIOR_NON_COMBUSTIBLE'|'STUCCO'|'METAL_ALUMINUM_SIDING'|'CONCRETE'|'STEEL'|'MOBILE_HOME'|'LOG_HOME' | null;
-    FoundationType: 'SLAB'|'CRAWL_SPACE'|'BASEMENT'|'PIER'|'HILLSIDE'|'OTHER' | null;
+    ConstructionType: ConstructionType | null;
+    FoundationType: FoundationType | null;
     NumberOfBedrooms: number | null;
     NumberOfFullBaths: number | null;
     NumberOfStories: number | null;
-    PrimaryHeatType: 'Electric'|'Gas'|'Wood'|'Oil'|'Other' | null;
-    RoofType: 'ALUMINUM_SHINGLES'|'ARCHITECTURAL_SHINGLES'|'ASBESTOS'|'ASPHALT_SHINGLE'|'CEDAR_SHAKES'|'CEDAR_SHINGLES'|'CLAY_TILE_OR_SLATE'|'COMPOSITION_FIBERGLASS_ASPHALT_ETC'|'CONCRETE_TILE'|'CONCRETE_NOT_TILE'|'COPPER'|'FIBERGLASS'|'FOAM'|'GRAVEL'|'METAL'|'MINERAL_FIBER'|'MISSION_TILE'|'OTHER'|'PLASTIC'|'POURED'|'RECYCLED_ROOFING_PRODUCTS'|'ROCK'|'ROLLED_ROOFING'|'RUBBER_ROOF'|'SLATE'|'SPANISH_TILE'|'CORRUGATED_STEEL'|'STEEL_PORCELAIN_SHINGLES'|'TAR_AND_GRAVEL'|'TILE'|'TIN'|'WOOD_FIBER_SHINGLES'|'WOOD_SHAKES'|'WOOD_SHINGLES'|'WOOD_SHAKE_SHINGLE' | null;
+    PrimaryHeatType: HeatType | null;
+    RoofType: RoofType | null;
     SquareFootage: number | null;
     YearBuilt: number | null;
 }
 
 export interface HomeOwnersStepFourDto {
-    OverallQuality: 'Standard'|'High'|'Premium' | null;
+    OverallQuality: OverallQuality | null;
 }
 
 export interface HomeOwnersStepThreeDto {
     AcquisitionDate: string;
-    HomeStyle: 'Unknown'|'Ranch'|'CapeCod'|'Colonial'|'BiLevel'|'SplitLevel'|'BackSplit'|'Bungalow'|'CondoCoOp'|'Contemporary'|'Cottage'|'FederalColonial'|'Mediterranean'|'OrnateVictorian'|'QueenAnne'|'RaisedRanch'|'Rambler'|'SouthwestAdobe'|'SplitFoyer'|'RowHouseCenter'|'RowHouseEnd'|'TriLevel'|'Victorian'|'BiLevelRowEnd'|'BiLevelRowCenter'|'TriLevelRowEnd'|'TriLevelRowCenter';
-    ResidenceType: 'SingleFamilyDwelling'|'Condo'|'Apartment'|'MobileHome'|'CoOp'|'Townhouse'|'Rowhouse'|'Other';
+    HomeStyle: HomeStyle;
+    ResidenceType: ResidenceType;
 }
 
 export interface HomeOwnersStepTwoDto {
@@ -969,11 +1726,11 @@ export interface AutoDriverToVehicleDto {
 
 export interface LifeAboutYouAnswerDto {
     CoverageAmount: Partial<number>;
-    Gender: 'Unknown'|'Male'|'Female';
-    HealthRating: 'Unknown'|'PreferredPlus'|'Preferred'|'StandardPlus'|'Standard';
+    Gender: GenderType;
+    HealthRating: HealthRatingType;
     IsLargeQuoteRequest: boolean;
-    ProductType: 'Unknown'|'YearTerm5'|'YearTerm10'|'YearTerm15'|'YearTerm20'|'YearTerm25'|'YearTerm30'|'YearTerm35'|'YearTerm40';
-    Tobacco: 'Unknown'|'Yes'|'No';
+    ProductType: ProductType;
+    Tobacco: TobaccoType;
 }
 
 export interface LifeAnswerDto {
@@ -985,20 +1742,20 @@ export interface LifeAnswerDto {
     DateOfBirth: string;
     EmailAddress: string | null;
     FirstName: string | null;
-    Gender: 'Unknown'|'Male'|'Female';
-    HealthRating: 'Unknown'|'PreferredPlus'|'Preferred'|'StandardPlus'|'Standard';
+    Gender: GenderType;
+    HealthRating: HealthRatingType;
     HomePhoneNumber: string | null;
     IsLargeQuoteRequest: boolean;
     LastName: string | null;
     LeadType: string | null;
     LifeQuoteRequestId: number | null;
     PartnerId: string | null;
-    ProductType: 'Unknown'|'YearTerm5'|'YearTerm10'|'YearTerm15'|'YearTerm20'|'YearTerm25'|'YearTerm30'|'YearTerm35'|'YearTerm40';
+    ProductType: ProductType;
     RecaptchaUserResponse: string | null;
     ReferringUrl: string | null;
     State: string | null;
     Street1: string | null;
-    Tobacco: 'Unknown'|'Yes'|'No';
+    Tobacco: TobaccoType;
     UserGuid: string | null;
     ZipCode: string | null;
 }
