@@ -1570,12 +1570,14 @@ export interface AutoQuoteRequestSummaryDto {
 }
 
 export interface PersonalPropertyQuoteRequestSummaryDto {
-    AgencySummaries: Array<Partial<CampaignSummaryDto>> | null;
+    CampaignSummaries: Array<Partial<CampaignSummaryDto>> | null;
     CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
     ChooseBundle: number;
+    Errors: number;
     Fulfill: number;
+    GettingStartedStep1: number;
+    GettingStartedStep2: number;
     HomeOwnersStep1: number;
-    HomeOwnersStep10: number;
     HomeOwnersStep2: number;
     HomeOwnersStep3: number;
     HomeOwnersStep4: number;
@@ -1583,7 +1585,6 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
     HomeOwnersStep6: number;
     HomeOwnersStep7: number;
     HomeOwnersStep8: number;
-    HomeOwnersStep9: number;
     SelectedQuote: number;
 }
 
