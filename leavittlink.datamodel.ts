@@ -1574,7 +1574,6 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
     CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
     ChooseBundle: number;
     Errors: number;
-    Fulfill: number;
     GettingStartedStep1: number;
     GettingStartedStep2: number;
     HomeOwnersStep1: number;
@@ -1585,6 +1584,7 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
     HomeOwnersStep6: number;
     HomeOwnersStep7: number;
     HomeOwnersStep8: number;
+    Quotes: number;
     SelectedQuote: number;
 }
 
