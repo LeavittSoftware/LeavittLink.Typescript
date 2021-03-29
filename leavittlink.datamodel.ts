@@ -1315,9 +1315,9 @@ export enum CoApplicantRelationshipToInsured {
 }
 
 export enum Section {
-    None,
-    Home,
-    Auto
+    None = 0,
+    Home = 1,
+    Auto = 2
 }
 
 export enum OverallQuality {
