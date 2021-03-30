@@ -649,8 +649,6 @@ export enum VertaforeAccidentTypes {
 
 export enum AccidentType {
     vcConsumingAlcohol = 1,
-    vcConsumingAlcohol = 1,
-    vcDrvBusWhileIntox = 2,
     vcDrvBusWhileIntox = 2,
     vcDUI = 3,
     vcDWAI = 4,
@@ -792,9 +790,6 @@ export enum AccidentType {
     vcUMClaim = 140,
     vcUIMClaim = 141,
     MaxViolations = 142,
-    MaxViolations = 142,
-    MaxViolations = 142,
-    vcCAFirstViolCode = 501,
     vcCAFirstViolCode = 501,
     vcAccidentAtFaultNoInjury = 502,
     vcAccidentAtFaultInjury = 503,
@@ -1028,8 +1023,6 @@ export enum AccidentType {
     vcProhibitedBikePath = 731,
     vcCoastingProhibited = 732,
     vcRidingInTrailer = 733,
-    CAMaxViolations = 734,
-    CAMaxViolations = 734,
     CAMaxViolations = 734,
     AllOtherNonStandardCompID = -2147483647,
     AllOtherStandardCompID = -2147483646,
