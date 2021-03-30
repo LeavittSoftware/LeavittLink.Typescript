@@ -1298,7 +1298,8 @@ export interface HomeOwnersCoverage {
 }
 
 export interface HomeOwnersQuote {
-    CarrierName: string | null;
+    Carrier: Partial<Carrier> | null;
+    CarrierId: number;
     CompanyUnitId: number;
     Coverages: Array<Partial<HomeOwnersCoverage>> | null;
     CreatedDate: string;
