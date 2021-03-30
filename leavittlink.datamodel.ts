@@ -31,15 +31,17 @@ export enum ProductType {
 }
 
 export interface QuoteRequest {
-    Campaign: string | null;
-    CampaignId: number;
+    Campaign: Partial<Campaign> | null;
+    CampaignId: number | null;
     CreatedDate: string | null;
+    EloquaCampaign: string | null;
     HasBeenFulfilled: boolean;
     LeadType: string | null;
     ReferringUrl: string | null;
     SelectedQuoteId: number | null;
     User: Partial<User> | null;
     UserId: number;
+    VelocifyCampaignId: number;
 }
 
 export enum TobaccoType {
@@ -1222,10 +1224,13 @@ export interface Vehicle extends IVehicle {
 }
 
 export interface Campaign {
+    AutoQuoteRequests: Array<Partial<AutoQuoteRequest>> | null;
     CampaignId: number;
     CarrierLogins: Array<Partial<CarrierLogin>> | null;
     Id: number;
+    LifeQuoteRequests: Array<Partial<LifeQuoteRequest>> | null;
     Name: string | null;
+    PersonalPropertyQuoteRequests: Array<Partial<PersonalPropertyQuoteRequest>> | null;
 }
 
 export interface CampaignImageAttachment extends Attachment {
@@ -1284,6 +1289,8 @@ export enum LineOfBusiness {
 
 export interface HomeOwnersCoverage {
     Description: string | null;
+    HomeOwnersQuote: Partial<HomeOwnersQuote> | null;
+    HomeOwnersQuoteId: number;
     Id: number;
     Premium: Partial<number>;
     Type: string | null;
@@ -1297,9 +1304,9 @@ export interface HomeOwnersQuote {
     CreatedDate: string;
     EffectiveDate: string | null;
     ExpirationDate: string | null;
-    HomeOwnersQuoteRequestId: number;
     Id: number;
     PersonalPropertyQuoteRequest: Partial<PersonalPropertyQuoteRequest> | null;
+    PersonalPropertyQuoteRequestId: number;
     PolicyKey: string | null;
     Premium: Partial<number> | null;
     RatedTermMonths: number;
