@@ -1323,11 +1323,11 @@ export enum CoApplicantRelationshipToInsured {
 }
 
 export enum Section {
-    HomePartial = 0,
-    HomeCompleted = 1,
-    AutoPartial = 2,
-    AutoCompleted = 4,
-    HomeAutoBundle = 5
+    HomePartial = 1,
+    HomeCompleted = 2,
+    AutoPartial = 4,
+    AutoCompleted = 8,
+    HomeAutoBundle = 10
 }
 
 export enum OverallQuality {
@@ -1474,8 +1474,8 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     ResponsePayload: string | null;
     RoofStyle: RoofStyle | null;
     RoofType: RoofType | null;
-    SectionCompleted: Section;
     SectionPartiallyCompleted: Section;
+    SectionProgression: Section;
     SquareFootage: number | null;
     State: string | null;
     Street1: string | null;
@@ -1717,6 +1717,7 @@ export interface GettingStartedStepOneDto {
     CampaignId: number;
     DateOfBirth: string;
     FirstName: string | null;
+    IsHome: boolean;
     LastName: string | null;
     LeadType: string | null;
     PersonalPropertyQuoteRequestId: number | null;
