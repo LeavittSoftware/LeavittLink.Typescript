@@ -1275,9 +1275,10 @@ export interface Carrier {
 }
 
 export enum LineOfBusiness {
-    PERSONAL_AUTO = 0,
+    OLD_AUTO = 0,
     HOMEOWNERS = 1,
-    PERSONAL_PACKAGE = 2
+    PERSONAL_PACKAGE = 2,
+    PERSONAL_AUTO = 3
 }
 
 export interface HomeOwnersCoverage {
