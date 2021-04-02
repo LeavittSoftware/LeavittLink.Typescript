@@ -1639,7 +1639,7 @@ export interface HomeOwnersStepFiveDto {
     OccupantType: OccupantType | null;
 }
 
-export interface HomeOwnersStepDixDto {
+export interface HomeOwnersStepSixDto {
     HasCats: boolean | null;
     HasDogs: boolean | null;
     HasSwimmingPool: boolean | null;
@@ -1718,7 +1718,6 @@ export interface HomeOwnersStepThreeDto {
     ConstructionType: ConstructionType | null;
     FoundationType: FoundationType | null;
     NumberOfBedrooms: number | null;
-    NumberOfFullBaths: number | null;
     NumberOfStories: NumberOfStories | null;
     PrimaryHeatType: HeatType | null;
     RoofType: RoofType | null;
@@ -1743,7 +1742,6 @@ export interface GettingStartedStepTwoDto {
     PhoneNumber: string | null;
     State: string | null;
     Street1: string | null;
-    Street2: string | null;
     Zip: string | null;
 }
 
@@ -1757,7 +1755,6 @@ export interface GettingStartedStepOneDto {
     LeadType: string | null;
     PersonalPropertyQuoteRequestId: number | null;
     RecaptchaUserResponse: string | null;
-    UserGuid: string | null;
 }
 
 export interface AutoPreviousPoliciesDto {
