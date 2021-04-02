@@ -187,15 +187,15 @@ export interface OccupancyCode {
     BuildingAge: BuildingAge;
     BuildingOccupancyCode: string | null;
     ClassCode: string | null;
+    HartfordNumberOfStories: HartfordNumberOfStories;
     Id: number;
-    NumberOfStories: NumberOfStories;
     OccupancyQuestionInputValueId: number;
     OccupancyTypeCode: string | null;
     OccupancyTypeQuestionInputValueId: number;
     SortOrder: number;
 }
 
-export enum NumberOfStories {
+export enum HartfordNumberOfStories {
     None = 0,
     OneToFour = 1,
     GreaterThanFour = 2,
@@ -444,9 +444,10 @@ export interface StandardQuestion extends Question {
 
 export interface QuestionnaireResult {
     Answers: Array<Partial<Answer>> | null;
-    Campaign: string | null;
+    Campaign: Partial<Campaign> | null;
     CampaignId: number | null;
     CreatedDate: string | null;
+    EloquaCampaign: string | null;
     HartfordQuoteResponses: Array<Partial<HartfordQuoteResponse>> | null;
     HartfordQuoteXmlRequests: Array<Partial<HartfordQuoteXmlRequest>> | null;
     HasBeenFulfilled: boolean;
@@ -458,6 +459,7 @@ export interface QuestionnaireResult {
     Status: QuestionnaireResultStatus;
     User: Partial<User> | null;
     UserId: number;
+    VelocifyCampaignId: number | null;
 }
 
 export enum ResponseValidatorActionType {
@@ -537,55 +539,6 @@ export interface Answer {
     QuestionnaireResult: Partial<QuestionnaireResult> | null;
     QuestionnaireResultId: number;
     QuestionText: string | null;
-}
-
-export enum LifeQuoteRequestStatus {
-    GettingStarted = 0,
-    AboutYou = 1,
-    MillionDollarQuote = 2,
-    Uninsurable = 3,
-    Error = 4,
-    Quotes = 5,
-    SelectedQuote = 6
-}
-
-export interface LifeQuoteRequest extends QuoteRequest {
-    AllowTextMessaging: boolean;
-    City: string | null;
-    CoverageAmount: Partial<number>;
-    ErrorMessage: string | null;
-    Gender: GenderType;
-    HasFulfillBeenRequested: boolean;
-    HealthRating: HealthRatingType;
-    Id: number;
-    IsLargeQuoteRequest: boolean;
-    LifeQuotes: Array<Partial<LifeQuote>> | null;
-    PartnerId: string | null;
-    ProductType: ProductType;
-    RequestPayload: string | null;
-    ResponsePayload: string | null;
-    State: string | null;
-    Status: LifeQuoteRequestStatus;
-    Street1: string | null;
-    Tobacco: TobaccoType;
-    WasLargeQuoteEmailSent: boolean;
-    ZipCode: string | null;
-}
-
-export interface LifeQuote {
-    AnnualPremium: Partial<number>;
-    Company: string | null;
-    CompanyCode: string | null;
-    CreatedDate: string;
-    HealthCategory: string | null;
-    Id: number;
-    LifeQuoteRequest: Partial<LifeQuoteRequest> | null;
-    LifeQuoteRequestId: number;
-    LogoUrl: string | null;
-    PolicyFee: Partial<number>;
-    Premium: Partial<number>;
-    Product: string | null;
-    ProductCode: string | null;
 }
 
 export enum AutoQuoteRequestStatus {
@@ -1218,16 +1171,23 @@ export interface Vehicle extends IVehicle {
 
 export interface Campaign {
     AutoQuoteRequests: Array<Partial<AutoQuoteRequest>> | null;
-    CampaignId: number;
     CarrierLogins: Array<Partial<CarrierLogin>> | null;
     Id: number;
     LifeQuoteRequests: Array<Partial<LifeQuoteRequest>> | null;
     Name: string | null;
     PersonalPropertyQuoteRequests: Array<Partial<PersonalPropertyQuoteRequest>> | null;
+    VelocifyCampaignId: number;
+}
+
+export interface CarrierImageAttachment extends Attachment {
+    Carrier: Partial<Carrier> | null;
+    CarrierId: number;
+    FolderName: string | null;
 }
 
 export interface CampaignImageAttachment extends Attachment {
-    Campaigns: Array<Partial<Campaign>> | null;
+    Campaign: Partial<Campaign> | null;
+    CampaignId: number;
     FolderName: string | null;
 }
 
@@ -1253,7 +1213,6 @@ export interface CarrierLogin {
     CompanyUnits: Array<Partial<CompanyUnit>> | null;
     Id: number;
     ImageUrl: string | null;
-    Password: string | null;
     Username: string | null;
 }
 
@@ -1291,7 +1250,32 @@ export interface HomeOwnersCoverage {
     Waived: boolean;
 }
 
-export interface HomeOwnersQuote {
+export interface HomeOwnersQuote extends Quote {
+}
+
+export enum CoApplicantRelationshipToInsured {
+    SPOUSE = 0,
+    PARTNER = 1,
+    CHILD = 2,
+    OTHER_RELATIVE = 3,
+    OTHER_NON_RELATIVE = 4,
+    PARENT = 5
+}
+
+export enum NumberOfStories {
+    One = 0,
+    OnePointFive = 1,
+    Two = 2,
+    TwoPointFive = 3,
+    Three = 4,
+    ThreePointFive = 5,
+    Four = 6
+}
+
+export interface PersonalAutoQuote extends Quote {
+}
+
+export interface Quote {
     Carrier: Partial<Carrier> | null;
     CarrierId: number;
     CompanyUnitId: number;
@@ -1305,15 +1289,6 @@ export interface HomeOwnersQuote {
     PolicyKey: string | null;
     Premium: Partial<number> | null;
     RatedTermMonths: number;
-}
-
-export enum CoApplicantRelationshipToInsured {
-    SPOUSE = 0,
-    PARTNER = 1,
-    CHILD = 2,
-    OTHER_RELATIVE = 3,
-    OTHER_NON_RELATIVE = 4,
-    PARENT = 5
 }
 
 export enum Section {
@@ -1432,7 +1407,6 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsured | null;
     ConstructionType: ConstructionType | null;
     CorrelationId: string | null;
-    DistanceToFireDepartmentMiles: number | null;
     EffectiveDate: string | null;
     FoundationType: FoundationType | null;
     FulfillErrorMessage: string | null;
@@ -1448,32 +1422,26 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HasSmokeDetector: boolean | null;
     HasSwimmingPool: boolean | null;
     HasTrampoline: boolean | null;
-    HomeOwnersQuotes: Array<Partial<HomeOwnersQuote>> | null;
     HomeStyle: HomeStyle | null;
     Id: number;
-    IsWithin1000FeetOfRecognizedWaterSource: boolean | null;
     LastMajorRenovationYear: number | null;
     LastPageVisited: LastPageVisited;
     NumberOfBedrooms: number | null;
-    NumberOfFullBaths: number | null;
-    NumberOfHalfBaths: number | null;
     NumberOfHouseholdMembers: number | null;
-    NumberOfRoofLayers: number | null;
-    NumberOfStories: number | null;
+    NumberOfStories: NumberOfStories | null;
     OccupantType: OccupantType | null;
     OverallQuality: OverallQuality | null;
     PrimaryHeatType: HeatType | null;
+    Quotes: Array<Partial<Quote>> | null;
     RequestPayload: string | null;
     ResidenceType: ResidenceType | null;
     ResponsePayload: string | null;
     RoofStyle: RoofStyle | null;
     RoofType: RoofType | null;
-    SectionPartiallyCompleted: Section;
     SectionProgression: Section;
     SquareFootage: number | null;
     State: string | null;
     Street1: string | null;
-    Street2: string | null;
     YearBuilt: number | null;
     Zip: string | null;
 }
@@ -1544,6 +1512,77 @@ export enum ResidenceType {
     Townhouse = 5,
     Rowhouse = 6,
     Other = 7
+}
+
+export interface LifeCarrier {
+    Active: boolean;
+    Id: number;
+    IXNId: number;
+    LargeLogoUrl: string | null;
+    LifeQuotes: Array<Partial<LifeQuote>> | null;
+    MedLogoUrl: string | null;
+    Name: string | null;
+    SmallLogoUrl: string | null;
+}
+
+export interface LifeCarrierError {
+    Id: number;
+    LifeCarrier: Partial<LifeCarrier> | null;
+    LifeCarrierId: number;
+    LifeQuoteRequest: Partial<LifeQuoteRequest> | null;
+    LifeQuoteRequestId: number;
+}
+
+export enum LifeQuoteRequestStatus {
+    GettingStarted = 0,
+    AboutYou = 1,
+    MillionDollarQuote = 2,
+    Uninsurable = 3,
+    Error = 4,
+    Quotes = 5,
+    SelectedQuote = 6
+}
+
+export interface LifeQuoteRequest extends QuoteRequest {
+    AllowTextMessaging: boolean;
+    CarrierErrors: Array<Partial<LifeCarrierError>> | null;
+    City: string | null;
+    CoverageAmount: Partial<number>;
+    ErrorMessage: string | null;
+    Gender: GenderType;
+    HasFulfillBeenRequested: boolean;
+    HealthRating: HealthRatingType;
+    Id: number;
+    IsLargeQuoteRequest: boolean;
+    LifeQuotes: Array<Partial<LifeQuote>> | null;
+    PartnerId: string | null;
+    ProductType: ProductType;
+    RequestPayload: string | null;
+    ResponsePayload: string | null;
+    State: string | null;
+    Status: LifeQuoteRequestStatus;
+    Street1: string | null;
+    Tobacco: TobaccoType;
+    WasLargeQuoteEmailSent: boolean;
+    ZipCode: string | null;
+}
+
+export interface LifeQuote {
+    AnnualPremium: Partial<number>;
+    Company: string | null;
+    CompanyCode: string | null;
+    CreatedDate: string;
+    HealthCategory: string | null;
+    Id: number;
+    LifeCarrier: Partial<LifeCarrier> | null;
+    LifeCarrierId: number | null;
+    LifeQuoteRequest: Partial<LifeQuoteRequest> | null;
+    LifeQuoteRequestId: number;
+    LogoUrl: string | null;
+    PolicyFee: Partial<number>;
+    Premium: Partial<number>;
+    Product: string | null;
+    ProductCode: string | null;
 }
 
 export interface CampaignSummaryDto {
@@ -1680,7 +1719,7 @@ export interface HomeOwnersStepThreeDto {
     FoundationType: FoundationType | null;
     NumberOfBedrooms: number | null;
     NumberOfFullBaths: number | null;
-    NumberOfStories: number | null;
+    NumberOfStories: NumberOfStories | null;
     PrimaryHeatType: HeatType | null;
     RoofType: RoofType | null;
     SquareFootage: number | null;
