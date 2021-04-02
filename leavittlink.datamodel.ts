@@ -1262,6 +1262,11 @@ export enum CoApplicantRelationshipToInsured {
     PARENT = 5
 }
 
+export enum InitialSection {
+    Home = 0,
+    Auto = 1
+}
+
 export enum NumberOfStories {
     One = 0,
     OnePointFive = 1,
@@ -1424,6 +1429,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HasTrampoline: boolean | null;
     HomeStyle: HomeStyle | null;
     Id: number;
+    InitialSection: InitialSection;
     LastMajorRenovationYear: number | null;
     LastPageVisited: LastPageVisited;
     NumberOfBedrooms: number | null;
