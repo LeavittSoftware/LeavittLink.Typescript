@@ -1577,7 +1577,7 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
     CampaignSummaries: Array<Partial<CampaignSummaryDto>> | null;
     CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
     ChooseBundle: number;
-    Errors: number;
+    FulfillErrors: number;
     GettingStartedStep1: number;
     GettingStartedStep2: number;
     HomeOwnersStep1: number;
@@ -1589,6 +1589,8 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
     HomeOwnersStep7: number;
     HomeOwnersStep8: number;
     Quotes: number;
+    RatingFailed: number;
+    RatingReturnedQuote: number;
     SelectedQuote: number;
 }
 
