@@ -1696,6 +1696,14 @@ export interface AutoQuoteRequestSummaryDto {
     Vehicles: number;
 }
 
+export interface IxnLifeCarrierDto {
+    Id: number;
+    Large: string | null;
+    Medium: string | null;
+    Name: string | null;
+    Small: string | null;
+}
+
 export interface PersonalPropertyQuoteRequestSummaryDto {
     CampaignSummaries: Array<Partial<CampaignSummaryDto>> | null;
     CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
