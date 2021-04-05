@@ -10,6 +10,8 @@ export enum GenderType {
     Female = 2
 }
 
+export type GenderTypeString = keyof typeof GenderType;
+
 export enum HealthRatingType {
     Unknown = 0,
     PreferredPlus = 1,
@@ -17,6 +19,8 @@ export enum HealthRatingType {
     StandardPlus = 3,
     Standard = 4
 }
+
+export type HealthRatingTypeString = keyof typeof HealthRatingType;
 
 export enum ProductType {
     Unknown = 0,
@@ -29,6 +33,8 @@ export enum ProductType {
     YearTerm35 = 7,
     YearTerm40 = 8
 }
+
+export type ProductTypeString = keyof typeof ProductType;
 
 export interface QuoteRequest {
     Campaign: Partial<Campaign> | null;
@@ -50,11 +56,15 @@ export enum TobaccoType {
     No = 2
 }
 
+export type TobaccoTypeString = keyof typeof TobaccoType;
+
 export enum PhoneNumberType {
     Home = 0,
     Business = 1,
     Mobile = 2
 }
+
+export type PhoneNumberTypeString = keyof typeof PhoneNumberType;
 
 export interface IAddress {
     City: string | null;
@@ -184,10 +194,10 @@ export interface MsgStatus {
 }
 
 export interface OccupancyCode {
-    BuildingAge: BuildingAge;
+    BuildingAge: BuildingAgeString;
     BuildingOccupancyCode: string | null;
     ClassCode: string | null;
-    HartfordNumberOfStories: HartfordNumberOfStories;
+    HartfordNumberOfStories: HartfordNumberOfStoriesString;
     Id: number;
     OccupancyQuestionInputValueId: number;
     OccupancyTypeCode: string | null;
@@ -203,11 +213,15 @@ export enum HartfordNumberOfStories {
     GreaterThanTwelve = 4
 }
 
+export type HartfordNumberOfStoriesString = keyof typeof HartfordNumberOfStories;
+
 export enum BuildingAge {
     None = 0,
     LessThanThirty = 1,
     EqualOrGreaterThanThirty = 2
 }
+
+export type BuildingAgeString = keyof typeof BuildingAge;
 
 export interface OtherIdentifier {
     HartfordCustomer: Partial<HartfordCustomer> | null;
@@ -244,7 +258,7 @@ export interface SpectrumClass {
 export interface DocumentPath {
     Id: number;
     Path: string | null;
-    PathType: PathType;
+    PathType: PathTypeString;
     Question: Partial<Question> | null;
     QuestionId: number | null;
     QuestionInputValue: Partial<QuestionInputValue> | null;
@@ -255,6 +269,8 @@ export enum PathType {
     Xpath = 0,
     Javascript = 1
 }
+
+export type PathTypeString = keyof typeof PathType;
 
 export enum QuestionnaireResultStatus {
     GettingStarted = 0,
@@ -268,6 +284,8 @@ export enum QuestionnaireResultStatus {
     SelectedQuote = 8
 }
 
+export type QuestionnaireResultStatusString = keyof typeof QuestionnaireResultStatus;
+
 export enum QuestionGroupCovType {
     LiabilityOnly = 0,
     OCP = 1,
@@ -275,11 +293,15 @@ export enum QuestionGroupCovType {
     PropertyandLiability = 3
 }
 
+export type QuestionGroupCovTypeString = keyof typeof QuestionGroupCovType;
+
 export enum QuestionGroupDriverType {
     Class = 0,
     LOB = 1,
     OptionalCvg = 2
 }
+
+export type QuestionGroupDriverTypeString = keyof typeof QuestionGroupDriverType;
 
 export enum QuestionUiType {
     CheckBox = 0,
@@ -289,6 +311,8 @@ export enum QuestionUiType {
     SingleSelect = 4,
     MultiSelect = 5
 }
+
+export type QuestionUiTypeString = keyof typeof QuestionUiType;
 
 export interface ResponseValidatorActionToQuestionInputValue {
     Id: number;
@@ -310,6 +334,8 @@ export enum PredicateType {
     NonNegative = 3,
     Integer = 4
 }
+
+export type PredicateTypeString = keyof typeof PredicateType;
 
 export interface Question {
     Answers: Array<Partial<Answer>> | null;
@@ -342,7 +368,7 @@ export interface FlowAugmentor {
     Id: number;
     IsExpired: boolean;
     Predicate: string | null;
-    PredicateType: PredicateType;
+    PredicateType: PredicateTypeString;
     Question: Partial<StandardQuestion> | null;
     QuestionId: number;
     StartDate: string;
@@ -357,10 +383,10 @@ export interface QuestionGroup {
     IsRequired: boolean;
     Name: string | null;
     QuestionFlowAugmentorActions: Array<Partial<QuestionFlowAugmentorAction>> | null;
-    QuestionGroupCovType: QuestionGroupCovType;
-    QuestionGroupDriverType: QuestionGroupDriverType;
+    QuestionGroupCovType: QuestionGroupCovTypeString;
+    QuestionGroupDriverType: QuestionGroupDriverTypeString;
     QuestionGroupFlowAugmentorActions: Array<Partial<QuestionGroupFlowAugmentorAction>> | null;
-    QuestionGroupType: QuestionGroupType;
+    QuestionGroupType: QuestionGroupTypeString;
     QuestionnaireGroup: Partial<QuestionnaireGroup> | null;
     QuestionnaireGroupId: number | null;
     Questions: Array<Partial<Question>> | null;
@@ -375,6 +401,8 @@ export enum QuestionGroupType {
     HartfordAccord = 3
 }
 
+export type QuestionGroupTypeString = keyof typeof QuestionGroupType;
+
 export enum QuestionInputType {
     String = 0,
     Date = 1,
@@ -382,6 +410,8 @@ export enum QuestionInputType {
     Boolean = 3,
     Decimal = 4
 }
+
+export type QuestionInputTypeString = keyof typeof QuestionInputType;
 
 export interface QuestionInputValue {
     Answer: string | null;
@@ -428,7 +458,7 @@ export interface ResponseValidator {
     Id: number;
     IsExpired: boolean;
     Predicate: string | null;
-    PredicateType: PredicateType;
+    PredicateType: PredicateTypeString;
     Question: Partial<Question> | null;
     QuestionId: number;
     StartDate: string;
@@ -437,9 +467,9 @@ export interface ResponseValidator {
 export interface StandardQuestion extends Question {
     DefaultAnswerValue: string | null;
     FlowAugmentors: Array<Partial<FlowAugmentor>> | null;
-    QuestionInputType: QuestionInputType;
+    QuestionInputType: QuestionInputTypeString;
     QuestionInputValues: Array<Partial<QuestionInputValue>> | null;
-    QuestionUiType: QuestionUiType;
+    QuestionUiType: QuestionUiTypeString;
 }
 
 export interface QuestionnaireResult {
@@ -456,7 +486,7 @@ export interface QuestionnaireResult {
     Questionnaire: Partial<Questionnaire> | null;
     QuestionnaireId: number;
     ReferringUrl: string | null;
-    Status: QuestionnaireResultStatus;
+    Status: QuestionnaireResultStatusString;
     User: Partial<User> | null;
     UserId: number;
     VelocifyCampaignId: number | null;
@@ -469,6 +499,8 @@ export enum ResponseValidatorActionType {
     SelectFilter = 3
 }
 
+export type ResponseValidatorActionTypeString = keyof typeof ResponseValidatorActionType;
+
 export interface ResponseValidatorAction {
     EndDate: string | null;
     FriendlyMessage: string | null;
@@ -479,7 +511,7 @@ export interface ResponseValidatorAction {
     ResponseValidatorActionToQuestionInputValues: Array<Partial<ResponseValidatorActionToQuestionInputValue>> | null;
     ResponseValidatorId: number;
     StartDate: string;
-    Type: ResponseValidatorActionType;
+    Type: ResponseValidatorActionTypeString;
 }
 
 export interface AddAnswerFlowAugmentorAction extends FlowAugmentorAction {
@@ -501,11 +533,15 @@ export enum FlowAugmentorActionType {
     Show = 3
 }
 
+export type FlowAugmentorActionTypeString = keyof typeof FlowAugmentorActionType;
+
 export enum FlowAugmentorActionPlacement {
     Next = 0,
     Last = 1,
     AtIndex = 2
 }
+
+export type FlowAugmentorActionPlacementString = keyof typeof FlowAugmentorActionPlacement;
 
 export interface FlowAugmentorAction {
     EndDate: string | null;
@@ -514,9 +550,9 @@ export interface FlowAugmentorAction {
     Id: number;
     Index: number | null;
     IsExpired: boolean;
-    Placement: FlowAugmentorActionPlacement;
+    Placement: FlowAugmentorActionPlacementString;
     StartDate: string;
-    Type: FlowAugmentorActionType;
+    Type: FlowAugmentorActionTypeString;
 }
 
 export interface QuestionFlowAugmentorAction extends FlowAugmentorAction {
@@ -552,10 +588,14 @@ export enum AutoQuoteRequestStatus {
     SelectedQuote = 7
 }
 
+export type AutoQuoteRequestStatusString = keyof typeof AutoQuoteRequestStatus;
+
 export enum CurrentPriorInsuranceType {
     Standard = 0,
     None = 1
 }
+
+export type CurrentPriorInsuranceTypeString = keyof typeof CurrentPriorInsuranceType;
 
 export interface DriverToVehicle {
     Driver: Partial<Driver> | null;
@@ -574,8 +614,8 @@ export interface Accident {
     DriverId: number;
     Id: number;
     InjuryAmount: number | null;
-    Type: AccidentType | null;
-    VertaforeType: VertaforeAccidentTypes | null;
+    Type: AccidentTypeString | null;
+    VertaforeType: VertaforeAccidentTypesString | null;
 }
 
 export enum EducationLevelType {
@@ -588,6 +628,8 @@ export enum EducationLevelType {
     GraduateWorkOrGraduateDegree = 6
 }
 
+export type EducationLevelTypeString = keyof typeof EducationLevelType;
+
 export enum VertaforeAccidentTypes {
     Speeding = 0,
     DWI = 1,
@@ -599,6 +641,8 @@ export enum VertaforeAccidentTypes {
     AllOtherMinorInfractions = 7,
     FailuretoStop = 8
 }
+
+export type VertaforeAccidentTypesString = keyof typeof VertaforeAccidentTypes;
 
 export enum AccidentType {
     vcConsumingAlcohol = 1,
@@ -982,6 +1026,8 @@ export enum AccidentType {
     AllOtherNonVoluntaryCompID = -2147483645
 }
 
+export type AccidentTypeString = keyof typeof AccidentType;
+
 export interface ClientDetail extends IAddress {
     AutoQuoteRequest: Partial<AutoQuoteRequest> | null;
     Id: number;
@@ -1063,9 +1109,9 @@ export interface VertaforeAutoLookup {
 
 export interface PreviousPolicy {
     AutoQuoteRequest: Partial<AutoQuoteRequest> | null;
-    CurrentPriorInsurance: CurrentPriorInsuranceType | null;
+    CurrentPriorInsurance: CurrentPriorInsuranceTypeString | null;
     DoesHouseholdConsumeAlcohol: boolean | null;
-    EducationLevel: EducationLevelType;
+    EducationLevel: EducationLevelTypeString;
     EffectiveDate: string | null;
     EnrollTelematicsProgram: boolean | null;
     Id: number;
@@ -1147,7 +1193,7 @@ export interface AutoQuoteRequest extends QuoteRequest {
     RequestedPolicyStartDate: string | null;
     RequestPayload: string | null;
     ResponsePayload: string | null;
-    Status: AutoQuoteRequestStatus;
+    Status: AutoQuoteRequestStatusString;
     TransactionId: string | null;
     Vehicles: Array<Partial<Vehicle>> | null;
 }
@@ -1198,7 +1244,7 @@ export interface CarrierError {
     CarrierId: number;
     CarrierName: string | null;
     Id: number;
-    LineOfBusiness: LineOfBusiness;
+    LineOfBusiness: LineOfBusinessString;
     Message: string | null;
     PersonalPropertyQuoteRequest: Partial<PersonalPropertyQuoteRequest> | null;
     PersonalPropertyQuoteRequestId: number | null;
@@ -1222,7 +1268,7 @@ export interface CompanyUnit {
     CompanyUnitId: number;
     Id: number;
     IsActive: boolean;
-    LineOfBusiness: LineOfBusiness;
+    LineOfBusiness: LineOfBusinessString;
     State: string | null;
 }
 
@@ -1239,6 +1285,8 @@ export enum LineOfBusiness {
     PERSONAL_PACKAGE = 2,
     PERSONAL_AUTO = 3
 }
+
+export type LineOfBusinessString = keyof typeof LineOfBusiness;
 
 export interface HomeOwnersCoverage {
     Description: string | null;
@@ -1262,10 +1310,14 @@ export enum CoApplicantRelationshipToInsured {
     PARENT = 5
 }
 
+export type CoApplicantRelationshipToInsuredString = keyof typeof CoApplicantRelationshipToInsured;
+
 export enum InitialSection {
     Home = 0,
     Auto = 1
 }
+
+export type InitialSectionString = keyof typeof InitialSection;
 
 export enum NumberOfStories {
     One = 0,
@@ -1276,6 +1328,8 @@ export enum NumberOfStories {
     ThreePointFive = 5,
     Four = 6
 }
+
+export type NumberOfStoriesString = keyof typeof NumberOfStories;
 
 export interface PersonalAutoQuote extends Quote {
 }
@@ -1310,10 +1364,14 @@ export enum OverallQuality {
     Premium = 2
 }
 
+export type OverallQualityString = keyof typeof OverallQuality;
+
 export enum OccupantType {
     OWNER = 0,
     TENANT = 1
 }
+
+export type OccupantTypeString = keyof typeof OccupantType;
 
 export enum HailResistantRoofType {
     NONE = 0,
@@ -1322,6 +1380,8 @@ export enum HailResistantRoofType {
     CLASS_3 = 3,
     CLASS_4 = 4
 }
+
+export type HailResistantRoofTypeString = keyof typeof HailResistantRoofType;
 
 export enum RoofType {
     ALUMINUM_SHINGLES = 0,
@@ -1361,6 +1421,8 @@ export enum RoofType {
     WOOD_SHAKE_SHINGLE = 34
 }
 
+export type RoofTypeString = keyof typeof RoofType;
+
 export enum ConstructionType {
     FRAME = 0,
     JOISTED_MASONRY = 1,
@@ -1376,6 +1438,8 @@ export enum ConstructionType {
     MOBILE_HOME = 11,
     LOG_HOME = 12
 }
+
+export type ConstructionTypeString = keyof typeof ConstructionType;
 
 export enum LastPageVisited {
     GettingStarted1 = 0,
@@ -1400,6 +1464,8 @@ export enum LastPageVisited {
     SelectedQuote = 19
 }
 
+export type LastPageVisitedString = keyof typeof LastPageVisited;
+
 export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     AcquisitionDate: string | null;
     Baths: Partial<number> | null;
@@ -1409,13 +1475,13 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     CoApplicantDateOfBirth: string | null;
     CoApplicantFirstName: string | null;
     CoApplicantLastName: string | null;
-    CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsured | null;
-    ConstructionType: ConstructionType | null;
+    CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsuredString | null;
+    ConstructionType: ConstructionTypeString | null;
     CorrelationId: string | null;
     EffectiveDate: string | null;
-    FoundationType: FoundationType | null;
+    FoundationType: FoundationTypeString | null;
     FulfillErrorMessage: string | null;
-    HailResistantRoofType: HailResistantRoofType | null;
+    HailResistantRoofType: HailResistantRoofTypeString | null;
     HasAutomaticSprinklers: boolean | null;
     HasBurglarAlarm: boolean | null;
     HasCats: boolean | null;
@@ -1427,24 +1493,24 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HasSmokeDetector: boolean | null;
     HasSwimmingPool: boolean | null;
     HasTrampoline: boolean | null;
-    HomeStyle: HomeStyle | null;
+    HomeStyle: HomeStyleString | null;
     Id: number;
-    InitialSection: InitialSection;
+    InitialSection: InitialSectionString;
     LastMajorRenovationYear: number | null;
-    LastPageVisited: LastPageVisited;
+    LastPageVisited: LastPageVisitedString;
     NumberOfBedrooms: number | null;
     NumberOfHouseholdMembers: number | null;
-    NumberOfStories: NumberOfStories | null;
-    OccupantType: OccupantType | null;
-    OverallQuality: OverallQuality | null;
-    PrimaryHeatType: HeatType | null;
+    NumberOfStories: NumberOfStoriesString | null;
+    OccupantType: OccupantTypeString | null;
+    OverallQuality: OverallQualityString | null;
+    PrimaryHeatType: HeatTypeString | null;
     Quotes: Array<Partial<Quote>> | null;
     RequestPayload: string | null;
-    ResidenceType: ResidenceType | null;
+    ResidenceType: ResidenceTypeString | null;
     ResponsePayload: string | null;
-    RoofStyle: RoofStyle | null;
-    RoofType: RoofType | null;
-    SectionProgression: Section;
+    RoofStyle: RoofStyleString | null;
+    RoofType: RoofTypeString | null;
+    SectionProgression: SectionString;
     SquareFootage: number | null;
     State: string | null;
     Street1: string | null;
@@ -1482,6 +1548,8 @@ export enum HomeStyle {
     TriLevelRowCenter = 26
 }
 
+export type HomeStyleString = keyof typeof HomeStyle;
+
 export enum HeatType {
     Electric = 0,
     Gas = 1,
@@ -1489,6 +1557,8 @@ export enum HeatType {
     Oil = 3,
     Other = 4
 }
+
+export type HeatTypeString = keyof typeof HeatType;
 
 export enum FoundationType {
     SLAB = 0,
@@ -1498,6 +1568,8 @@ export enum FoundationType {
     HILLSIDE = 4,
     OTHER = 5
 }
+
+export type FoundationTypeString = keyof typeof FoundationType;
 
 export enum RoofStyle {
     Flat = 0,
@@ -1509,6 +1581,8 @@ export enum RoofStyle {
     Turret = 6
 }
 
+export type RoofStyleString = keyof typeof RoofStyle;
+
 export enum ResidenceType {
     SingleFamilyDwelling = 0,
     Condo = 1,
@@ -1519,6 +1593,8 @@ export enum ResidenceType {
     Rowhouse = 6,
     Other = 7
 }
+
+export type ResidenceTypeString = keyof typeof ResidenceType;
 
 export interface LifeCarrier {
     Active: boolean;
@@ -1549,26 +1625,28 @@ export enum LifeQuoteRequestStatus {
     SelectedQuote = 6
 }
 
+export type LifeQuoteRequestStatusString = keyof typeof LifeQuoteRequestStatus;
+
 export interface LifeQuoteRequest extends QuoteRequest {
     AllowTextMessaging: boolean;
     CarrierErrors: Array<Partial<LifeCarrierError>> | null;
     City: string | null;
     CoverageAmount: Partial<number>;
     ErrorMessage: string | null;
-    Gender: GenderType;
+    Gender: GenderTypeString;
     HasFulfillBeenRequested: boolean;
-    HealthRating: HealthRatingType;
+    HealthRating: HealthRatingTypeString;
     Id: number;
     IsLargeQuoteRequest: boolean;
     LifeQuotes: Array<Partial<LifeQuote>> | null;
     PartnerId: string | null;
-    ProductType: ProductType;
+    ProductType: ProductTypeString;
     RequestPayload: string | null;
     ResponsePayload: string | null;
     State: string | null;
-    Status: LifeQuoteRequestStatus;
+    Status: LifeQuoteRequestStatusString;
     Street1: string | null;
-    Tobacco: TobaccoType;
+    Tobacco: TobaccoTypeString;
     WasLargeQuoteEmailSent: boolean;
     ZipCode: string | null;
 }
@@ -1642,7 +1720,7 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
 export interface HomeOwnersStepFiveDto {
     ClaimsLast5Years: number | null;
     LastMajorRenovationYear: number | null;
-    OccupantType: OccupantType | null;
+    OccupantType: OccupantTypeString | null;
 }
 
 export interface HomeOwnersStepSixDto {
@@ -1653,7 +1731,7 @@ export interface HomeOwnersStepSixDto {
 }
 
 export interface HomeOwnersStepSevenDto {
-    CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsured | null;
+    CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsuredString | null;
 }
 
 export interface HomeOwnersStepEightDto {
@@ -1682,8 +1760,8 @@ export interface AutoAccidentDto {
     Date: string;
     DriverId: number;
     Id: number;
-    Type: AccidentType | null;
-    VertaforeType: VertaforeAccidentTypes | null;
+    Type: AccidentTypeString | null;
+    VertaforeType: VertaforeAccidentTypesString | null;
 }
 
 export interface AutoDriverDto {
@@ -1705,7 +1783,7 @@ export interface AutoDriverDto {
 
 export interface AutoDiscountsDto {
     DoesHouseholdConsumeAlcohol: boolean | null;
-    EducationLevel: EducationLevelType | null;
+    EducationLevel: EducationLevelTypeString | null;
     EnrollTelematicsProgram: boolean;
     PaperLess: boolean;
 }
@@ -1721,30 +1799,30 @@ export interface HomeOwnersStepFourDto {
 
 export interface HomeOwnersStepThreeDto {
     Baths: Partial<number> | null;
-    ConstructionType: ConstructionType | null;
-    FoundationType: FoundationType | null;
+    ConstructionType: ConstructionTypeString | null;
+    FoundationType: FoundationTypeString | null;
     NumberOfBedrooms: number | null;
-    NumberOfStories: NumberOfStories | null;
-    PrimaryHeatType: HeatType | null;
-    RoofType: RoofType | null;
+    NumberOfStories: NumberOfStoriesString | null;
+    PrimaryHeatType: HeatTypeString | null;
+    RoofType: RoofTypeString | null;
     SquareFootage: number | null;
     YearBuilt: number | null;
 }
 
 export interface HomeOwnersStepTwoDto {
-    OverallQuality: OverallQuality | null;
+    OverallQuality: OverallQualityString | null;
 }
 
 export interface HomeOwnersStepOneDto {
     AcquisitionDate: string;
-    HomeStyle: HomeStyle;
-    ResidenceType: ResidenceType;
+    HomeStyle: HomeStyleString;
+    ResidenceType: ResidenceTypeString;
 }
 
 export interface GettingStartedStepTwoDto {
     City: string | null;
     EmailAddress: string | null;
-    NextStep: Section;
+    NextStep: SectionString;
     PhoneNumber: string | null;
     State: string | null;
     Street1: string | null;
@@ -1793,11 +1871,11 @@ export interface AutoDriverToVehicleDto {
 
 export interface LifeAboutYouAnswerDto {
     CoverageAmount: Partial<number>;
-    Gender: GenderType;
-    HealthRating: HealthRatingType;
+    Gender: GenderTypeString;
+    HealthRating: HealthRatingTypeString;
     IsLargeQuoteRequest: boolean;
-    ProductType: ProductType;
-    Tobacco: TobaccoType;
+    ProductType: ProductTypeString;
+    Tobacco: TobaccoTypeString;
 }
 
 export interface LifeAnswerDto {
@@ -1809,20 +1887,20 @@ export interface LifeAnswerDto {
     DateOfBirth: string;
     EmailAddress: string | null;
     FirstName: string | null;
-    Gender: GenderType;
-    HealthRating: HealthRatingType;
+    Gender: GenderTypeString;
+    HealthRating: HealthRatingTypeString;
     HomePhoneNumber: string | null;
     IsLargeQuoteRequest: boolean;
     LastName: string | null;
     LeadType: string | null;
     LifeQuoteRequestId: number | null;
     PartnerId: string | null;
-    ProductType: ProductType;
+    ProductType: ProductTypeString;
     RecaptchaUserResponse: string | null;
     ReferringUrl: string | null;
     State: string | null;
     Street1: string | null;
-    Tobacco: TobaccoType;
+    Tobacco: TobaccoTypeString;
     UserGuid: string | null;
     ZipCode: string | null;
 }
