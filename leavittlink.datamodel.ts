@@ -1689,9 +1689,10 @@ export interface AutoQuoteRequestSummaryDto {
     Discounts: number;
     Drivers: number;
     Error: number;
-    GettingStarted: number;
     Policy: number;
     Quotes: number;
+    RatingFailed: number;
+    RatingReturnedQuote: number;
     SelectedQuote: number;
     Vehicles: number;
 }
@@ -1709,7 +1710,6 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
     CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
     ChooseBundle: number;
     FulfillErrors: number;
-    GettingStartedStep1: number;
     GettingStartedStep2: number;
     HomeOwnersStep1: number;
     HomeOwnersStep2: number;
@@ -1964,16 +1964,13 @@ export interface LifeQuoteErrorResultDto {
 
 export interface LifeQuoteRequestSummaryDto {
     AboutYou: number;
+    CampaignSummaries: Array<Partial<CampaignSummaryDto>> | null;
+    CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
     Error: number;
-    GettingStarted: number;
-    LGNWAttempt: number;
-    LGNWCompleted: number;
-    LLAttempt: number;
-    LLCompleted: number;
-    MacuAttempt: number;
-    MacuCompleted: number;
     MillionDollarQuote: number;
     Quotes: number;
+    RatingFailed: number;
+    RatingReturnedQuote: number;
     SelectedQuote: number;
     Uninsurable: number;
 }
