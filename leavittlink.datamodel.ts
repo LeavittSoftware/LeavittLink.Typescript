@@ -1510,7 +1510,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     ResponsePayload: string | null;
     RoofStyle: RoofStyleString | null;
     RoofType: RoofTypeString | null;
-    SectionProgression: SectionString;
+    SectionProgression: Section;
     SquareFootage: number | null;
     State: string | null;
     Street1: string | null;
@@ -1830,7 +1830,7 @@ export interface HomeOwnersStepOneDto {
 export interface GettingStartedStepTwoDto {
     City: string | null;
     EmailAddress: string | null;
-    NextStep: SectionString;
+    NextStep: Section;
     PhoneNumber: string | null;
     State: string | null;
     Street1: string | null;
