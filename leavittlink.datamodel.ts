@@ -1217,6 +1217,7 @@ export interface Vehicle extends IVehicle {
 
 export interface Campaign {
     AutoQuoteRequests: Array<Partial<AutoQuoteRequest>> | null;
+    CampaignImageAttachment: Partial<CampaignImageAttachment> | null;
     CarrierLogins: Array<Partial<CarrierLogin>> | null;
     Id: number;
     LifeQuoteRequests: Array<Partial<LifeQuoteRequest>> | null;
@@ -1227,14 +1228,14 @@ export interface Campaign {
 
 export interface CarrierImageAttachment extends Attachment {
     Carrier: Partial<Carrier> | null;
-    CarrierId: number;
     FolderName: string | null;
+    Id: number;
 }
 
 export interface CampaignImageAttachment extends Attachment {
     Campaign: Partial<Campaign> | null;
-    CampaignId: number;
     FolderName: string | null;
+    Id: number;
 }
 
 export interface CarrierError {
@@ -1274,6 +1275,7 @@ export interface CompanyUnit {
 
 export interface Carrier {
     CarrierErrors: Array<Partial<CarrierError>> | null;
+    CarrierImageAttachment: Partial<CarrierImageAttachment> | null;
     CarrierLogins: Array<Partial<CarrierLogin>> | null;
     Id: number;
     Name: string | null;
@@ -2009,7 +2011,6 @@ export interface Attachment extends ISynchronizable {
     DeletedDate: string | null;
     Description: string | null;
     Extension: string | null;
-    Id: number;
     IsDeleted: boolean;
     Name: string | null;
     PreviewExtension: string | null;
