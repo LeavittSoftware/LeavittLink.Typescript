@@ -1669,6 +1669,15 @@ export interface LifeQuote {
     ProductCode: string | null;
 }
 
+export interface CarrierLoginDto {
+    AgencyCode: string | null;
+    CampaignId: number;
+    CarrierId: number;
+    Id: number | null;
+    Password: string | null;
+    Username: string | null;
+}
+
 export interface CampaignSummaryDto {
     Attempted: number;
     CampaignId: number;
