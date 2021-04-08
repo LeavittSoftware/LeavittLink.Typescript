@@ -1228,13 +1228,11 @@ export interface Campaign {
 
 export interface CarrierImageAttachment extends Attachment {
     Carrier: Partial<Carrier> | null;
-    FolderName: string | null;
     Id: number;
 }
 
 export interface CampaignImageAttachment extends Attachment {
     Campaign: Partial<Campaign> | null;
-    FolderName: string | null;
     Id: number;
 }
 
@@ -2006,7 +2004,6 @@ export interface VertaforeLiabilityCslbiLimitDto {
 }
 
 export interface Attachment extends ISynchronizable {
-    BaseUncFileStoragePath: string | null;
     CdnFileName: string | null;
     DeletedDate: string | null;
     Description: string | null;
