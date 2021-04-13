@@ -273,7 +273,6 @@ export enum PathType {
 export type PathTypeString = keyof typeof PathType;
 
 export enum QuestionnaireResultStatus {
-    GettingStarted = 0,
     GeneralInformation = 1,
     BusinessClass = 2,
     Location = 3,
@@ -1442,26 +1441,25 @@ export enum ConstructionType {
 export type ConstructionTypeString = keyof typeof ConstructionType;
 
 export enum LastPageVisited {
-    GettingStarted1 = 0,
-    GettingStarted2 = 1,
-    HomeOwnersStep1 = 2,
-    HomeOwnersStep2 = 3,
-    HomeOwnersStep3 = 4,
-    HomeOwnersStep4 = 5,
-    HomeOwnersStep5 = 6,
-    HomeOwnersStep6 = 7,
-    HomeOwnersStep7 = 8,
-    HomeOwnersStep8 = 9,
-    HomeOwnersStep9 = 10,
-    HomeOwnersStep10 = 11,
-    AutoStep1 = 12,
-    AutoStep2 = 13,
-    AutoStep3 = 14,
-    AutoStep4 = 15,
-    AutoStep5 = 16,
-    ChooseBundle = 17,
-    Quotes = 18,
-    SelectedQuote = 19
+    GettingStarted2 = 0,
+    HomeOwnersStep1 = 1,
+    HomeOwnersStep2 = 2,
+    HomeOwnersStep3 = 3,
+    HomeOwnersStep4 = 4,
+    HomeOwnersStep5 = 5,
+    HomeOwnersStep6 = 6,
+    HomeOwnersStep7 = 7,
+    HomeOwnersStep8 = 8,
+    HomeOwnersStep9 = 9,
+    HomeOwnersStep10 = 10,
+    AutoStep1 = 11,
+    AutoStep2 = 12,
+    AutoStep3 = 13,
+    AutoStep4 = 14,
+    AutoStep5 = 15,
+    ChooseBundle = 16,
+    Quotes = 17,
+    SelectedQuote = 18
 }
 
 export type LastPageVisitedString = keyof typeof LastPageVisited;
@@ -1763,7 +1761,6 @@ export interface QuestionnaireResultSummaryDto {
     CoverageAmount: number;
     Error: number;
     GeneralInformation: number;
-    GettingStarted: number;
     LLAttempt: number;
     LLCompleted: number;
     Location: number;
