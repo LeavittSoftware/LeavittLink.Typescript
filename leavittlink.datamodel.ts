@@ -1836,7 +1836,6 @@ export interface HomeOwnersStepOneDto {
 export interface GettingStartedStepTwoDto {
     City: string | null;
     EmailAddress: string | null;
-    NextStep: Section;
     PhoneNumber: string | null;
     State: string | null;
     Street1: string | null;
