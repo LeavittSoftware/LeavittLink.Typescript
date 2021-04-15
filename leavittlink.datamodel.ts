@@ -1298,6 +1298,7 @@ export interface HomeOwnersCoverage {
 }
 
 export interface HomeOwnersQuote extends Quote {
+    Coverages: Array<Partial<HomeOwnersCoverage>> | null;
 }
 
 export enum CoApplicantRelationshipToInsured {
@@ -1337,7 +1338,6 @@ export interface Quote {
     Carrier: Partial<Carrier> | null;
     CarrierId: number;
     CompanyUnitId: number;
-    Coverages: Array<Partial<HomeOwnersCoverage>> | null;
     CreatedDate: string;
     EffectiveDate: string | null;
     ExpirationDate: string | null;
