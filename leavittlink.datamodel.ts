@@ -1223,6 +1223,7 @@ export interface Campaign {
     Name: string | null;
     PersonalPropertyQuoteRequests: Array<Partial<PersonalPropertyQuoteRequest>> | null;
     VelocifyCampaignId: number;
+    VelocifyCampaigns: Array<Partial<VelocifyCampaign>> | null;
 }
 
 export interface CarrierImageAttachment extends Attachment {
@@ -1278,6 +1279,16 @@ export interface Carrier {
     Name: string | null;
 }
 
+export enum LeavittWebRaterType {
+    PersonalAuto = 0,
+    PersonalProperty = 1,
+    Bop = 2,
+    Life = 3,
+    WidgetLife = 4
+}
+
+export type LeavittWebRaterTypeString = keyof typeof LeavittWebRaterType;
+
 export enum LineOfBusiness {
     OLD_AUTO = 0,
     HOMEOWNERS = 1,
@@ -1286,6 +1297,82 @@ export enum LineOfBusiness {
 }
 
 export type LineOfBusinessString = keyof typeof LineOfBusiness;
+
+export interface VelocifyCampaign {
+    Campaign: Partial<Campaign> | null;
+    CampaignId: number;
+    Id: number;
+    LeavittWebRater: LeavittWebRaterTypeString;
+    VelocifyCampaignId: number;
+}
+
+export interface AutoAccident {
+    AutoDriver: Partial<AutoDriver> | null;
+    AutoDriverId: number;
+    Date: string;
+    Id: number;
+    Type: AutoAccidentTypeString | null;
+}
+
+export enum AutoAccidentType {
+    Speeding = 0,
+    DWI = 1,
+    StopSign = 2,
+    NotAtFaultAccident = 3,
+    OtherMinorViolation = 4,
+    OtherMajorViolation = 5,
+    NotAtFaultOther = 6,
+    AllOtherMinorInfractions = 7,
+    FailureToStop = 8
+}
+
+export type AutoAccidentTypeString = keyof typeof AutoAccidentType;
+
+export interface AutoDriver {
+    AutoAccidents: Array<Partial<AutoAccident>> | null;
+    AutoDriverToAutoVehicles: Array<Partial<AutoDriverToAutoVehicle>> | null;
+    DateOfBirth: string;
+    FirstLicensedDate: string | null;
+    FirstName: string | null;
+    Gender: string | null;
+    HasLicense: boolean | null;
+    Id: number;
+    IsLicenseCurrent: boolean | null;
+    LastName: string | null;
+    LicenseState: string | null;
+    LicenseStatus: LicenseStatusTypeString;
+    MaritalStatus: MaritalStatusTypeString;
+    PersonalPropertyQuoteRequest: Partial<PersonalPropertyQuoteRequest> | null;
+    PersonalPropertyQuoteRequestId: number;
+    RelationshipToInsured: RelationshipToInsuredTypeString;
+}
+
+export interface AutoDriverToAutoVehicle {
+    AutoDriver: Partial<AutoDriver> | null;
+    AutoDriverId: number;
+    AutoVehicle: Partial<AutoVehicle> | null;
+    AutoVehicleId: number;
+    Id: number;
+}
+
+export interface AutoVehicle {
+    AnnualMilesDriven: number;
+    AutoDriverToAutoVehicles: Array<Partial<AutoDriverToAutoVehicle>> | null;
+    CollisionDeductible: number | null;
+    ComprehensiveDeductible: number | null;
+    Id: number;
+    Make: string | null;
+    Model: string | null;
+    ModelYear: number;
+    PersonalPropertyQuoteRequest: Partial<PersonalPropertyQuoteRequest> | null;
+    PersonalPropertyQuoteRequestId: number;
+    PrimaryDriverId: number | null;
+    RentalCarReimbursementLimit: number | null;
+    TowingCoverageLimit: number | null;
+    TransportationExpense: string | null;
+    VehicleUsage: VehicleUsageTypeString;
+    VIN: string | null;
+}
 
 export interface HomeOwnersCoverage {
     Description: string | null;
@@ -1319,6 +1406,26 @@ export enum InitialSection {
 
 export type InitialSectionString = keyof typeof InitialSection;
 
+export enum LicenseStatusType {
+    Active = 0,
+    Canceled = 1,
+    Revoked = 2,
+    Suspended = 3
+}
+
+export type LicenseStatusTypeString = keyof typeof LicenseStatusType;
+
+export enum MaritalStatusType {
+    Single = 0,
+    Married = 1,
+    Separated = 2,
+    Divorced = 3,
+    Widowed = 4,
+    DomesticPartner = 5
+}
+
+export type MaritalStatusTypeString = keyof typeof MaritalStatusType;
+
 export enum NumberOfStories {
     One = 0,
     OnePointFive = 1,
@@ -1349,6 +1456,16 @@ export interface Quote {
     RatedTermMonths: number;
 }
 
+export enum RelationshipToInsuredType {
+    Self = 0,
+    Spouse = 1,
+    Parent = 2,
+    Child = 3,
+    Other = 4
+}
+
+export type RelationshipToInsuredTypeString = keyof typeof RelationshipToInsuredType;
+
 export enum Section {
     HomePartial = 1,
     HomeCompleted = 2,
@@ -1356,6 +1473,20 @@ export enum Section {
     AutoCompleted = 8,
     HomeAutoBundle = 10
 }
+
+export enum StartingLobType {
+    Homeowners = 0,
+    Auto = 1
+}
+
+export type StartingLobTypeString = keyof typeof StartingLobType;
+
+export enum VehicleUsageType {
+    Business = 0,
+    Personal = 1
+}
+
+export type VehicleUsageTypeString = keyof typeof VehicleUsageType;
 
 export enum OverallQuality {
     Standard = 0,
@@ -1466,6 +1597,13 @@ export type LastPageVisitedString = keyof typeof LastPageVisited;
 
 export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     AcquisitionDate: string | null;
+    AutoDrivers: Array<Partial<AutoDriver>> | null;
+    AutoEffectiveDate: string | null;
+    AutoExpirationDate: string | null;
+    AutoInjuryCoverageLimit: number | null;
+    AutoLiabilityCoverageLimit: number | null;
+    AutoMonthsInsured: number | null;
+    AutoVehicles: Array<Partial<AutoVehicle>> | null;
     Baths: Partial<number> | null;
     CarrierErrors: Array<Partial<CarrierError>> | null;
     City: string | null;
@@ -1476,6 +1614,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsuredString | null;
     ConstructionType: ConstructionTypeString | null;
     CorrelationId: string | null;
+    EducationLevel: EducationLevelTypeString | null;
     EffectiveDate: string | null;
     FoundationType: FoundationTypeString | null;
     FulfillErrorMessage: string | null;
@@ -1483,6 +1622,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HasAutomaticSprinklers: boolean | null;
     HasBurglarAlarm: boolean | null;
     HasCats: boolean | null;
+    HasConsumedAlcohol: boolean | null;
     HasDeadBolts: boolean | null;
     HasDogs: boolean | null;
     HasFireAlarm: boolean | null;
@@ -1494,6 +1634,9 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HomeStyle: HomeStyleString | null;
     Id: number;
     InitialSection: InitialSectionString;
+    IsBundled: boolean;
+    IsEnrolledInDrivingProgram: boolean | null;
+    IsPaperLess: boolean | null;
     LastMajorRenovationYear: number | null;
     LastPageVisited: LastPageVisitedString;
     NumberOfBedrooms: number | null;
@@ -1501,6 +1644,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     NumberOfStories: NumberOfStoriesString | null;
     OccupantType: OccupantTypeString | null;
     OverallQuality: OverallQualityString | null;
+    PleaseAdviseMe: boolean | null;
     PrimaryHeatType: HeatTypeString | null;
     Quotes: Array<Partial<Quote>> | null;
     RequestPayload: string | null;
@@ -1508,8 +1652,8 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     ResponsePayload: string | null;
     RoofStyle: RoofStyleString | null;
     RoofType: RoofTypeString | null;
-    SectionProgression: Section;
     SquareFootage: number | null;
+    StartingLob: StartingLobTypeString;
     State: string | null;
     Street1: string | null;
     YearBuilt: number | null;
@@ -1637,6 +1781,7 @@ export interface LifeQuoteRequest extends QuoteRequest {
     Id: number;
     IsLargeQuoteRequest: boolean;
     LifeQuotes: Array<Partial<LifeQuote>> | null;
+    MacuWealthManager: string | null;
     PartnerId: string | null;
     ProductType: ProductTypeString;
     RequestPayload: string | null;
