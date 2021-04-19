@@ -1903,15 +1903,14 @@ export interface HomeOwnersStepEightDto {
 export interface QuestionnaireResultSummaryDto {
     AdditionalInformation: number;
     BusinessClass: number;
+    CampaignSummaries: Array<Partial<CampaignSummaryDto>> | null;
     CoverageAmount: number;
     Error: number;
     GeneralInformation: number;
-    LLAttempt: number;
-    LLCompleted: number;
     Location: number;
-    MacuAttempt: number;
-    MacuCompleted: number;
     Quotes: number;
+    RatingFailed: number;
+    RatingReturnedQuote: number;
     SelectedQuote: number;
 }
 
