@@ -1647,9 +1647,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     PleaseAdviseMe: boolean | null;
     PrimaryHeatType: HeatTypeString | null;
     Quotes: Array<Partial<Quote>> | null;
-    RequestPayload: string | null;
     ResidenceType: ResidenceTypeString | null;
-    ResponsePayload: string | null;
     RoofStyle: RoofStyleString | null;
     RoofType: RoofTypeString | null;
     SquareFootage: number | null;
