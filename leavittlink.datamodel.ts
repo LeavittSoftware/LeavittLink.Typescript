@@ -1911,6 +1911,12 @@ export interface HomeOwnersStepEightDto {
     CoApplicantLastName: string | null;
 }
 
+export interface QuestionnaireResultDto {
+    CampaignName: string | null;
+    QuestionnaireId: number;
+    UserId: number;
+}
+
 export interface QuestionnaireResultSummaryDto {
     AdditionalInformation: number;
     BusinessClass: number;
