@@ -1812,6 +1812,17 @@ export interface LifeQuote {
     ProductCode: string | null;
 }
 
+export interface AutoNewPolicyDto {
+    AutoEffectiveDate: string | null;
+    AutoInjuryCoverageLimit: number | null;
+    AutoLiabilityCoverageLimit: number | null;
+}
+
+export interface AutoPreviousPolicyDto {
+    AutoExpirationDate: string | null;
+    AutoMonthsInsured: number | null;
+}
+
 export interface CarrierLoginDto {
     AgencyCode: string | null;
     CampaignId: number;
