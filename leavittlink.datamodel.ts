@@ -2053,7 +2053,7 @@ export interface LifeAboutYouAnswerDto {
 export interface LifeAnswerDto {
     AllowTextMessaging: boolean;
     Campaign: string | null;
-    CampaignId: number;
+    CampaignName: string | null;
     City: string | null;
     CoverageAmount: Partial<number>;
     DateOfBirth: string;
@@ -2101,7 +2101,7 @@ export interface AutoGettingStartedAnswerDto {
 export interface LifeGettingStartedAnswerDto {
     AllowTextMessaging: boolean;
     Campaign: string | null;
-    CampaignId: number;
+    CampaignName: string | null;
     City: string | null;
     DateOfBirth: string;
     EmailAddress: string | null;
