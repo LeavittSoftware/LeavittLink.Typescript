@@ -1866,6 +1866,21 @@ export interface IxnLifeCarrierDto {
     Small: string | null;
 }
 
+export interface PersonalAutoVehicleDto {
+    AnnualMilesDriven: number;
+    CollisionDeductible: number | null;
+    ComprehensiveDeductible: number | null;
+    Id: number | null;
+    Make: string | null;
+    Model: string | null;
+    ModelYear: number | null;
+    RentalCarReimbursementLimit: number | null;
+    TowingCoverageLimit: number | null;
+    TransportationExpense: string | null;
+    VehicleUsage: VehicleUsageTypeString | null;
+    VIN: string | null;
+}
+
 export interface PersonalPropertyQuoteRequestSummaryDto {
     CampaignSummaries: Array<Partial<CampaignSummaryDto>> | null;
     CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
