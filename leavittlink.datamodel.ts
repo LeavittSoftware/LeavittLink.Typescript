@@ -2018,7 +2018,7 @@ export interface GettingStartedStepTwoDto {
 
 export interface GettingStartedStepOneDto {
     Campaign: string | null;
-    CampaignId: number;
+    CampaignName: string | null;
     DateOfBirth: string;
     FirstName: string | null;
     IsHome: boolean;
