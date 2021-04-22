@@ -2128,6 +2128,7 @@ export interface AutoGettingStartedAnswerDto {
     AutoQuoteRequestId: number | null;
     Campaign: string | null;
     City: string | null;
+    County: string | null;
     DateOfBirth: string;
     EmailAddress: string | null;
     FirstName: string | null;
