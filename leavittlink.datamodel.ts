@@ -1858,6 +1858,16 @@ export interface AutoQuoteRequestSummaryDto {
     Vehicles: number;
 }
 
+export interface DiscountsOneDto {
+    HasConsumedAlcohol: boolean | null;
+    IsEnrolledInDrivingProgram: boolean | null;
+    IsPaperless: boolean | null;
+}
+
+export interface DiscountsTwoDto {
+    EducationLevel: EducationLevelTypeString | null;
+}
+
 export interface IxnLifeCarrierDto {
     Id: number;
     Large: string | null;
