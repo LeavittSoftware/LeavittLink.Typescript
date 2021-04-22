@@ -1866,6 +1866,19 @@ export interface IxnLifeCarrierDto {
     Small: string | null;
 }
 
+export interface PersonalAutoAccidentDto {
+    AutoDriverId: number;
+    Date: string;
+    Id: number;
+    Type: AutoAccidentTypeString | null;
+}
+
+export interface PersonalAutoDriverToAutoVehicle {
+    AutoDriverId: number;
+    AutoVehicleId: number;
+    Id: number;
+}
+
 export interface PersonalAutoVehicleDto {
     AnnualMilesDriven: number;
     CollisionDeductible: number | null;
@@ -1879,6 +1892,23 @@ export interface PersonalAutoVehicleDto {
     TransportationExpense: string | null;
     VehicleUsage: VehicleUsageTypeString | null;
     VIN: string | null;
+}
+
+export interface PersonalAutoDriverDto {
+    AutoAccidents: Array<Partial<PersonalAutoAccidentDto>> | null;
+    AutoDriverToAutoVehicles: Array<Partial<PersonalAutoDriverToAutoVehicle>> | null;
+    DateOfBirth: string;
+    FirstLicensedDate: string | null;
+    FirstName: string | null;
+    Gender: string | null;
+    HasLicense: boolean | null;
+    Id: number | null;
+    IsLicenseCurrent: boolean | null;
+    LastName: string | null;
+    LicenseState: string | null;
+    LicenseStatus: LicenseStatusTypeString | null;
+    MaritalStatus: MaritalStatusTypeString | null;
+    RelationshipToInsured: RelationshipToInsuredTypeString | null;
 }
 
 export interface PersonalPropertyQuoteRequestSummaryDto {
