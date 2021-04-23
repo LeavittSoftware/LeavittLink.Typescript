@@ -1984,6 +1984,10 @@ export interface QuestionnaireResultSummaryDto {
     SelectedQuote: number;
 }
 
+export interface TransportationExpenseDto {
+    Values: Array<string> | null;
+}
+
 export interface AutoAccidentDto {
     Date: string;
     DriverId: number;
