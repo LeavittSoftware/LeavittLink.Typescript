@@ -1984,7 +1984,7 @@ export interface QuestionnaireResultSummaryDto {
     SelectedQuote: number;
 }
 
-export interface TransportationExpenseDto {
+export interface VertaforeLimitsDto {
     Values: Array<string> | null;
 }
 
