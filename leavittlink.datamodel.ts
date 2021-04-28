@@ -1314,16 +1314,27 @@ export interface AutoAccident {
     Type: AutoAccidentTypeString | null;
 }
 
+export enum EducationType {
+    SOME_HIGH_SCHOOL = 0,
+    HIGH_SCHOOL = 1,
+    SOME_COLLEGE = 2,
+    ASSOCIATES_DEGREE = 3,
+    BACHELORS_DEGREE = 4,
+    MASTERS_DEGREE = 5,
+    DOCTORATE_DEGREE = 6,
+    GED = 7,
+    VOCATIONAL_TECHNICAL = 8
+}
+
+export type EducationTypeString = keyof typeof EducationType;
+
 export enum AutoAccidentType {
     Speeding = 0,
     DWI = 1,
     StopSign = 2,
     NotAtFaultAccident = 3,
     OtherMinorViolation = 4,
-    OtherMajorViolation = 5,
-    NotAtFaultOther = 6,
-    AllOtherMinorInfractions = 7,
-    FailureToStop = 8
+    OtherMajorViolation = 5
 }
 
 export type AutoAccidentTypeString = keyof typeof AutoAccidentType;
@@ -1335,9 +1346,7 @@ export interface AutoDriver {
     FirstLicensedDate: string | null;
     FirstName: string | null;
     Gender: string | null;
-    HasLicense: boolean | null;
     Id: number;
-    IsLicenseCurrent: boolean | null;
     LastName: string | null;
     LicenseState: string | null;
     LicenseStatus: LicenseStatusTypeString;
@@ -1367,7 +1376,6 @@ export interface AutoVehicle {
     PersonalPropertyQuoteRequest: Partial<PersonalPropertyQuoteRequest> | null;
     PersonalPropertyQuoteRequestId: number;
     PrimaryDriverId: number | null;
-    RentalCarReimbursementLimit: number | null;
     TowingCoverageLimit: number | null;
     TransportationExpense: string | null;
     VehicleUsage: VehicleUsageTypeString;
@@ -1399,18 +1407,12 @@ export enum CoApplicantRelationshipToInsured {
 
 export type CoApplicantRelationshipToInsuredString = keyof typeof CoApplicantRelationshipToInsured;
 
-export enum InitialSection {
-    Home = 0,
-    Auto = 1
-}
-
-export type InitialSectionString = keyof typeof InitialSection;
-
 export enum LicenseStatusType {
     Active = 0,
     Canceled = 1,
     Revoked = 2,
-    Suspended = 3
+    Suspended = 3,
+    None = 4
 }
 
 export type LicenseStatusTypeString = keyof typeof LicenseStatusType;
@@ -1465,14 +1467,6 @@ export enum RelationshipToInsuredType {
 }
 
 export type RelationshipToInsuredTypeString = keyof typeof RelationshipToInsuredType;
-
-export enum Section {
-    HomePartial = 1,
-    HomeCompleted = 2,
-    AutoPartial = 4,
-    AutoCompleted = 8,
-    HomeAutoBundle = 10
-}
 
 export enum StartingLobType {
     Homeowners = 0,
@@ -1614,8 +1608,9 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsuredString | null;
     ConstructionType: ConstructionTypeString | null;
     CorrelationId: string | null;
-    EducationLevel: EducationLevelTypeString | null;
+    EducationLevel: EducationTypeString | null;
     EffectiveDate: string | null;
+    ElectricalRenovationYear: number | null;
     FoundationType: FoundationTypeString | null;
     FulfillErrorMessage: string | null;
     HailResistantRoofType: HailResistantRoofTypeString | null;
@@ -1631,13 +1626,12 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HasSmokeDetector: boolean | null;
     HasSwimmingPool: boolean | null;
     HasTrampoline: boolean | null;
+    HeatingRenovationYear: number | null;
     HomeStyle: HomeStyleString | null;
     Id: number;
-    InitialSection: InitialSectionString;
     IsBundled: boolean;
     IsEnrolledInDrivingProgram: boolean | null;
     IsPaperLess: boolean | null;
-    LastMajorRenovationYear: number | null;
     LastPageVisited: LastPageVisitedString;
     NumberOfBedrooms: number | null;
     NumberOfHouseholdMembers: number | null;
@@ -1645,9 +1639,11 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     OccupantType: OccupantTypeString | null;
     OverallQuality: OverallQualityString | null;
     PleaseAdviseMe: boolean | null;
+    PlumbingRenovationYear: number | null;
     PrimaryHeatType: HeatTypeString | null;
     Quotes: Array<Partial<Quote>> | null;
     ResidenceType: ResidenceTypeString | null;
+    RoofRenovationYear: number | null;
     RoofStyle: RoofStyleString | null;
     RoofType: RoofTypeString | null;
     SquareFootage: number | null;
@@ -1865,7 +1861,7 @@ export interface DiscountsOneDto {
 }
 
 export interface DiscountsTwoDto {
-    EducationLevel: EducationLevelTypeString | null;
+    EducationLevel: EducationTypeString | null;
 }
 
 export interface IxnLifeCarrierDto {
@@ -1911,9 +1907,7 @@ export interface PersonalAutoDriverDto {
     FirstLicensedDate: string | null;
     FirstName: string | null;
     Gender: string | null;
-    HasLicense: boolean | null;
     Id: number | null;
-    IsLicenseCurrent: boolean | null;
     LastName: string | null;
     LicenseState: string | null;
     LicenseStatus: LicenseStatusTypeString | null;
