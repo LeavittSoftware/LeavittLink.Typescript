@@ -1577,14 +1577,15 @@ export enum LastPageVisited {
     HomeOwnersStep8 = 8,
     HomeOwnersStep9 = 9,
     HomeOwnersStep10 = 10,
-    AutoStep1 = 11,
-    AutoStep2 = 12,
-    AutoStep3 = 13,
-    AutoStep4 = 14,
-    AutoStep5 = 15,
-    ChooseBundle = 16,
-    Quotes = 17,
-    SelectedQuote = 18
+    AutoPreviousPolicy = 11,
+    AutoNewPolicy = 12,
+    AutoVehicles = 13,
+    AutoDrivers = 14,
+    AutoDiscountsOne = 15,
+    AutoDiscountsTwo = 16,
+    ChooseBundle = 17,
+    Quotes = 18,
+    SelectedQuote = 19
 }
 
 export type LastPageVisitedString = keyof typeof LastPageVisited;
