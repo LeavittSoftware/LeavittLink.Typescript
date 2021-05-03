@@ -2201,6 +2201,7 @@ export interface VehicleDataDto {
     Carburetor: string | null;
     FourWheelDrive: boolean;
     FuelType: string | null;
+    Key: string | null;
     Maker: string | null;
     Model: string | null;
     MSRP: number;
