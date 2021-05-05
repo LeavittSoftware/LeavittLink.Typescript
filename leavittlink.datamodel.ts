@@ -1575,7 +1575,7 @@ export enum LastPageVisited {
     HomeOwnersStep6 = 6,
     HomeOwnersStep7 = 7,
     HomeOwnersStep8 = 8,
-    HomeOwnersStep9 = 9,
+    HomeOwnersRenovations = 9,
     HomeOwnersStep10 = 10,
     AutoPreviousPolicy = 11,
     AutoNewPolicy = 12,
@@ -1865,6 +1865,13 @@ export interface DiscountsTwoDto {
     EducationLevel: EducationTypeString | null;
 }
 
+export interface HomeOwnersRenovationsDto {
+    ElectricalRenovationYear: number | null;
+    HeatingRenovationYear: number | null;
+    PlumbingRenovationYear: number | null;
+    RoofRenovationYear: number | null;
+}
+
 export interface IxnLifeCarrierDto {
     Id: number;
     Large: string | null;
@@ -1938,7 +1945,6 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
 
 export interface HomeOwnersStepFiveDto {
     ClaimsLast5Years: number | null;
-    LastMajorRenovationYear: number | null;
     OccupantType: OccupantTypeString | null;
 }
 
