@@ -1618,7 +1618,6 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HasAutomaticSprinklers: boolean | null;
     HasBurglarAlarm: boolean | null;
     HasCats: boolean | null;
-    HasConsumedAlcohol: boolean | null;
     HasDeadBolts: boolean | null;
     HasDogs: boolean | null;
     HasFireAlarm: boolean | null;
@@ -1629,6 +1628,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HasTrampoline: boolean | null;
     HeatingRenovationYear: number | null;
     HomeStyle: HomeStyleString | null;
+    HouseholdDoesNotConsumeAlcohol: boolean | null;
     Id: number;
     IsBundled: boolean;
     IsEnrolledInDrivingProgram: boolean | null;
@@ -1856,7 +1856,7 @@ export interface AutoQuoteRequestSummaryDto {
 }
 
 export interface DiscountsOneDto {
-    HasConsumedAlcohol: boolean | null;
+    HouseholdDoesNotConsumeAlcohol: boolean | null;
     IsEnrolledInDrivingProgram: boolean | null;
     IsPaperless: boolean | null;
 }
