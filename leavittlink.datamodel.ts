@@ -1855,6 +1855,11 @@ export interface AutoQuoteRequestSummaryDto {
     Vehicles: number;
 }
 
+export interface ProvisionedCompanyUnitDto {
+    Id: string | null;
+    Name: string | null;
+}
+
 export interface DiscountsOneDto {
     HouseholdDoesNotConsumeAlcohol: boolean | null;
     IsEnrolledInDrivingProgram: boolean | null;
