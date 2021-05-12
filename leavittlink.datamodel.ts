@@ -1929,11 +1929,18 @@ export interface PersonalAutoDriverDto {
 }
 
 export interface PersonalPropertyQuoteRequestSummaryDto {
+    AutoDiscountsOne: number;
+    AutoDiscountsTwo: number;
+    AutoDrivers: number;
+    AutoNewPolicy: number;
+    AutoPreviousPolicy: number;
+    AutoVehicles: number;
     CampaignSummaries: Array<Partial<CampaignSummaryDto>> | null;
     CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
     ChooseBundle: number;
     FulfillErrors: number;
     GettingStartedStep2: number;
+    HomeOwnersRenovations: number;
     HomeOwnersStep1: number;
     HomeOwnersStep2: number;
     HomeOwnersStep3: number;
