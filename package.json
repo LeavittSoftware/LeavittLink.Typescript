@@ -5,7 +5,7 @@
   "main": "leavittlink.datamodel.js",
   "files": [
     "leavittlink.datamodel.js.map",
-    "leavittlink.datamodel.js",
+    "leavittlink.datamodel.jss",
     "leavittlink.datamodel.ts"
   ],
   "scripts": {
