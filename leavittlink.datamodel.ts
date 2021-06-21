@@ -1778,6 +1778,7 @@ export interface LifeQuoteRequest extends QuoteRequest {
     IsLargeQuoteRequest: boolean;
     LifeQuotes: Array<Partial<LifeQuote>> | null;
     MacuWealthManager: string | null;
+    MacuWealthManagerEmail: string | null;
     PartnerId: string | null;
     ProductType: ProductTypeString;
     RequestPayload: string | null;
