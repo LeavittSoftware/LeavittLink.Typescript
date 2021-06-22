@@ -2141,6 +2141,7 @@ export interface LifeAnswerDto {
     LeadType: string | null;
     LifeQuoteRequestId: number | null;
     MacuWealthManager: string | null;
+    MacuWealthManagerEmail: string | null;
     PartnerId: string | null;
     ProductType: ProductTypeString;
     RecaptchaUserResponse: string | null;
