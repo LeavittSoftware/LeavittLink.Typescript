@@ -1582,8 +1582,8 @@ export enum LastPageVisited {
     AutoNewPolicy = 12,
     AutoVehicles = 13,
     AutoDrivers = 14,
-    AutoDiscountsOne = 15,
-    AutoDiscountsTwo = 16,
+    DiscountsOne = 15,
+    DiscountsTwo = 16,
     ChooseBundle = 17,
     Quotes = 18,
     SelectedQuote = 19
@@ -1931,8 +1931,6 @@ export interface PersonalAutoDriverDto {
 }
 
 export interface PersonalPropertyQuoteRequestSummaryDto {
-    AutoDiscountsOne: number;
-    AutoDiscountsTwo: number;
     AutoDrivers: number;
     AutoNewPolicy: number;
     AutoPreviousPolicy: number;
@@ -1940,6 +1938,8 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
     CampaignSummaries: Array<Partial<CampaignSummaryDto>> | null;
     CarrierErrors: Array<Partial<CarrierErrorReportItem>> | null;
     ChooseBundle: number;
+    DiscountsOne: number;
+    DiscountsTwo: number;
     FulfillErrors: number;
     GettingStartedStep2: number;
     HomeOwnersRenovations: number;
