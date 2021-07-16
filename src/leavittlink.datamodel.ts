@@ -1299,6 +1299,14 @@ export enum LineOfBusiness {
 
 export type LineOfBusinessString = keyof typeof LineOfBusiness;
 
+export interface RicochetCampaign {
+    Campaign: Partial<Campaign> | null;
+    CampaignId: number;
+    Id: number;
+    LeavittWebRater: LeavittWebRaterTypeString;
+    RicochetEndpoint: string | null;
+}
+
 export interface VelocifyCampaign {
     Campaign: Partial<Campaign> | null;
     CampaignId: number;
@@ -1628,6 +1636,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     HasSwimmingPool: boolean | null;
     HasTrampoline: boolean | null;
     HeatingRenovationYear: number | null;
+    HomeEstimatedValue: number | null;
     HomeStyle: HomeStyleString | null;
     HouseholdDoesNotConsumeAlcohol: boolean | null;
     Id: number;
