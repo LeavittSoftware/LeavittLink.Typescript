@@ -1968,6 +1968,7 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
 
 export interface HomeOwnersStepFiveDto {
     ClaimsLast5Years: number | null;
+    HomeEstimatedValue: number | null;
     OccupantType: OccupantTypeString | null;
 }
 
