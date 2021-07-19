@@ -1,6 +1,6 @@
 ﻿{
   "compilerOptions": {
-    "target": "es2019",
+    "target": "es2020",
     "module": "esNext",
     "moduleResolution": "node",
     "lib": ["esnext", "dom", "dom.iterable"],
@@ -16,6 +16,7 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "rootDir": "src",
+    "outDir": "lib",
     "skipLibCheck": true,
     "noEmitHelpers": true,
     "importHelpers": true,
