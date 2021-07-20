@@ -1583,18 +1583,17 @@ export enum LastPageVisited {
     HomeOwnersStep5 = 5,
     HomeOwnersStep6 = 6,
     HomeOwnersStep7 = 7,
-    HomeOwnersStep8 = 8,
-    HomeOwnersRenovations = 9,
-    HomeOwnersStep10 = 10,
-    AutoPreviousPolicy = 11,
-    AutoNewPolicy = 12,
-    AutoVehicles = 13,
-    AutoDrivers = 14,
-    DiscountsOne = 15,
-    DiscountsTwo = 16,
-    ChooseBundle = 17,
-    Quotes = 18,
-    SelectedQuote = 19
+    HomeOwnersRenovations = 8,
+    HomeOwnersStep10 = 9,
+    AutoPreviousPolicy = 10,
+    AutoNewPolicy = 11,
+    AutoVehicles = 12,
+    AutoDrivers = 13,
+    DiscountsOne = 14,
+    DiscountsTwo = 15,
+    ChooseBundle = 16,
+    Quotes = 17,
+    SelectedQuote = 18
 }
 
 export type LastPageVisitedString = keyof typeof LastPageVisited;
@@ -1959,7 +1958,6 @@ export interface PersonalPropertyQuoteRequestSummaryDto {
     HomeOwnersStep5: number;
     HomeOwnersStep6: number;
     HomeOwnersStep7: number;
-    HomeOwnersStep8: number;
     Quotes: number;
     RatingFailed: number;
     RatingReturnedQuote: number;
@@ -1980,13 +1978,10 @@ export interface HomeOwnersStepSixDto {
 }
 
 export interface HomeOwnersStepSevenDto {
-    CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsuredString | null;
-}
-
-export interface HomeOwnersStepEightDto {
     CoApplicantDateOfBirth: string | null;
     CoApplicantFirstName: string | null;
     CoApplicantLastName: string | null;
+    CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsuredString | null;
 }
 
 export interface QuestionnaireResultDto {
