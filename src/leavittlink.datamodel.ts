@@ -1288,7 +1288,8 @@ export enum LeavittWebRaterType {
     Bop = 2,
     Life = 3,
     WidgetLife = 4,
-    Referral = 5
+    Referral = 5,
+    Bundle = 6
 }
 
 export type LeavittWebRaterTypeString = keyof typeof LeavittWebRaterType;
