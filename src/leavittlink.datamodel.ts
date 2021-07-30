@@ -44,10 +44,11 @@ export interface QuoteRequest {
     HasBeenFulfilled: boolean;
     LeadType: string | null;
     ReferringUrl: string | null;
+    RicochetEndpoint: string | null;
     SelectedQuoteId: number | null;
     User: Partial<User> | null;
     UserId: number;
-    VelocifyCampaignId: number;
+    VelocifyCampaignId: number | null;
 }
 
 export enum TobaccoType {
@@ -485,6 +486,7 @@ export interface QuestionnaireResult {
     Questionnaire: Partial<Questionnaire> | null;
     QuestionnaireId: number;
     ReferringUrl: string | null;
+    RicochetEnpoint: string | null;
     Status: QuestionnaireResultStatusString;
     User: Partial<User> | null;
     UserId: number;
@@ -1222,6 +1224,7 @@ export interface Campaign {
     LifeQuoteRequests: Array<Partial<LifeQuoteRequest>> | null;
     Name: string | null;
     PersonalPropertyQuoteRequests: Array<Partial<PersonalPropertyQuoteRequest>> | null;
+    RicochetCampaigns: Array<Partial<RicochetCampaign>> | null;
     VelocifyCampaignId: number;
     VelocifyCampaigns: Array<Partial<VelocifyCampaign>> | null;
 }
@@ -2267,6 +2270,7 @@ export interface User {
     LifeQuoteRequest: Array<Partial<LifeQuoteRequest>> | null;
     PersonalPropertyQuoteRequests: Array<Partial<PersonalPropertyQuoteRequest>> | null;
     QuestionnaireResults: Array<Partial<QuestionnaireResult>> | null;
+    RicochetLeadId: number | null;
     UserGuid: string | null;
     VelocifyLeadId: number | null;
     WorkPhoneNumber: string | null;
