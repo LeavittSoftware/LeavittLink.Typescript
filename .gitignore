@@ -4,3 +4,6 @@ node_modules/
 test/integration/screenshots-current/
 _site/
 .DS_Store
+lib/leavittlink.datamodel.js
+
+lib/leavittlink.datamodel.js.map
