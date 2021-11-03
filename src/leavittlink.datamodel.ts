@@ -1378,6 +1378,7 @@ export interface AutoDriverToAutoVehicle {
 }
 
 export interface AutoVehicle {
+    AcquisitionDate: string;
     AnnualMilesDriven: number;
     AutoDriverToAutoVehicles: Array<Partial<AutoDriverToAutoVehicle>> | null;
     CollisionDeductible: number | null;
