@@ -1229,14 +1229,12 @@ export interface Campaign {
     VelocifyCampaigns: Array<Partial<VelocifyCampaign>> | null;
 }
 
-export interface CarrierImageAttachment extends Attachment {
+export interface CarrierImageAttachment extends IDatabaseAttachment, ISynchronizable {
     Carrier: Partial<Carrier> | null;
-    Id: number;
 }
 
-export interface CampaignImageAttachment extends Attachment {
+export interface CampaignImageAttachment extends IDatabaseAttachment, ISynchronizable {
     Campaign: Partial<Campaign> | null;
-    Id: number;
 }
 
 export interface CarrierError {
@@ -2246,11 +2244,12 @@ export interface VertaforeLiabilityCslbiLimitDto {
     Value: string | null;
 }
 
-export interface Attachment extends ISynchronizable {
+export interface IDatabaseAttachment {
     CdnFileName: string | null;
     DeletedDate: string | null;
     Description: string | null;
     Extension: string | null;
+    Id: number;
     IsDeleted: boolean;
     Name: string | null;
     PreviewExtension: string | null;
