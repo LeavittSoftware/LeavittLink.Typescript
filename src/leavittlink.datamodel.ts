@@ -1659,6 +1659,8 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     RoofRenovationYear: number | null;
     RoofStyle: RoofStyleString | null;
     RoofType: RoofTypeString | null;
+    SelectedCarrier: Partial<Carrier> | null;
+    SelectedCarrierId: number | null;
     SquareFootage: number | null;
     StartingLob: StartingLobTypeString;
     State: string | null;
