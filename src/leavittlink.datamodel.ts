@@ -1652,6 +1652,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     OccupantType: OccupantTypeString | null;
     OverallQuality: OverallQualityString | null;
     PleaseAdviseMe: boolean | null;
+    PlRaterLaunchUrl: string | null;
     PlumbingRenovationYear: number | null;
     PrimaryHeatType: HeatTypeString | null;
     Quotes: Array<Partial<Quote>> | null;
