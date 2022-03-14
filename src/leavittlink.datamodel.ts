@@ -1210,7 +1210,6 @@ export interface Vehicle extends IVehicle {
     MSRP: number | null;
     PrimaryDriverId: number | null;
     RentalCarReimbursementLimit: number | null;
-    Sequence: number;
     TowingCoverageLimit: number | null;
     TransportationExpense: string | null;
     VehicleUsage: string | null;
