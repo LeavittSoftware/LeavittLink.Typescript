@@ -1393,11 +1393,25 @@ export interface AutoVehicle {
     VIN: string | null;
 }
 
+export interface PersonalAutoCoverage {
+    Description: string | null;
+    Id: number;
+    Limit1: Partial<number> | null;
+    Limit2: Partial<number> | null;
+    PersonalAutoQuote: Partial<PersonalAutoQuote> | null;
+    PersonalAutoQuoteId: number;
+    Premium: Partial<number>;
+    Type: string | null;
+    Waived: boolean;
+}
+
 export interface HomeOwnersCoverage {
     Description: string | null;
     HomeOwnersQuote: Partial<HomeOwnersQuote> | null;
     HomeOwnersQuoteId: number;
     Id: number;
+    Limit1: Partial<number> | null;
+    Limit2: Partial<number> | null;
     Premium: Partial<number>;
     Type: string | null;
     Waived: boolean;
@@ -1452,6 +1466,7 @@ export enum NumberOfStories {
 export type NumberOfStoriesString = keyof typeof NumberOfStories;
 
 export interface PersonalAutoQuote extends Quote {
+    Coverages: Array<Partial<PersonalAutoCoverage>> | null;
 }
 
 export interface Quote {
