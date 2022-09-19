@@ -1634,6 +1634,7 @@ export interface PersonalPropertyQuoteRequest extends QuoteRequest {
     CoApplicantRelationshipToInsured: CoApplicantRelationshipToInsuredString | null;
     ConstructionType: ConstructionTypeString | null;
     CorrelationId: string | null;
+    County: string | null;
     EducationLevel: EducationTypeString | null;
     EffectiveDate: string | null;
     ElectricalRenovationYear: number | null;
@@ -2093,6 +2094,7 @@ export interface HomeOwnersStepOneDto {
 
 export interface GettingStartedStepTwoDto {
     City: string | null;
+    County: string | null;
     EmailAddress: string | null;
     PhoneNumber: string | null;
     State: string | null;
